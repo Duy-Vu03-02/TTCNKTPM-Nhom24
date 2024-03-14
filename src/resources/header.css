@@ -1,0 +1,77 @@
+.header {
+  background-color: #001529;
+  height: 65px;
+  width: 100vw;
+  justify-content: space-between;
+}
+footer {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  height: 65px;
+  background-color: white;
+  top: calc(100vh - 65px);
+  width: 100vw;
+}
+.footer {
+  display: block;
+  line-height: 65px;
+}
+.footer span {
+  margin: 0 5px;
+  align-items: center;
+  align-content: center;
+  line-height: 65px;
+}
+.copyright {
+  display: flex;
+  align-items: center;
+  height: 67px;
+  margin: 0 5px;
+}
+.footer a {
+  color: #299af6;
+}
+.left-header,
+.right-header {
+  justify-content: center;
+  align-items: center;
+  margin: 0 40px;
+}
+.menu-header {
+  /* background-color: #299af6; */
+  height: 65px;
+  line-height: 60px;
+}
+.left-header a {
+  color: rgb(175, 174, 174);
+  font-size: 14px;
+  padding: 0 25px;
+  line-height: 65px;
+}
+.left-header a:hover {
+  background-color: #299af6;
+  color: white;
+  transition: background 0.3s, color 0.3s;
+}
+.left-header img {
+  width: 6%;
+  margin-right: 10px;
+}
+.right-header button {
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 8px 15px;
+  margin-left: 20px;
+  background-color: #299af6;
+  cursor: pointer;
+  opacity: 0.9;
+}
+.right-header button:hover {
+  opacity: 1;
+  transform: opacity 0.3s;
+}
+main {
+  max-width: 100vw;
+}
