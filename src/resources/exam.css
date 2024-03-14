@@ -9,6 +9,12 @@
   margin: 10px;
   height: 80px;
   width: 280px;
+  cursor: pointer;
+  transition: box-shadow 0.3s;
+}
+.exam-cart:hover {
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.5s;
 }
 .exam-cart p {
   line-height: 30px;

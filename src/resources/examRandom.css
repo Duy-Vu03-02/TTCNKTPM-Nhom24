@@ -1,8 +1,7 @@
 .box-exam {
   width: calc(100vw - 200px);
-  height: 400px;
-  /* background-color: pink; */
-  margin: 50px auto;
+  /* height: 400px; */
+  margin: 40px auto;
 }
 .title-exam {
   text-transform: uppercase;
@@ -21,8 +20,7 @@
 
 .title-exam img:hover {
   background-color: #56abf1;
-  border-radius: 5px;
-  fill: rebeccapurple;
+  border-radius: 50%;
 }
 .introduce-exam {
   background-color: white;

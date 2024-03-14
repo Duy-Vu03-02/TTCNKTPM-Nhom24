@@ -1,0 +1,60 @@
+.content-critical {
+  overflow-y: auto;
+  height: calc(100vh - 65px - 50px);
+}
+.content-infor p {
+  margin: 0 0 0 40px;
+}
+.wrap-list-question {
+  width: calc(100vw -20px);
+}
+.wrap-question {
+  padding: 10px 20px;
+  width: 1220px;
+  margin: 20px auto;
+  display: block;
+  background-color: white;
+}
+.question-infor {
+  border-bottom: 1px solid rgb(234, 232, 232);
+}
+.question-infor h5 {
+  margin: 10px 0 0 0;
+  padding-bottom: 20px;
+  font-weight: 500;
+  font-size: 16px;
+}
+.answer-infor input {
+  width: 20px;
+  margin-right: 5px;
+}
+.answer-infor p::first-letter,
+.question-infor h5::first-letter {
+  text-transform: uppercase;
+}
+.answer-infor li {
+  cursor: pointer;
+  padding-top: 10px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgb(234, 232, 232);
+}
+.answer-infor li:hover {
+  background-color: rgb(237, 243, 248);
+}
+.answer-active {
+  color: #299af6;
+}
+.btn-show button {
+  cursor: pointer;
+  margin-top: 10px;
+  padding: 7px 20px;
+  background-color: white;
+  border: 1px solid rgb(225, 225, 225);
+  color: black;
+  transition: color 0.3s, border 0.3s;
+}
+.btn-show button:hover {
+  color: #299af6;
+  border: 1px solid #299af6;
+  transition: color 0.3s, border 0.3s;
+}

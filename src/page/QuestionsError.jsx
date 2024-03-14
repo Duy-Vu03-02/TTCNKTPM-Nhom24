@@ -1,11 +1,20 @@
-import React from "react";
-import Header from "../component/Header";
+import React, { useState } from "react";
+import back from "../data/svg/back.svg";
+import "../resources/questionserror.css";
 
-export default function QuesitionsError() {
+export default function QuesitionsError(props) {
+  const handleClick = () => {
+    props.unComponent();
+  };
   return (
     <>
       <div>
-        <p>Quétion</p>
+        <div className="box-exam">
+          <div className="title-exam flex">
+            <img src={back} alt="" onClick={handleClick} />
+            <h3 className="bold">top các câu sai</h3>
+          </div>
+        </div>
       </div>
     </>
   );

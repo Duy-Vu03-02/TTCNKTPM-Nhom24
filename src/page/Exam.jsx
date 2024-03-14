@@ -28,7 +28,7 @@ export default function Exam(props) {
                     <div className="exam-cart ">
                       <div className="flex">
                         <IoBookOutline className="book-icon" />
-                        <p>đề số 1</p>
+                        <p>đề số {index + 1}</p>
                       </div>
                       <p style={{ margin: "0 5px" }}>---</p>
                     </div>

@@ -1,5 +1,4 @@
 import React from "react";
-import Header from "../component/Header";
 import back from "../data/svg/back.svg";
 import "../resources/examRandom.css";
 import background from "../data/png/background.png";
