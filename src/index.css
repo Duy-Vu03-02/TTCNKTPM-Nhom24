@@ -27,6 +27,9 @@ li {
 .bold {
   font-weight: 600;
 }
+.none {
+  display: none;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;

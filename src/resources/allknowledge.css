@@ -14,7 +14,7 @@
 }
 .lesson:hover {
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
-  transition: box-shadow 0.5s;
+  transition: box-shadow 0.4s;
 }
 .lesson h3 {
   margin: 0;

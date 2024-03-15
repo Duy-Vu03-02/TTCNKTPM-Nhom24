@@ -36,9 +36,8 @@ export default function CriticalQuestion(props) {
           </div>
           <div className="content-infor">
             <p>
-              Dưới đây là <span className="bold">20</span> câu điểm liệt dành
-              cho hạng <span className="bold">A1</span>, trong bài thi nếu làm
-              sai sẽ bị đánh rớt
+              Dưới đây là <b>20</b> câu điểm liệt dành cho hạng <b>A1</b>, trong
+              bài thi nếu làm sai sẽ bị đánh rớt
             </p>
           </div>
         </div>
@@ -49,8 +48,15 @@ export default function CriticalQuestion(props) {
                 <div className="wrap-question">
                   <div className="question-infor flex">
                     <h5>Câu {index + 1}.&nbsp;</h5>
-                    <h5>{data.question}</h5>
+                    <h5>{data.question}?</h5>
                   </div>
+                  {data.img ? (
+                    <div className="img-illustration">
+                      <img src={data.img} alt="" />
+                    </div>
+                  ) : (
+                    ""
+                  )}
                   <div className="answer-infor">
                     <ul>
                       {data.answer.map((rep, z) => (
@@ -66,7 +72,7 @@ export default function CriticalQuestion(props) {
                             )}
                           />
                           <span>{z + 1}.&nbsp; </span>
-                          <p>{rep}</p>
+                          <p>{rep}.</p>
                         </li>
                       ))}
                     </ul>
