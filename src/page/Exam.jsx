@@ -1,9 +1,7 @@
 import React from "react";
-import Header from "../component/Header";
 import back from "../data/svg/back.svg";
 import { IoBookOutline } from "react-icons/io5";
 import "../resources/exam.css";
-import Footer from "../component/Footer";
 
 export default function Exam(props) {
   const listData = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];

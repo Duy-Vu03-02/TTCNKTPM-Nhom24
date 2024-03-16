@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import Component from "../component/Component";
 import Header from "../component/Header";
 import Footer from "../component/Footer";
-import { Link } from "react-router-dom";
 import "../resources/component.css";
 import examRandom from "../data/svg/examRandom.svg";
 import exam from "../data/svg/exam.svg";
