@@ -1,19 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import back from "../data/svg/back.svg";
 import "../resources/questionserror.css";
 import { FiUser } from "react-icons/fi";
 import { FiUsers } from "react-icons/fi";
 import background from "../data/png/background.png";
+import QuestionsTemplate from "../component/QuestionsTemplate";
 
 export default function QuesitionsError(props) {
   const [qsUser, setQsUser] = useState(true);
+
   const handleChangeType = (value) => {
     setQsUser(value);
   };
   const handleClick = () => {
     props.unComponent();
   };
-  console.log(qsUser);
   return (
     <>
       <div className="content-questionserror">
@@ -57,8 +58,8 @@ export default function QuesitionsError(props) {
 }
 
 function User() {
-  const [questions, setQuestions] = useState([]);
   const data = {
+    id: 2,
     question:
       "khi đang lên dốc người ngồi trên xe mô tô có được phép kéo theo người đang điều khiển xe đạp hay không",
     answer: [
@@ -67,70 +68,19 @@ function User() {
       "chỉ được phép thực hiện trên đường thật vắng",
       "chỉ được phép khi người đi xe đạp đã quá mệt",
     ],
+    trueAnswer: 3,
   };
   const listData = Array.from({ length: 10 }, () => data);
-
-  const handleChangeSelect = (index, z) => {
-    setQuestions((prevState) => {
-      const newSelected = [{ id: index, selected: z }];
-      const selectedFilter = prevState.filter((item) => item.id !== index);
-      return [...selectedFilter, ...newSelected];
-    });
-  };
-  console.log(questions);
   return (
     <>
-      <div className="wrap-list-question">
-        <ul>
-          {listData.map((data, index) => (
-            <li key={index}>
-              <div className="wrap-question">
-                <div className="question-infor flex">
-                  <h5>Câu {index + 1}.&nbsp;</h5>
-                  <h5>{data.question}?</h5>
-                </div>
-                {data.img ? (
-                  <div className="img-illustration">
-                    <img src={data.img} alt="" />
-                  </div>
-                ) : (
-                  ""
-                )}
-                <div className="answer-infor">
-                  <ul>
-                    {data.answer.map((rep, z) => (
-                      <li
-                        key={z}
-                        className="flex"
-                        onClick={() => handleChangeSelect(index, z)}
-                      >
-                        <input
-                          type="checkbox"
-                          checked={questions.some(
-                            (item) => item.id === index && item.selected === z
-                          )}
-                        />
-                        <span>{z + 1}.&nbsp; </span>
-                        <p>{rep}.</p>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="btn-show">
-                  <button>Hiện đáp án</button>
-                </div>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <QuestionsTemplate dataQuestion={listData} />
     </>
   );
 }
 
 function Gobal() {
-  const [questions, setQuestions] = useState([]);
   const data = {
+    id: 1,
     question: "các xe đi theo thứ tự nào là đúng quy tắc giao thông đường bộ",
     img: background,
     answer: [
@@ -139,65 +89,13 @@ function Gobal() {
       "mô tô, xe con, xe của bạn",
       "chỉ được phép khi người đi xe đạp đã quá mệt",
     ],
-    ansTrue: 1212,
-    ansFalse: 1144,
+    trueAnswer: 2,
   };
-  const listData = Array.from({ length: 10 }, () => data);
 
-  const handleChangeSelect = (index, z) => {
-    setQuestions((prevState) => {
-      const newSelected = [{ id: index, selected: z }];
-      const selectedFilter = prevState.filter((item) => item.id !== index);
-      return [...selectedFilter, ...newSelected];
-    });
-  };
-  console.log(questions);
+  const listData = Array.from({ length: 10 }, () => data);
   return (
     <>
-      <div className="wrap-list-question">
-        <ul>
-          {listData.map((data, index) => (
-            <li key={index}>
-              <div className="wrap-question">
-                <div className="question-infor flex">
-                  <h5>Câu {index + 1}.&nbsp;</h5>
-                  <h5>{data.question}?</h5>
-                </div>
-                {data.img ? (
-                  <div className="img-illustration">
-                    <img src={data.img} alt="" />
-                  </div>
-                ) : (
-                  ""
-                )}
-                <div className="answer-infor">
-                  <ul>
-                    {data.answer.map((rep, z) => (
-                      <li
-                        key={z}
-                        className="flex"
-                        onClick={() => handleChangeSelect(index, z)}
-                      >
-                        <input
-                          type="checkbox"
-                          checked={questions.some(
-                            (item) => item.id === index && item.selected === z
-                          )}
-                        />
-                        <span>{z + 1}.&nbsp; </span>
-                        <p>{rep}.</p>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="btn-show">
-                  <button>Hiện đáp án</button>
-                </div>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <QuestionsTemplate dataQuestion={listData} />
     </>
   );
 }

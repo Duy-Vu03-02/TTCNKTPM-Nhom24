@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Header from "../component/Header";
 import Footer from "../component/Footer";
-import "../resources/component.css";
+import "../resources/home.css";
 import examRandom from "../data/svg/examRandom.svg";
 import exam from "../data/svg/exam.svg";
 import allKnowledge from "../data/svg/allKnowledge.svg";

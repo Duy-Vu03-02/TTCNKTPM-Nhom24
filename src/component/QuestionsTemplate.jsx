@@ -3,32 +3,35 @@ import "../resources/component/questionstemplate.css";
 import { IoMdClose } from "react-icons/io";
 
 export default function QuestionsTemplate(props) {
-  const [listData, setListData] = useState(null);
+  const [listData, setListData] = useState([]);
   const [questions, setQuestions] = useState([]);
   const [showScore, setShowScore] = useState({
     state: false,
     score: null,
   });
+  const [showCorrect, setShowCorrect] = useState(false);
 
   useEffect(() => {
     var data = props.dataQuestion;
-    for (var item in data) {
-      data[item].selected = null;
-    }
+    data.forEach((element) => {
+      element.selected = false;
+    });
     setListData(data);
-  }, [props.dataQuestion]);
+  }, []);
 
   const handleResQuestion = () => {
     var count = 0;
     listData.forEach((element) => {
       if (element.selected === element.trueAnswer) count++;
     });
+    setShowCorrect(true);
     setShowScore({ state: true, score: count * 10 });
   };
   const handleShowScore = (value) => {
     setShowScore({ state: value, score: 0 });
   };
   const handleChangeSelect = (index, z) => {
+    // Luu tru dap an de checkbox
     setQuestions((prevState) => {
       const newSelected = [
         {
@@ -39,9 +42,17 @@ export default function QuestionsTemplate(props) {
       const filterQuestion = prevState.filter((item) => item.id !== index);
       return [...filterQuestion, ...newSelected];
     });
-    listData[index].selected = z;
+    // Luu tru dap an de tinh diem
+    handleCountToScore(index, z);
   };
-
+  const handleCountToScore = (zindex, z) => {
+    for (var item of listData) {
+      if (item.id == zindex) {
+        item.selected = z;
+      }
+    }
+  };
+  const handle = () => {};
   return (
     <>
       {listData ? (
@@ -66,14 +77,21 @@ export default function QuestionsTemplate(props) {
                       {data.answer.map((rep, z) => (
                         <li
                           key={z}
-                          className="flex"
-                          onClick={() => handleChangeSelect(index, z)}
+                          className={`${
+                            showCorrect && z === data.trueAnswer
+                              ? "correct-answer"
+                              : ""
+                          }  flex`}
+                          onClick={() => handleChangeSelect(data.id, z)}
                         >
+                          {console.log(data)}
                           <input
                             type="checkbox"
                             checked={questions.some(
-                              (item) => item.id === index && item.selected === z
+                              (item) =>
+                                item.id === data.id && item.selected === z
                             )}
+                            onChange={handle}
                           />
                           <span>{z + 1}.&nbsp; </span>
                           <p>{rep}.</p>
