@@ -17,8 +17,7 @@ export default function QuestionsTemplate(props) {
       element.selected = false;
     });
     setListData(data);
-  }, []);
-
+  }, [props.dataQuestion]);
   const handleResQuestion = () => {
     var count = 0;
     listData.forEach((element) => {
@@ -47,7 +46,7 @@ export default function QuestionsTemplate(props) {
   };
   const handleCountToScore = (zindex, z) => {
     for (var item of listData) {
-      if (item.id == zindex) {
+      if (item.id === zindex) {
         item.selected = z;
       }
     }
@@ -59,7 +58,7 @@ export default function QuestionsTemplate(props) {
         <div className="wrap-list-question">
           <ul>
             {listData.map((data, index) => (
-              <li key={index}>
+              <li key={index} className="disable">
                 <div className="wrap-question">
                   <div className="question-infor flex">
                     <h5>Câu {index + 1}.&nbsp;</h5>
@@ -81,10 +80,15 @@ export default function QuestionsTemplate(props) {
                             showCorrect && z === data.trueAnswer
                               ? "correct-answer"
                               : ""
+                          } ${
+                            showCorrect &&
+                            z !== data.trueAnswer &&
+                            z === data.selected
+                              ? "wrong-answer"
+                              : ""
                           }  flex`}
                           onClick={() => handleChangeSelect(data.id, z)}
                         >
-                          {console.log(data)}
                           <input
                             type="checkbox"
                             checked={questions.some(
@@ -124,7 +128,6 @@ export default function QuestionsTemplate(props) {
             <h3>{showScore.score}</h3>
             <button onClick={() => handleShowScore(false)}>Đóng</button>
           </div>
-          <div></div>
         </div>
       ) : (
         ""

@@ -8,6 +8,39 @@ import QuestionsTemplate from "../component/QuestionsTemplate";
 
 export default function QuesitionsError(props) {
   const [qsUser, setQsUser] = useState(true);
+  const [currentData, setCurrentData] = useState(null);
+
+  useEffect(() => {
+    setCurrentData(qsUser ? listData : listData1);
+  }, [qsUser]);
+
+  const data = {
+    id: 2,
+    question:
+      "khi đang lên dốc người ngồi trên xe mô tô có được phép kéo theo người đang điều khiển xe đạp hay không",
+    answer: [
+      "chỉ được phép nếu cả hai đội mũ bảo hiểm",
+      "không được phép",
+      "chỉ được phép thực hiện trên đường thật vắng",
+      "chỉ được phép khi người đi xe đạp đã quá mệt",
+    ],
+    trueAnswer: 3,
+  };
+  const listData = Array.from({ length: 10 }, () => data);
+
+  const data1 = {
+    id: 1,
+    question: "các xe đi theo thứ tự nào là đúng quy tắc giao thông đường bộ",
+    img: background,
+    answer: [
+      "xe của bạn, mô tô, xe con",
+      "xe con, xe của bạn, mô tô",
+      "mô tô, xe con, xe của bạn",
+      "chỉ được phép khi người đi xe đạp đã quá mệt",
+    ],
+    trueAnswer: 2,
+  };
+  const listData1 = Array.from({ length: 10 }, () => data1);
 
   const handleChangeType = (value) => {
     setQsUser(value);
@@ -15,6 +48,7 @@ export default function QuesitionsError(props) {
   const handleClick = () => {
     props.unComponent();
   };
+  console.log(currentData);
   return (
     <>
       <div className="content-questionserror">
@@ -51,51 +85,10 @@ export default function QuesitionsError(props) {
             </p>
           </div>
         </div>
-        <div>{qsUser ? <User /> : <Gobal />}</div>
+        <div>
+          {currentData && <QuestionsTemplate dataQuestion={currentData} />}
+        </div>
       </div>
-    </>
-  );
-}
-
-function User() {
-  const data = {
-    id: 2,
-    question:
-      "khi đang lên dốc người ngồi trên xe mô tô có được phép kéo theo người đang điều khiển xe đạp hay không",
-    answer: [
-      "chỉ được phép nếu cả hai đội mũ bảo hiểm",
-      "không được phép",
-      "chỉ được phép thực hiện trên đường thật vắng",
-      "chỉ được phép khi người đi xe đạp đã quá mệt",
-    ],
-    trueAnswer: 3,
-  };
-  const listData = Array.from({ length: 10 }, () => data);
-  return (
-    <>
-      <QuestionsTemplate dataQuestion={listData} />
-    </>
-  );
-}
-
-function Gobal() {
-  const data = {
-    id: 1,
-    question: "các xe đi theo thứ tự nào là đúng quy tắc giao thông đường bộ",
-    img: background,
-    answer: [
-      "xe của bạn, mô tô, xe con",
-      "xe con, xe của bạn, mô tô",
-      "mô tô, xe con, xe của bạn",
-      "chỉ được phép khi người đi xe đạp đã quá mệt",
-    ],
-    trueAnswer: 2,
-  };
-
-  const listData = Array.from({ length: 10 }, () => data);
-  return (
-    <>
-      <QuestionsTemplate dataQuestion={listData} />
     </>
   );
 }

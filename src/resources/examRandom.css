@@ -10,6 +10,7 @@
   align-items: center;
 }
 .title-exam h3 {
+  cursor: default;
   font-size: 20px;
   margin: 10px;
 }

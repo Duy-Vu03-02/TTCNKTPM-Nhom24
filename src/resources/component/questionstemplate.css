@@ -136,3 +136,7 @@
 .answer-infor .wrong-answer {
   background-color: rgba(255, 0, 0, 0.51) !important;
 }
+.disable {
+  cursor: default;
+  pointer-events: none;
+}
