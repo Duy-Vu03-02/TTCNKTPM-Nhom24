@@ -58,7 +58,7 @@ export default function QuestionsTemplate(props) {
         <div className="wrap-list-question">
           <ul>
             {listData.map((data, index) => (
-              <li key={index} className="disable">
+              <li key={index} className={`${showScore.state ? "disable" : ""}`}>
                 <div className="wrap-question">
                   <div className="question-infor flex">
                     <h5>Câu {index + 1}.&nbsp;</h5>

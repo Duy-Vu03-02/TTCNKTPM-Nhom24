@@ -119,6 +119,12 @@ main {
   cursor: pointer;
   position: relative;
   font-weight: 500;
+  transition: box-shadow 0.3s;
+}
+.choie-login .btn-gg:hover,
+.btn-face:hover {
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  transition: box-shadow 0.3s;
 }
 .choie-login .btn-face {
   background-color: #3b5998;
@@ -143,6 +149,10 @@ main {
 .dont-show {
   margin-top: 10px;
   margin-bottom: 0;
+}
+.dont-show input {
+  width: 15px;
+  height: 15px;
 }
 .btn-close {
   display: flex;

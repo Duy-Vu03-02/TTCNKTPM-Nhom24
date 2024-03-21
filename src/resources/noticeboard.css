@@ -12,6 +12,7 @@
 }
 .title-group p {
   text-transform: uppercase;
+  cursor: pointer;
 }
 .wrap-groups li {
   border: 1px solid rgb(153, 151, 151);

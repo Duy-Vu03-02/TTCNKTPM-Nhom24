@@ -8,12 +8,17 @@ body {
   background-color: rgb(247, 244, 247);
   overflow: hidden;
 }
+main {
+  overflow-y: auto;
+  height: calc(100vh - 65px - 50px);
+}
 a {
   text-decoration: none;
 }
 p {
   margin: 0;
   padding: 0;
+  cursor: default;
 }
 
 ul,

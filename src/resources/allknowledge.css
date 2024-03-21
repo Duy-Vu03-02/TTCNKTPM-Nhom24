@@ -24,6 +24,9 @@
   display: flex;
   justify-content: center;
 }
+.lesson p {
+  cursor: pointer;
+}
 .list-lesson {
   flex-wrap: wrap;
   width: 1160px;

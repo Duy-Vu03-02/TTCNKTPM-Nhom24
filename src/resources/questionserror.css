@@ -22,6 +22,9 @@
   left: 132px !important;
   width: 105px !important;
 }
+.nav-list p {
+  cursor: pointer;
+}
 .nav-list .your-nav,
 .nav-list .people-nav {
   padding: 5px 5px 10px 5px;

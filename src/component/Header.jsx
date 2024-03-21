@@ -13,6 +13,7 @@ export default function Header() {
     const fetch = async () => {
       const res = await JSON.parse(localStorage.getItem("showLogin"));
       if (res === false) {
+        setCheckBox(true);
         setBoxLogin(false);
       } else {
         setBoxLogin(true);

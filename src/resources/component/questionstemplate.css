@@ -3,10 +3,16 @@
 }
 .wrap-question {
   padding: 10px 20px;
-  width: 1220px;
+  max-width: 1220px;
   margin: 20px auto;
   display: block;
   background-color: white;
+}
+.wrap-question h5 {
+  cursor: default;
+}
+.wrap-question p {
+  cursor: pointer;
 }
 .wrap-list-question .img-illustration img {
   width: 500px;

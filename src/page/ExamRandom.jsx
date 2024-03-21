@@ -3,7 +3,10 @@ import back from "../data/svg/back.svg";
 import "../resources/examRandom.css";
 import background from "../data/png/background.png";
 import QustionTemplate from "../component/QuesitonTemplate";
-
+import { FiSkipBack } from "react-icons/fi";
+import { FiSkipForward } from "react-icons/fi";
+import { IoCheckmark } from "react-icons/io5";
+import { GoDash } from "react-icons/go";
 export default function ExamRandom(props) {
   const [showExam, setShowExam] = useState(false);
 
@@ -81,7 +84,23 @@ function Exam(props) {
     ],
     trueAnswer: 2,
   };
-  const listData = Array.from({ length: 10 }, () => store);
+  const store1 = { ...store };
+  store1.id = 4;
+  store1.img = null;
+
+  const store2 = { ...store };
+  store2.id = 3;
+
+  const store3 = { ...store };
+  store3.id = 2;
+
+  const store4 = { ...store };
+  store4.id = 1;
+
+  // const listData = Array.from({ length: 25 }, () => store);
+  const temp = [store, store1, store2, store3, store4];
+  const listData = [...temp, ...temp, ...temp, ...temp, ...temp];
+
   const handleTopic = () => {
     props.btnTopic(false);
   };
