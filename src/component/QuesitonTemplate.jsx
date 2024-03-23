@@ -7,7 +7,7 @@ import { FaRegStar } from "react-icons/fa6";
 
 export default function QuesitonTemplate({ dataQuestion }) {
   const [listData, setListData] = useState([]);
-  const [timeExam, setTimeExam] = useState(1200);
+  const [timeExam, setTimeExam] = useState(1140);
   const [currentQuestion, setCurrentQuestion] = useState(null);
   const [quesitons, setQuestions] = useState([]);
   const [autoNextQs, setAutoNextQs] = useState(true);
@@ -78,7 +78,6 @@ export default function QuesitonTemplate({ dataQuestion }) {
     var countMustTrue = 0;
     var countTrueMustTrue = 0;
     listData.forEach((element) => {
-      console.log(element);
       if (element.selected === element.trueAnswer) countTrue++;
       if (element.mustCorrect === true) {
         countMustTrue++;
@@ -99,7 +98,7 @@ export default function QuesitonTemplate({ dataQuestion }) {
         pass:
           countMustTrue === countTrueMustTrue &&
           countMustTrue > 0 &&
-          countTrue >= 10
+          countTrue >= 21
             ? true
             : false,
       };
@@ -111,7 +110,8 @@ export default function QuesitonTemplate({ dataQuestion }) {
       const timeout = setTimeout(() => {
         setCurrentQuestion(listData[indexQuestion.current]);
         indexQuestion.current += 1;
-      }, 1000);
+      }, 800);
+
       return () => clearTimeout(timeout);
     }
   };

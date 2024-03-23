@@ -3,6 +3,7 @@ import back from "../data/svg/back.svg";
 import "../resources/criticalquestion.css";
 import background from "../data/png/background.png";
 import QuestionsTemplate from "../component/QuestionsTemplate";
+import { IoMdArrowBack } from "react-icons/io";
 
 export default function CriticalQuestion(props) {
   const handleClick = () => {
@@ -40,7 +41,7 @@ export default function CriticalQuestion(props) {
       <div className="content-critical">
         <div className="box-exam">
           <div className="title-exam flex">
-            <img src={back} alt="" onClick={handleClick} />
+            <IoMdArrowBack onClick={handleClick} className="icon-back" />
             <h3 className="bold">câu hỏi điểm liệt</h3>
           </div>
           <div className="content-infor">

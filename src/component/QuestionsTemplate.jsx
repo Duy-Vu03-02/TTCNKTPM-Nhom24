@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../resources/component/questionstemplate.css";
 import { IoMdClose } from "react-icons/io";
 
-export default function QuestionsTemplate(props) {
+export default function QuestionsTemplate({ dataQuestion }) {
   const [listData, setListData] = useState([]);
   const [questions, setQuestions] = useState([]);
   const [showScore, setShowScore] = useState({
@@ -12,12 +12,13 @@ export default function QuestionsTemplate(props) {
   const [showCorrect, setShowCorrect] = useState(false);
 
   useEffect(() => {
-    var data = props.dataQuestion;
+    var data = dataQuestion;
     data.forEach((element) => {
       element.selected = false;
     });
     setListData(data);
-  }, [props.dataQuestion]);
+  }, [dataQuestion]);
+
   const handleResQuestion = () => {
     var count = 0;
     listData.forEach((element) => {
@@ -26,9 +27,11 @@ export default function QuestionsTemplate(props) {
     setShowCorrect(true);
     setShowScore({ state: true, score: count * 10 });
   };
+
   const handleShowScore = (value) => {
     setShowScore({ state: value, score: 0 });
   };
+
   const handleChangeSelect = (index, z) => {
     // Luu tru dap an de checkbox
     setQuestions((prevState) => {
@@ -44,6 +47,7 @@ export default function QuestionsTemplate(props) {
     // Luu tru dap an de tinh diem
     handleCountToScore(index, z);
   };
+
   const handleCountToScore = (zindex, z) => {
     for (var item of listData) {
       if (item.id === zindex) {
@@ -104,14 +108,14 @@ export default function QuestionsTemplate(props) {
                     </ul>
                   </div>
                   <div className="btn-show">
-                    <button>Hiện đáp án</button>
+                    {/* <button>Hiện đáp án</button> */}
                   </div>
                 </div>
               </li>
             ))}
           </ul>
           <div className="btn-submit-complete">
-            <button onClick={handleResQuestion}>Nộp bài</button>
+            <button onClick={() => handleResQuestion()}>Nộp bài</button>
           </div>
         </div>
       ) : (

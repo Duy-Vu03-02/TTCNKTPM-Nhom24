@@ -5,14 +5,10 @@ import { FiUser } from "react-icons/fi";
 import { FiUsers } from "react-icons/fi";
 import background from "../data/png/background.png";
 import QuestionsTemplate from "../component/QuestionsTemplate";
+import { IoMdArrowBack } from "react-icons/io";
 
 export default function QuesitionsError(props) {
   const [qsUser, setQsUser] = useState(true);
-  const [currentData, setCurrentData] = useState(null);
-
-  useEffect(() => {
-    setCurrentData(qsUser ? listData : listData1);
-  }, [qsUser]);
 
   const data = {
     id: 2,
@@ -42,19 +38,22 @@ export default function QuesitionsError(props) {
   };
   const listData1 = Array.from({ length: 10 }, () => data1);
 
+  const YourQuestionsError = <QuestionsTemplate dataQuestion={listData} />;
+  const PeopleQuestionsError = <QuestionsTemplate dataQuestion={listData1} />;
+
   const handleChangeType = (value) => {
     setQsUser(value);
   };
   const handleClick = () => {
     props.unComponent();
   };
-  console.log(currentData);
+
   return (
     <>
       <div className="content-questionserror">
         <div className="box-exam">
           <div className="title-exam flex">
-            <img src={back} alt="" onClick={handleClick} />
+            <IoMdArrowBack onClick={handleClick} className="icon-back" />
             <h3 className="bold">top các câu sai</h3>
           </div>
           <div className="nav-list flex">
@@ -85,9 +84,7 @@ export default function QuesitionsError(props) {
             </p>
           </div>
         </div>
-        <div>
-          {currentData && <QuestionsTemplate dataQuestion={currentData} />}
-        </div>
+        <div>{qsUser ? YourQuestionsError : PeopleQuestionsError}</div>
       </div>
     </>
   );

@@ -1,6 +1,7 @@
 import React from "react";
 import back from "../data/svg/back.svg";
 import "../resources/allknowledge.css";
+import { IoMdArrowBack } from "react-icons/io";
 
 export default function AllKnowledge(props) {
   const handleClick = () => {
@@ -41,7 +42,7 @@ export default function AllKnowledge(props) {
       <div className="component-ledge">
         <div className="box-exam">
           <div className="title-exam flex">
-            <img src={back} alt="" onClick={handleClick} />
+            <IoMdArrowBack onClick={handleClick} className="icon-back" />
             <h3 className="bold">ôn tập lí thuyết hạng a1</h3>
           </div>
           <div className="lessons">
