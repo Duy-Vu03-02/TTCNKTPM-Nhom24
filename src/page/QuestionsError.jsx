@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import back from "../data/svg/back.svg";
 import "../resources/questionserror.css";
 import { FiUser } from "react-icons/fi";
 import { FiUsers } from "react-icons/fi";

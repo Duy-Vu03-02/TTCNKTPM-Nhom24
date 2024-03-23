@@ -1,12 +1,7 @@
 import React, { useState } from "react";
-import back from "../data/svg/back.svg";
 import "../resources/examRandom.css";
 import background from "../data/png/background.png";
 import QuestionTemplate from "../component/QuesitonTemplate";
-import { FiSkipBack } from "react-icons/fi";
-import { FiSkipForward } from "react-icons/fi";
-import { IoCheckmark } from "react-icons/io5";
-import { GoDash } from "react-icons/go";
 import { IoMdArrowBack } from "react-icons/io";
 
 export default function ExamRandom(props) {

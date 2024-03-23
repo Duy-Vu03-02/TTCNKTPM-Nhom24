@@ -1,5 +1,4 @@
 import React from "react";
-import back from "../data/svg/back.svg";
 import "../resources/noticeboard.css";
 import { IoChevronBackOutline } from "react-icons/io5";
 import { IoMdArrowBack } from "react-icons/io";

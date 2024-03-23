@@ -1,16 +1,19 @@
 import React, { useState, useEffect, useRef } from "react";
-import "../resources/component/questiontemplate.css";
+import "../resources/component/questionchapter.css";
 import { IoMdCheckmark } from "react-icons/io";
-import { LuClock } from "react-icons/lu";
 import { GoDash } from "react-icons/go";
 import { FaRegStar } from "react-icons/fa6";
+import { FiSkipForward } from "react-icons/fi";
+import { FiSkipBack } from "react-icons/fi";
 
 export default function QuesitonTemplate({ dataQuestion }) {
   const [listData, setListData] = useState([]);
-  const [timeExam, setTimeExam] = useState(1140);
   const [currentQuestion, setCurrentQuestion] = useState(null);
   const [quesitons, setQuestions] = useState([]);
-  const [autoNextQs, setAutoNextQs] = useState(true);
+  const [autoShowAns, setAutoShowAns] = useState({
+    state: true,
+    hightLine: false,
+  });
   const [score, setScore] = useState({
     state: false,
     show: false,
@@ -19,7 +22,7 @@ export default function QuesitonTemplate({ dataQuestion }) {
     countMustTrue: 0,
     countTrueMustTrue: 0,
   });
-  const indexQuestion = useRef(1);
+  const indexQuestion = useRef(0);
 
   useEffect(() => {
     setCurrentQuestion(dataQuestion[0]);
@@ -48,9 +51,15 @@ export default function QuesitonTemplate({ dataQuestion }) {
   const handleShowQuestion = (data, index) => {
     setCurrentQuestion(data);
     indexQuestion.current = index;
+    setAutoShowAns((prevState) => {
+      return {
+        ...prevState,
+        hightLine: false,
+      };
+    });
   };
   const handleSelected = (id, z) => {
-    //handle checkbox
+    //handle checkbox - questions
     setQuestions((prevSelected) => {
       const newSelect = [
         {
@@ -62,64 +71,48 @@ export default function QuesitonTemplate({ dataQuestion }) {
       return [...newSelect, ...filterSelected];
     });
 
-    //handle change select listdata
+    //handle change select - listdata
     for (var item of listData) {
       if (item.zindex === id) {
         item.selected = z;
       }
     }
 
-    //handle auto next question
-    handleAutoNextQuestion();
-  };
-  const handleCalculatorScore = () => {
-    handleTimeOut();
-    var countTrue = 0;
-    var countMustTrue = 0;
-    var countTrueMustTrue = 0;
-    listData.forEach((element) => {
-      if (element.selected === element.trueAnswer) countTrue++;
-      if (element.mustCorrect === true) {
-        countMustTrue++;
-        if (element.selected === element.trueAnswer) {
-          countTrueMustTrue++;
-        }
+    //heightLight
+    setAutoShowAns((prevState) => {
+      if (prevState.state) {
+        return {
+          state: true,
+          hightLine: true,
+        };
       }
     });
-
-    setScore((prevState) => {
-      return {
-        ...prevState,
-        state: true,
-        show: true,
-        countTrue: countTrue,
-        countMustTrue: countMustTrue,
-        countTrueMustTrue: countTrueMustTrue,
-        pass:
-          countMustTrue === countTrueMustTrue &&
-          countMustTrue > 0 &&
-          countTrue >= 21
-            ? true
-            : false,
-      };
+  };
+  const handleAutoShowAns = () => {
+    setAutoShowAns((prevState) => {
+      if (prevState.state) {
+        return {
+          ...prevState,
+          state: false,
+        };
+      } else {
+        return {
+          ...prevState,
+          state: true,
+        };
+      }
     });
   };
 
-  const handleAutoNextQuestion = () => {
-    if (autoNextQs && indexQuestion.current < listData.length) {
-      const timeout = setTimeout(() => {
-        setCurrentQuestion(listData[indexQuestion.current]);
-        indexQuestion.current += 1;
-      }, 800);
-
-      return () => clearTimeout(timeout);
-    }
-  };
-  const handleTimeOut = () => {
-    setTimeExam(0);
-  };
-  const handleChangeAutoNext = () => {
-    autoNextQs ? setAutoNextQs(false) : setAutoNextQs(true);
+  const handleChangeShowQs = (value) => {
+    // if (value && indexQuestion.current < listData.length) {
+    //   console.log(indexQuestion.current);
+    //   indexQuestion.current += 1;
+    //   setCurrentQuestion(listData[indexQuestion.current]);
+    // } else if (!value && indexQuestion.current > 0) {
+    //   indexQuestion.current -= 1;
+    //   setCurrentQuestion(listData[indexQuestion.current]);
+    // }
   };
   const handle = () => {};
   return (
@@ -147,25 +140,27 @@ export default function QuesitonTemplate({ dataQuestion }) {
                         ""
                       )}
                       <div className="answer-infor">
-                        <ul>
+                        <ul className="wrap-ans">
                           {currentQuestion.answer.map((rep, z) => (
                             <li
                               key={z}
                               className={`${score.show ? "disable" : ""} 
                               ${
-                                score.show && currentQuestion.trueAnswer === z
+                                autoShowAns.hightLine &&
+                                currentQuestion.trueAnswer === z
                                   ? "check-correct"
                                   : ""
                               }
                               ${
-                                score.show &&
+                                autoShowAns.hightLine &&
                                 currentQuestion.selected === z &&
                                 currentQuestion.trueAnswer !==
                                   currentQuestion.selected
                                   ? "check-wrong"
                                   : ""
                               }
-                              flex`}
+                              ${autoShowAns.hightLine ? "disable" : ""}
+                              last-ans flex`}
                               onClick={() =>
                                 handleSelected(currentQuestion.zindex, z)
                               }
@@ -184,6 +179,25 @@ export default function QuesitonTemplate({ dataQuestion }) {
                             </li>
                           ))}
                         </ul>
+                        <div className="btn-handle flex">
+                          <div className="btn-show">
+                            <button>Hiện đáp án</button>
+                          </div>
+                          <div className="flex">
+                            <div className="wrap-skip flex">
+                              <FiSkipBack />
+                              <button onClick={() => handleChangeShowQs(false)}>
+                                Câu trước
+                              </button>
+                            </div>
+                            <div className="wrap-skip flex">
+                              <FiSkipForward />
+                              <button onClick={() => handleChangeShowQs(true)}>
+                                Câu tiếp
+                              </button>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </li>
@@ -193,63 +207,25 @@ export default function QuesitonTemplate({ dataQuestion }) {
               )}
             </div>
             <div className="right-temp">
-              <div className="timer flex">
-                <LuClock className="icon-clock" />
-                <Clock
-                  timer={timeExam}
-                  timeOut={handleTimeOut}
-                  className="cpn"
-                />
-              </div>
-              <div className="wrap-btn-complete">
-                {!score.show ? (
-                  <div className={`btn-complete flex`}>
+              <div className="wrap-btn-complete" style={{ borderTop: "none" }}>
+                <div className={`btn-complete flex`}>
+                  <div className="auto-next-qs" onClick={handleAutoShowAns}>
+                    <input
+                      className={autoShowAns.state ? "" : "un-auto-next-qs"}
+                      type="button"
+                      value={
+                        autoShowAns.state
+                          ? "Tự hiển thị đáp án"
+                          : "Không hiển thị đáp án"
+                      }
+                    />
                     <div
-                      className="auto-next-qs"
-                      onClick={handleChangeAutoNext}
-                    >
-                      <input
-                        className={autoNextQs ? "" : "un-auto-next-qs"}
-                        type="button"
-                        value={
-                          autoNextQs ? "Tự động nhảy câu" : "Không tự nhảy câu"
-                        }
-                      />
-                      <div
-                        className={`btn-auto-next-qs ${
-                          autoNextQs ? "" : "un-auto-next-qs"
-                        }`}
-                      ></div>
-                    </div>
-                    <div
-                      className={`${score.state ? "" : "btn-not-allowed"} flex`}
-                    >
-                      <IoMdCheckmark className="icon-check" />
-                      <button
-                        onClick={handleCalculatorScore}
-                        className={score.state ? "" : "btn-not-allowed"}
-                      >
-                        nộp bài
-                      </button>
-                    </div>
+                      className={`btn-auto-next-qs ${
+                        autoShowAns.state ? "" : "un-auto-next-qs"
+                      }`}
+                    ></div>
                   </div>
-                ) : (
-                  <div className="result-exam">
-                    <div className="title-result-exam">
-                      <h3>{score.pass ? "đạt" : "không đạt"}</h3>
-                    </div>
-                    <div className="detial-result-exam">
-                      <p>
-                        Điểm đạt được: {score.countTrue}/{listData.length}
-                      </p>
-                      <p>
-                        Số câu điểm liệt sai:{" "}
-                        {score.countMustTrue - score.countTrueMustTrue}/
-                        {score.countMustTrue}
-                      </p>
-                    </div>
-                  </div>
-                )}
+                </div>
               </div>
               <div className="show-list">
                 <ul className="wrap-list-qs flex">
@@ -263,6 +239,7 @@ export default function QuesitonTemplate({ dataQuestion }) {
                               : ""
                           }
                           ${data.selected !== null ? "item-select-ok" : ""}
+                          
                           flex`}
                           onClick={() => handleShowQuestion(data, index)}
                         >
@@ -295,63 +272,6 @@ export default function QuesitonTemplate({ dataQuestion }) {
           </div>
           <div className="next-question"></div>
         </div>
-      </div>
-    </>
-  );
-}
-
-function Clock({ timer, timeOut }) {
-  const [timeRemaining, setTimeRemaining] = useState({
-    minute: 0,
-    second: 0,
-  });
-  const interval = useRef(null);
-
-  useEffect(() => {
-    setTimeRemaining({
-      minute: Math.floor(timer / 60),
-      second: Math.floor(timer % 60),
-    });
-  }, [timer]);
-
-  useEffect(() => {
-    interval.current = setInterval(() => {
-      setTimeRemaining((prevTime) => {
-        if (prevTime.second === 0) {
-          if (prevTime.minute < 1) {
-            timeOut();
-            clearInterval(interval.current);
-            return {
-              minute: 0,
-              second: 0,
-            };
-          } else {
-            return {
-              minute: prevTime.minute - 1,
-              second: 59,
-            };
-          }
-        } else {
-          return {
-            second: prevTime.second - 1,
-            minute: prevTime.minute,
-          };
-        }
-      });
-    }, 1000);
-    return () => clearInterval(interval.current);
-  }, []);
-
-  return (
-    <>
-      <div className="cpn">
-        {timeRemaining.minute < 10
-          ? "0" + timeRemaining.minute
-          : timeRemaining.minute}
-        :
-        {timeRemaining.second < 10
-          ? "0" + timeRemaining.second
-          : timeRemaining.second}
       </div>
     </>
   );
