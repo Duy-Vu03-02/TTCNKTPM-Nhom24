@@ -1,7 +1,7 @@
 .box-exam {
   width: calc(100vw - 200px);
   /* height: 400px; */
-  margin: 40px auto;
+  margin: 20px auto;
   margin-bottom: 20px;
 }
 .title-exam {
