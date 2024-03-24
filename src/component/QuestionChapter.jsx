@@ -10,6 +10,7 @@ export default function QuesitonTemplate({ dataQuestion }) {
   const [listData, setListData] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(null);
   const [quesitons, setQuestions] = useState([]);
+  const [showAns, setShowAns] = useState([]);
   const [autoShowAns, setAutoShowAns] = useState({
     state: true,
     hightLine: false,
@@ -105,14 +106,27 @@ export default function QuesitonTemplate({ dataQuestion }) {
   };
 
   const handleChangeShowQs = (value) => {
-    // if (value && indexQuestion.current < listData.length) {
-    //   console.log(indexQuestion.current);
-    //   indexQuestion.current += 1;
-    //   setCurrentQuestion(listData[indexQuestion.current]);
-    // } else if (!value && indexQuestion.current > 0) {
-    //   indexQuestion.current -= 1;
-    //   setCurrentQuestion(listData[indexQuestion.current]);
-    // }
+    console.log(indexQuestion.current);
+    if (value === true && indexQuestion.current < listData.length) {
+      indexQuestion.current += 1;
+      setCurrentQuestion(listData[indexQuestion.current]);
+    } else if (value === false && indexQuestion.current > 0) {
+      indexQuestion.current -= 1;
+      setCurrentQuestion(listData[indexQuestion.current]);
+    }
+  };
+  const handleSHowAns = (zindex, z) => {
+    setShowAns((prevState) => {
+      const check = prevState.includes((item) => item === zindex);
+      if (check) {
+        const filter = prevState.filter((item) => item !== zindex);
+        return [...filter];
+      } else {
+        return [...prevState, zindex];
+      }
+    });
+
+    handleSelected(zindex, z);
   };
   const handle = () => {};
   return (
@@ -146,25 +160,36 @@ export default function QuesitonTemplate({ dataQuestion }) {
                               key={z}
                               className={`${score.show ? "disable" : ""} 
                               ${
-                                autoShowAns.hightLine &&
-                                currentQuestion.trueAnswer === z
+                                listData[indexQuestion.current].trueAnswer ===
+                                  z &&
+                                listData[indexQuestion.current].selected !==
+                                  null
                                   ? "check-correct"
                                   : ""
                               }
                               ${
-                                autoShowAns.hightLine &&
-                                currentQuestion.selected === z &&
-                                currentQuestion.trueAnswer !==
-                                  currentQuestion.selected
+                                listData[indexQuestion.current].trueAnswer !==
+                                  z &&
+                                listData[indexQuestion.current].selected !==
+                                  null &&
+                                listData[indexQuestion.current].selected === z
                                   ? "check-wrong"
                                   : ""
                               }
                               ${autoShowAns.hightLine ? "disable" : ""}
+                              ${
+                                showAns.some(
+                                  (item) => item === currentQuestion.zindex
+                                ) && currentQuestion.trueAnswer === z
+                                  ? "check-correct"
+                                  : ""
+                              }
                               last-ans flex`}
                               onClick={() =>
                                 handleSelected(currentQuestion.zindex, z)
                               }
                             >
+                              {console.log(showAns, currentQuestion.zindex)}
                               <input
                                 type="checkbox"
                                 checked={quesitons.some(
@@ -181,7 +206,16 @@ export default function QuesitonTemplate({ dataQuestion }) {
                         </ul>
                         <div className="btn-handle flex">
                           <div className="btn-show">
-                            <button>Hiện đáp án</button>
+                            <button
+                              onClick={() =>
+                                handleSHowAns(
+                                  currentQuestion.zindex,
+                                  currentQuestion.trueAnswer
+                                )
+                              }
+                            >
+                              Hiện đáp án
+                            </button>
                           </div>
                           <div className="flex">
                             <div className="wrap-skip flex">

@@ -1,33 +1,47 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import "../resources/noticeboard.css";
 import { IoChevronBackOutline } from "react-icons/io5";
 import { IoMdArrowBack } from "react-icons/io";
 
 export default function NoticeBoard(props) {
-  const listData = [
-    {
-      title: "biển báo cấm",
-      count: 61,
-    },
-    {
-      title: "biển báo nguy hiểm",
-      count: 83,
-    },
-    {
-      title: "biển báo hiệu lệnh",
-      count: 51,
-    },
-    {
-      title: "biển báo chỉ dẫn",
-      count: 25,
-    },
-    {
-      title: "biển báo phụ",
-      count: 11,
-    },
-  ];
+  const [listData, setListData] = useState([]);
+  const [show, setShow] = useState({
+    state: [],
+    index: [],
+  });
+
+  useEffect(() => {
+    const fetch = async () => {
+      const data = await axios.post(
+        "http://localhost/baocao/server/noticeBoard/contentNoticeBoard.php"
+      );
+      if (data.status === 200) {
+        setListData(data.data);
+      }
+    };
+    fetch();
+  }, []);
+
   const handleClick = () => {
     props.unComponent();
+  };
+  const handleShow = (id) => {
+    setShow((prevState) => {
+      const check = prevState.state.some((item) => item === id);
+      if (check) {
+        const filteredState = prevState.state.filter((item) => item !== id);
+        return {
+          ...prevState,
+          state: filteredState,
+        };
+      } else {
+        return {
+          ...prevState,
+          state: [...prevState.state, id],
+        };
+      }
+    });
   };
 
   return (
@@ -36,22 +50,80 @@ export default function NoticeBoard(props) {
         <div className="box-exam">
           <div className="title-exam flex">
             <IoMdArrowBack onClick={handleClick} className="icon-back" />
-            <h3 className="bold">ôn tập lí thuyết hạng a1</h3>
+            <h3 className="bold">biển báo giao thông</h3>
           </div>
           <div className="groups-title">
             <ul className="wrap-groups">
               {listData.map((data, index) => (
                 <li key={index}>
-                  <div className="title-group flex">
-                    <IoChevronBackOutline className="back-icon" />
+                  <div
+                    className="title-group flex"
+                    onClick={() => handleShow(data.id)}
+                  >
+                    <IoChevronBackOutline
+                      className={`back-icon ${
+                        show.state.some((item) => item === data.id)
+                          ? "back-icon-active"
+                          : ""
+                      }`}
+                    />
                     <span>[{data.count}]</span>
                     <p>{data.title}</p>
+                  </div>
+                  <div
+                    className={`${
+                      show.state.some((item) => item === data.id)
+                        ? "block"
+                        : "none"
+                    }`}
+                  >
+                    {show.state.some((item) => item === data.id) ? (
+                      <ShowType indexData={data.id} />
+                    ) : (
+                      ""
+                    )}
                   </div>
                 </li>
               ))}
             </ul>
           </div>
         </div>
+      </div>
+    </>
+  );
+}
+
+function ShowType({ indexData }) {
+  const [listdata, setListdata] = useState([]);
+
+  useEffect(() => {
+    const fetch = async () => {
+      const data = await axios.get(
+        `http://localhost/baocao/server/noticeBoard/detail.php?index=${indexData}`
+      );
+      if (data.status === 200) {
+        setListdata(data.data);
+      }
+    };
+    fetch();
+  }, [indexData]);
+
+  return (
+    <>
+      <div className="flex">
+        <ul className="wrap-list-notice">
+          {listdata.map((data, index) => (
+            <li key={index} className="flex">
+              <div className="notice-img">
+                <img src={data.img} alt={data.title} />
+              </div>
+              <div className="notice-content">
+                <h3>{data.title}</h3>
+                <p>{data.content}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
       </div>
     </>
   );

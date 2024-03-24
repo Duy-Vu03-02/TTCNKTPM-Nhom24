@@ -5,7 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(247, 244, 247);
+  /* background-color: rgb(247, 244, 247); */
+  background-color: #f0f2f5;
   overflow: hidden;
 }
 main {
@@ -29,6 +30,9 @@ li {
 }
 .flex {
   display: flex;
+}
+.block {
+  display: block;
 }
 .bold {
   font-weight: 600;

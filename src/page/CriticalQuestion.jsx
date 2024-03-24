@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import back from "../data/svg/back.svg";
 import "../resources/criticalquestion.css";
 import background from "../data/png/background.png";
 import QuestionsTemplate from "../component/QuestionsTemplate";
