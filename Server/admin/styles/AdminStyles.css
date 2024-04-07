@@ -1,0 +1,35 @@
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: "Roboto", sans-serif;
+    /* padding: 20px; */
+    overflow-x: hidden;
+    background-color: rgb(225, 225, 225);
+}
+
+.wrapper>.flex-grow-1>.container {
+    background-color: white;
+    border-radius: 10px;
+}
+
+.appCard {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.appCard+.appCard {
+    margin-top: 20px;
+}
+
+.footer {
+    background-color: black !important;
+    color: white;
+}
