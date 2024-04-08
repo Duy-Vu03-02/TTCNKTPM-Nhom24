@@ -1,0 +1,188 @@
+.question-template {
+  margin-top: -15px;
+}
+.conten-domain {
+  justify-content: center;
+}
+.right-temp {
+  background-color: white;
+  /* height: 480px; */
+  width: 450px;
+  margin: 20px;
+}
+.left-temp {
+  width: calc(100vw - 450px - 200px);
+}
+.right-temp .timer {
+  padding: 10px 0;
+  justify-content: center;
+}
+.right-temp .wrap-btn-complete {
+  margin: 0 37px;
+  border: 1px solid rgb(225, 225, 225);
+  border-left: none;
+  border-right: none;
+  padding: 15px 0;
+  display: flex;
+  justify-content: center;
+  color: white;
+  opacity: 1;
+  transition: opacity 0.3s;
+  /* cursor: pointer; */
+}
+.right-temp .btn-complete {
+  /* background-color: #299af6; */
+  width: 100px;
+  align-items: center;
+  border-radius: 3px;
+  justify-content: center;
+}
+.btn-not-allowed {
+  cursor: not-allowed;
+  opacity: 0.6 !important;
+  transition: opacity 0.3s !important;
+}
+.btn-complete button {
+  border: none;
+  width: 100px;
+  height: 30px;
+  background-color: #299af6;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: white;
+  opacity: 1;
+  border-radius: 2px;
+  transition: opacity 0.3s;
+}
+
+.btn-complete .icon-check {
+  height: 30px;
+  width: 20px;
+  padding-left: 8px;
+}
+
+.timer .icon-clock {
+  line-height: 50px;
+  height: 50px;
+  font-size: 22px;
+  margin: 0 5px;
+}
+.timer .cpn {
+  margin: 0 5px;
+  line-height: 50px;
+  font-size: 22px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+.right-temp .show-list {
+  margin-top: 10px;
+}
+.wrap-list-qs {
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.wrap-list-qs .item-select {
+  width: 80px;
+  height: 30px;
+  line-height: 30px;
+  border: 1px dashed #ff7875;
+  color: #ff7875;
+  margin: 7px;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: background-color 0.3s, color 0.3s;
+}
+.item-select:hover,
+.item-select-active {
+  background-color: #ff7875 !important;
+  color: white !important;
+  transition: background-color 0.3s, color 0.3s, border 0.3s;
+}
+.wrap-list-qs .item-select-ok {
+  background-color: white !important;
+  color: #299af6 !important;
+  border: 1px solid rgb(225, 225, 225);
+  transition: background-color 0.3s, color 0.3s, border 0.3s;
+}
+.wrap-list-qs .item-select-ok:hover {
+  color: #299af6 !important;
+  border: 1px solid #299af6;
+  transition: background-color 0.3s, color 0.3s, border 0.3s;
+}
+.item-select .icon-dash {
+  height: 30px;
+  margin: 0 7px;
+}
+.item-select p {
+  margin: 0 7px;
+  cursor: pointer;
+}
+.question-template .answer-infor li:last-child {
+  margin-bottom: 5px;
+  border-bottom: none;
+}
+.wrap-btn-complete .result-exam {
+  color: black;
+  cursor: default;
+}
+.result-exam h3 {
+  text-transform: uppercase;
+  margin: 0;
+  padding: 8px 0;
+  text-align: center;
+  width: 300px;
+  background-color: #fff2f0;
+  border: 1px solid #ffccc7;
+}
+.result-exam p {
+  margin: 5px 0;
+  font-weight: 500;
+}
+.result-question-true {
+  color: green !important;
+}
+.result-question-false {
+  color: red !important;
+}
+.auto-next-qs {
+  background-color: white;
+  position: relative;
+}
+.auto-next-qs input {
+  width: 130px;
+  text-align: left;
+  height: 20px;
+  padding: 0 8px;
+  line-height: 20px;
+  margin: auto 0;
+  display: block;
+  border: none;
+  outline: none;
+  color: white;
+  background-color: #299af6;
+  border-radius: 25px;
+  opacity: 1;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.5s;
+}
+
+.auto-next-qs .btn-auto-next-qs {
+  cursor: pointer;
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background-color: white !important;
+  border-radius: 50%;
+  top: 4px;
+  left: 113px;
+  transition: left 0.5s;
+}
+.un-auto-next-qs {
+  left: 4px !important;
+  background-color: rgb(180 181 184) !important;
+  text-align: right !important;
+  transition: left 0.5s, background-color 0.5s;
+}
