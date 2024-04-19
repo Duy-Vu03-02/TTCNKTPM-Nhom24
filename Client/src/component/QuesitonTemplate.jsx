@@ -66,7 +66,7 @@ export default function QuesitonTemplate({ dataQuestion }) {
         );
 
         //  update ques err by user
-        const dataLocal = await JSON.parse(localStorage.getItem("acc"));
+        const dataLocal = userData;
         if (dataLocal !== null) {
           if (dataLocal.email !== null || dataLocal.userID !== null) {
             const url =
@@ -149,8 +149,8 @@ export default function QuesitonTemplate({ dataQuestion }) {
     });
 
     //handle change select listdata
-    for (var item of listData) {
-      if (item.zindex === id) {
+    for (let item of listData) {
+      if (item.id == id) {
         item.selected = z;
       }
     }
@@ -158,7 +158,6 @@ export default function QuesitonTemplate({ dataQuestion }) {
     //handle auto next question
     handleAutoNextQuestion();
   };
-
   const handleCalculatorScore = () => {
     handleTimeOut();
     var countTrue = 0;
