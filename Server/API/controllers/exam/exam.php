@@ -39,7 +39,7 @@
                 FROM tbl_question 
                 INNER JOIN tbl_exam_question 
                 ON tbl_question.id = tbl_exam_question.questionId
-                WHERE tbl_exam_question.examId = '$examId' LIMIT 5";
+                WHERE tbl_exam_question.examId = '$examId'";
             $result = $conn->query($select);
             $temp = array();
             if($result->num_rows > 0){

@@ -1,19 +1,17 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "../resources/questionserror.css";
 import { FiUser } from "react-icons/fi";
 import { FiUsers } from "react-icons/fi";
-import background from "../data/png/background.png";
 import QuestionsTemplate from "../component/QuestionsTemplate";
 import { IoMdArrowBack } from "react-icons/io";
-import axios from "axios";
 
 export default function QuesitionsError(props) {
   const [qsUser, setQsUser] = useState(true);
   const [resTemplate, setResTemplate] = useState([false, false]);
-  const [quesitonsUser, setQuestionsUser] = useState([]);
-  const [quesitonsPeople, setQuestionsPeople] = useState([]);
   const [listDataUser, setListDataUser] = useState([]);
   const [listDataPeople, setListDataPeople] = useState([]);
+  const [checkedqs, setCheckedqs] = useState([[], []]);
 
   useEffect(() => {
     const fetch = async () => {
@@ -23,6 +21,7 @@ export default function QuesitionsError(props) {
         listId = listId.length > 25 ? listId.splice(0, 25) : listId;
         const urlUser =
           "http://localhost/BaoCaoThucTap/Server/API/controllers/questionError/getQuestionsErrorForUser.php";
+
         const responseUser = await axios.get(urlUser + "?action=" + listId);
         if (responseUser.status === 200) {
           setListDataUser(responseUser.data);
@@ -44,6 +43,7 @@ export default function QuesitionsError(props) {
   const YourQuestionsError = (
     <QuestionsTemplate
       dataQuestion={listDataUser}
+      // checkedQs={() => handleCheckedQs(1)}
       result={resTemplate[0]}
       handleReq={() => handleRes(0)}
     />
@@ -51,6 +51,7 @@ export default function QuesitionsError(props) {
   const PeopleQuestionsError = (
     <QuestionsTemplate
       dataQuestion={listDataPeople}
+      // checkedQs={() => handleCheckedQs(1)}
       result={resTemplate[1]}
       handleReq={() => handleRes(1)}
     />
@@ -97,12 +98,12 @@ export default function QuesitionsError(props) {
           </div>
           <div className="title-intro">
             <p className={`infor-user ${qsUser ? "" : "none"}`}>
-              Dưới đây là <b>{listDataUser.length}</b> câu hay sai nhất thuộc
-              hạng <b>A1</b> của bạn.
+              Dưới đây là <b>{listDataUser ? listDataUser.length : "0"}</b> câu
+              hay sai nhất thuộc hạng <b>A1</b> của bạn.
             </p>
             <p className={`infor-people ${qsUser ? "none" : ""}`}>
-              Dưới đây là <b>{listDataPeople.length}</b> câu hay sai nhất thuộc
-              hạng <b>A1</b> trên toàn hệ thống.
+              Dưới đây là <b>{listDataPeople ? listDataPeople.length : "0"}</b>{" "}
+              câu hay sai nhất thuộc hạng <b>A1</b> trên toàn hệ thống.
             </p>
           </div>
         </div>

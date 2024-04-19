@@ -26,12 +26,12 @@
                     $agile = "email = '$email'";
                 }
                 
-                $select = "SELECT id FROM user WHERE ".$agile;
+                $select = "SELECT id FROM tbl_user WHERE ".$agile;
                 $result = $conn->query($select);
                 if($result->num_rows > 0){
                     echo json_encode(array("mess" => $select));
                     $id = $result->fetch_assoc()["id"];
-                    $update = "UPDATE user
+                    $update = "UPDATE tbl_user
                             SET username = '$username',
                                 picture = '$picture',
                                 email = '$email'

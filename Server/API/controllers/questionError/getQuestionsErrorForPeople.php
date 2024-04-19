@@ -7,15 +7,33 @@
     header("Content-Type: application/json");
 
     if($_SERVER["REQUEST_METHOD"] === "GET"){
-        $select = "SELECT  * FROM question 
-            inner join questionserror on question.id = questionserror.questionid
-            ORDER BY questionserror.totaltimes DESC
-            LIMIT 25";
+        $select = "SELECT  * FROM tbl_question 
+            ORDER BY totalerr DESC
+            LIMIT 50";
         $result = $conn->query($select);
         $data = array();
         if($result->num_rows > 0){
             while($row = $result->fetch_assoc()){
-                $data[] = new Question($row);
+                $answer = array(
+                    $row["option_1"],
+                    $row["option_2"]
+                );
+                if($row["option_3"] != null){
+                    $answer[] = $row["option_3"];
+                }
+                if($row["option_4"] != null){
+                    $answer[] = $row["option_4"];
+                }
+                $data[] = array(
+                    "id" => $row["id"], 
+                    "question" => $row["title"], 
+                    "img" => $row["questionImage"], 
+                    "answer" => $answer,
+                    "trueAnswer" => (int)$row["trueAnswer"], 
+                    "mustCorrect" => boolval($row["isDanger"]),
+                    "totalqserr" => $row["totalerr"],
+                    "totalqscorrect" => $row["totalcorrect"],
+                );
             }
 
             http_response_code(200);

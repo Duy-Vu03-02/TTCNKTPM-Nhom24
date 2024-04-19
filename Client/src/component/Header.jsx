@@ -62,11 +62,21 @@ export default function Header() {
           setCheckBox(true);
           localStorage.setItem("showLogin", JSON.stringify(false));
           localStorage.setItem("acc", JSON.stringify(temp));
+          let listID = JSON.parse(resData.questionerr);
+          listID = listID.map((item) => ({ id: item, count: 1 }));
+          listID = listID.length > 25 ? listID.splice(0, 25) : listID;
+          localStorage.setItem("question_err", JSON.stringify(listID));
         }
       }
     };
     fetch();
-  }, []);
+  }, [userData]);
+
+  const storeLocal = (data) => {
+    if (data != null) {
+      localStorage.setItem("acc", JSON.stringify(data));
+    }
+  };
 
   const fetchDb = async (data) => {
     if (data != null) {
@@ -87,7 +97,12 @@ export default function Header() {
         setDataLocal(temp);
         setUserData(temp);
         localStorage.setItem("showLogin", JSON.stringify(false));
-        localStorage.setItem("acc", JSON.stringify(temp));
+        storeLocal(temp);
+        let listID = JSON.parse(resData.questionerr);
+        listID = listID.map((item) => ({ id: item, count: 1 }));
+        listID = listID.length > 25 ? listID.splice(0, 25) : listID;
+        localStorage.setItem("question_err", JSON.stringify(listID));
+        window.history.go();
       }
     }
   };
@@ -118,8 +133,34 @@ export default function Header() {
     });
   };
 
-  const handleUpdateUser = () => {};
+  const handleUpdateUser = async () => {
+    const data = {
+      provider: dataLocal.provider,
+      oldEmail: dataLocal.email,
+      oldUserID: dataLocal.userID,
+      username: dataUpdate.name === "" ? dataLocal.name : dataUpdate.name,
+      picture: dataUpdate.avatar === "" ? dataLocal.picture : dataUpdate.avatar,
+      userID: dataUpdate.userID === "" ? dataLocal.userID : dataUpdate.userID,
+    };
+    if (dataUpdate.email === null || dataUpdate.email === "") {
+      if (dataLocal.provider === "facebook") {
+        data.email = null;
+      } else {
+        data.email = dataLocal.email;
+      }
+    } else {
+      data.email = dataUpdate.email;
+    }
+    const url =
+      "http://localhost/BaoCaoThucTap/Server/API/controllers/user/updateInfoUser.php";
+    const response = await axios.post(url, data);
+    if (response.status === 200) {
+      setUserData(data);
+    }
 
+    setShowSetting(false);
+  };
+  console.log(1);
   const handle = () => {};
   return (
     <>

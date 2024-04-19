@@ -19,7 +19,7 @@
             else if($provider === "email"  && $email !== null){
                 $agile = "email = '$email'";
             }
-            $select = "SELECT id, questionerr FROM user WHERE ".$agile;
+            $select = "SELECT id, questionerr FROM tbl_user WHERE ".$agile;
             $result = $conn->query($select);
             if($result->num_rows >0){
                 $data = $result->fetch_assoc();
@@ -33,7 +33,7 @@
                 // encode truoc khi update
                 $mergeList = json_encode($mergeList);
 
-                $update = "UPDATE user
+                $update = "UPDATE tbl_user
                         SET questionerr = '$mergeList'
                         WHERE id = '$id'";
                 if($conn->query($update)){
