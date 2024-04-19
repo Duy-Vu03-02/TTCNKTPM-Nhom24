@@ -5,60 +5,57 @@ import { FiUsers } from "react-icons/fi";
 import background from "../data/png/background.png";
 import QuestionsTemplate from "../component/QuestionsTemplate";
 import { IoMdArrowBack } from "react-icons/io";
+import axios from "axios";
 
 export default function QuesitionsError(props) {
   const [qsUser, setQsUser] = useState(true);
   const [resTemplate, setResTemplate] = useState([false, false]);
   const [quesitonsUser, setQuestionsUser] = useState([]);
   const [quesitonsPeople, setQuestionsPeople] = useState([]);
+  const [listDataUser, setListDataUser] = useState([]);
+  const [listDataPeople, setListDataPeople] = useState([]);
 
   useEffect(() => {
-    const fetch = async () => {};
+    const fetch = async () => {
+      const data = await JSON.parse(localStorage.getItem("question_err"));
+      if (data !== null && data.length > 0) {
+        let listId = data.map((item) => item.id);
+        listId = listId.length > 25 ? listId.splice(0, 25) : listId;
+        const urlUser =
+          "http://localhost/BaoCaoThucTap/Server/API/controllers/questionError/getQuestionsErrorForUser.php";
+        const responseUser = await axios.get(urlUser + "?action=" + listId);
+        if (responseUser.status === 200) {
+          setListDataUser(responseUser.data);
+        }
+      }
+
+      const urlPeople =
+        "http://localhost/BaoCaoThucTap/Server/API/controllers/questionError/getQuestionsErrorForPeople.php";
+      const responsePeople = await axios.get(urlPeople);
+      if (responsePeople.status === 200) {
+        setListDataPeople(responsePeople.data);
+      } else if (responsePeople.status === 204) {
+        setListDataPeople([]);
+      }
+    };
+    fetch();
   }, []);
-
-  const data = {
-    id: 2,
-    question:
-      "khi đang lên dốc người ngồi trên xe mô tô có được phép kéo theo người đang điều khiển xe đạp hay không",
-    answer: [
-      "chỉ được phép nếu cả hai đội mũ bảo hiểm",
-      "không được phép",
-      "chỉ được phép thực hiện trên đường thật vắng",
-      "chỉ được phép khi người đi xe đạp đã quá mệt",
-    ],
-    trueAnswer: 3,
-  };
-  const listData = Array.from({ length: 10 }, () => data);
-
-  const data1 = {
-    id: 1,
-    question: "các xe đi theo thứ tự nào là đúng quy tắc giao thông đường bộ",
-    img: background,
-    answer: [
-      "xe của bạn, mô tô, xe con",
-      "xe con, xe của bạn, mô tô",
-      "mô tô, xe con, xe của bạn",
-      "chỉ được phép khi người đi xe đạp đã quá mệt",
-    ],
-    trueAnswer: 2,
-  };
-  const listData1 = Array.from({ length: 10 }, () => data1);
 
   const YourQuestionsError = (
     <QuestionsTemplate
-      dataQuestion={listData}
+      dataQuestion={listDataUser}
       result={resTemplate[0]}
       handleReq={() => handleRes(0)}
     />
   );
   const PeopleQuestionsError = (
     <QuestionsTemplate
-      dataQuestion={listData1}
+      dataQuestion={listDataPeople}
       result={resTemplate[1]}
       handleReq={() => handleRes(1)}
     />
   );
-  console.log(resTemplate);
+
   const handleRes = (index) => {
     setResTemplate((prevState) => {
       const newState = [...prevState];
@@ -100,12 +97,12 @@ export default function QuesitionsError(props) {
           </div>
           <div className="title-intro">
             <p className={`infor-user ${qsUser ? "" : "none"}`}>
-              Dưới đây là <b>10</b> câu hay sai nhất thuộc hạng <b>A1</b> của
-              bạn.
+              Dưới đây là <b>{listDataUser.length}</b> câu hay sai nhất thuộc
+              hạng <b>A1</b> của bạn.
             </p>
             <p className={`infor-people ${qsUser ? "none" : ""}`}>
-              Dưới đây là <b>50</b> câu hay sai nhất thuộc hạng <b>A1</b> trên
-              toàn hệ thống.
+              Dưới đây là <b>{listDataPeople.length}</b> câu hay sai nhất thuộc
+              hạng <b>A1</b> trên toàn hệ thống.
             </p>
           </div>
         </div>

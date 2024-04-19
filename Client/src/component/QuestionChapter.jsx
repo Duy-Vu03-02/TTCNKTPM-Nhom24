@@ -135,7 +135,10 @@ export default function QuesitonTemplate({ dataQuestion }) {
                   <div className="wrap-list-question">
                     <li key={currentQuestion.zindex}>
                       <div className="wrap-question">
-                        <div className="question-infor flex">
+                        <div
+                          className="question-infor flex"
+                          style={{ paddingBottom: "15px" }}
+                        >
                           <h5>
                             Câu {currentQuestion.zindex + 1}
                             .&nbsp;

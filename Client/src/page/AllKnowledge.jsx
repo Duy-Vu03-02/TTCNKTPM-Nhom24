@@ -18,6 +18,7 @@ export default function AllKnowledge(props) {
       const url =
         "http://localhost/baocaothuctap/Server/API/controllers/allknowledge/titleChapter.php";
       const response = await axios.get(url);
+
       if (response.status === 200) {
         setListData(response.data);
       }

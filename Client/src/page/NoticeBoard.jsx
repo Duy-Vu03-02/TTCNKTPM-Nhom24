@@ -7,14 +7,14 @@ import { IoMdArrowBack } from "react-icons/io";
 export default function NoticeBoard(props) {
   const [listData, setListData] = useState([]);
   const [show, setShow] = useState({
-    state: [],
+    state: ["5"],
     index: [],
   });
 
   useEffect(() => {
     const fetch = async () => {
-      const data = await axios.post(
-        "http://localhost/baocaothuctap/Server/API/controllers/noticeBoard/titleNoticeBoard.php"
+      const data = await axios.get(
+        "http://localhost/BaoCaoThucTap/Server/API/controllers/noticeBoard/titleNoticeBoard.php"
       );
       if (data.status === 200) {
         setListData(data.data);
@@ -43,7 +43,7 @@ export default function NoticeBoard(props) {
       }
     });
   };
-
+  console.log(listData);
   return (
     <>
       <div>
@@ -54,37 +54,38 @@ export default function NoticeBoard(props) {
           </div>
           <div className="groups-title">
             <ul className="wrap-groups">
-              {listData.map((data, index) => (
-                <li key={index}>
-                  <div
-                    className="title-group flex"
-                    onClick={() => handleShow(data.id)}
-                  >
-                    <IoChevronBackOutline
-                      className={`back-icon ${
+              {listData &&
+                listData.map((data, index) => (
+                  <li key={index}>
+                    <div
+                      className="title-group flex"
+                      onClick={() => handleShow(data.id)}
+                    >
+                      <IoChevronBackOutline
+                        className={`back-icon ${
+                          show.state.some((item) => item === data.id)
+                            ? "back-icon-active"
+                            : ""
+                        }`}
+                      />
+                      <span>[{data.count}]</span>
+                      <p>{data.title}</p>
+                    </div>
+                    <div
+                      className={`${
                         show.state.some((item) => item === data.id)
-                          ? "back-icon-active"
-                          : ""
+                          ? "block"
+                          : "none"
                       }`}
-                    />
-                    <span>[{data.count}]</span>
-                    <p>{data.title}</p>
-                  </div>
-                  <div
-                    className={`${
-                      show.state.some((item) => item === data.id)
-                        ? "block"
-                        : "none"
-                    }`}
-                  >
-                    {show.state.some((item) => item === data.id) ? (
-                      <ShowType indexData={data.id} />
-                    ) : (
-                      ""
-                    )}
-                  </div>
-                </li>
-              ))}
+                    >
+                      {show.state.some((item) => item === data.id) ? (
+                        <ShowType indexData={data.id} />
+                      ) : (
+                        ""
+                      )}
+                    </div>
+                  </li>
+                ))}
             </ul>
           </div>
         </div>

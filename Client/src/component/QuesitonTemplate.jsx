@@ -60,7 +60,7 @@ export default function QuesitonTemplate({ dataQuestion }) {
         const listErr = questionsErr.map((item) => item.id);
         const listCorrect = questionsCorrect.map((item) => item);
         const url =
-          "http://localhost/BaoCaoThucTap/server/controllers/questionsError/updateQuestions.php";
+          "http://localhost/BaoCaoThucTap/server/API/controllers/questionsError/updateQuestions.php";
         const res = await axios.get(
           url + "?listerr=" + listErr + "&listcorrect=" + listCorrect
         );
@@ -70,7 +70,7 @@ export default function QuesitonTemplate({ dataQuestion }) {
         if (dataLocal !== null) {
           if (dataLocal.email !== null || dataLocal.userID !== null) {
             const url =
-              "http://localhost/BaoCaoThucTap/server/controllers/user/updateQsErrByUser.php";
+              "http://localhost/BaoCaoThucTap/server/API/controllers/user/updateQsErrByUser.php";
             const data = {
               email: dataLocal.email,
               userID: dataLocal.userID,
