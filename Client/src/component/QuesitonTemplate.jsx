@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import axios from "axios";
 import "../resources/component/questiontemplate.css";
 import { IoMdCheckmark } from "react-icons/io";
 import { LuClock } from "react-icons/lu";
@@ -10,7 +11,10 @@ export default function QuesitonTemplate({ dataQuestion }) {
   const [timeExam, setTimeExam] = useState(1140);
   const [currentQuestion, setCurrentQuestion] = useState(null);
   const [quesitons, setQuestions] = useState([]);
+  const [questionsErr, setQuestionsErr] = useState([]); // qs err cua exam hien tai
+  const [questionsCorrect, setQuestionsCorrect] = useState([]);
   const [autoNextQs, setAutoNextQs] = useState(true);
+  const indexQuestion = useRef(1);
   const [score, setScore] = useState({
     state: false,
     show: false,
@@ -19,21 +23,20 @@ export default function QuesitonTemplate({ dataQuestion }) {
     countMustTrue: 0,
     countTrueMustTrue: 0,
   });
-  const [questionsErr, setQuestionsErr] = useState([]);
-
-  const indexQuestion = useRef(1);
 
   useEffect(() => {
-    setCurrentQuestion(dataQuestion[0]);
-    const fetch = async () => {
-      var data = await dataQuestion;
-      data.forEach((item, index) => {
-        item.selected = null;
-        item.zindex = index;
-      });
-      setListData(data);
-    };
-    fetch();
+    if (dataQuestion.length !== 0 && dataQuestion !== null) {
+      setCurrentQuestion(dataQuestion[0]);
+      const fetch = async () => {
+        var data = await dataQuestion;
+        data.forEach((item, index) => {
+          item.selected = null;
+          item.zindex = index;
+        });
+        setListData(data);
+      };
+      fetch();
+    }
   }, [dataQuestion]);
 
   useEffect(() => {
@@ -54,11 +57,54 @@ export default function QuesitonTemplate({ dataQuestion }) {
   }, [questionsErr]);
 
   useEffect(() => {
-    const data = JSON.parse(localStorage.getItem("question_err"));
-    if (data !== null) {
-      setQuestionsErr(data);
-    }
-  }, []);
+    const fetch = async () => {
+      if (score.show) {
+        const listId = quesitons.map((item) => item.id);
+        const url =
+          "http://localhost/BaoCaoThucTap/Server/API/controllers/questionError/createQuestionsError.php";
+        const reponse = await axios.get(url + "?action=" + listId);
+        if (reponse.status === 200) {
+          console.log(reponse.status);
+        }
+      }
+    };
+    fetch();
+  }, [score.show]);
+  console.log(dataQuestion);
+  useEffect(() => {
+    const fetch = async () => {
+      if (score.show) {
+        const dataLocal = await JSON.parse(
+          localStorage.getItem("question_err")
+        );
+        // set local khi rong
+        if (dataLocal === null) {
+          localStorage.setItem("question_err", JSON.stringify(questionsErr));
+        }
+        // Set local khi da co data
+        else {
+          var tempQsErr = questionsErr.map((item) => ({ ...item }));
+          if (dataLocal !== null && dataLocal.length > 0) {
+            dataLocal.forEach((element) => {
+              var check = tempQsErr.find((item) => item.id === element.id);
+              if (check) {
+                element.count += 1;
+                tempQsErr = tempQsErr.filter((item) => item.id !== element.id);
+              }
+            });
+
+            const newDataLocal = [...tempQsErr, ...dataLocal];
+            const filterNewDataLocal = newDataLocal.splice(0, 24);
+            localStorage.setItem(
+              "question_err",
+              JSON.stringify(filterNewDataLocal)
+            );
+          }
+        }
+      }
+    };
+    fetch();
+  }, [score.show]);
 
   const handleShowQuestion = (data, index) => {
     setCurrentQuestion(data);
@@ -87,7 +133,7 @@ export default function QuesitonTemplate({ dataQuestion }) {
     //handle auto next question
     handleAutoNextQuestion();
   };
-  console.log(quesitons);
+
   const handleCalculatorScore = () => {
     handleTimeOut();
     var countTrue = 0;
@@ -97,22 +143,24 @@ export default function QuesitonTemplate({ dataQuestion }) {
       if (element.selected === element.trueAnswer) countTrue++;
       // Neu sai luu vao state qsErr -> save local
       else {
-        // setQuestionsErr((prevState) => {
-        // if (prevState.length < 1) {
-        // return [{ id: element.id, count: 1 }];
-        // } else {
-        // const check = prevState.indexOf((item) => item.id === element.id);
-        // const check = prevState.includes((item) => item.id === element.id);
-        // console.log(typeof check + check);
-        // if (check !== -1) {
-        //   const newQsErr = [...prevState];
-        //   newQsErr[check].count += 1;
-        //   return newQsErr;
-        // } else {
-        //   return [...prevState, { id: element.id, count: 1 }];
-        // }
-        // }
-        // });
+        if (questionsErr.length === 0 && questionsErr === null) {
+          questionsErr([{ id: element.id, count: 1 }]);
+        } else {
+          setQuestionsErr((prevState) => {
+            var check = prevState.find((item) => item.id === element.id);
+
+            if (check) {
+              const newQsErr = [{ id: check.id, count: check.count + 1 }];
+              const qsErrFilter = prevState.filter(
+                (item) => item.id !== element.id
+              );
+              return [...newQsErr, ...qsErrFilter];
+            } else {
+              const newQsErr = [{ id: element.id, count: 1 }];
+              return [...newQsErr, ...prevState];
+            }
+          });
+        }
       }
       if (element.mustCorrect === true) {
         countMustTrue++;

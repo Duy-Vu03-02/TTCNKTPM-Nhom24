@@ -1,14 +1,31 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import logo from "../data/png/logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../resources/component/header.css";
+import { FiLogOut } from "react-icons/fi";
+import { FiSettings } from "react-icons/fi";
 import { IoMdClose } from "react-icons/io";
-import { FcGoogle } from "react-icons/fc";
-import { RiFacebookBoxFill } from "react-icons/ri";
+import { GoogleLogin } from "@react-oauth/google";
+import { jwtDecode } from "jwt-decode";
+import { FaFacebook } from "react-icons/fa";
+import FacebookLogin from "react-facebook-login";
+import axios from "axios";
+import { UserContext } from "../Context/UserContext";
 
 export default function Header() {
-  const [boxLogin, setBoxLogin] = useState("");
+  // data conext
+  const { userData, setUserData } = useContext(UserContext);
+  const [boxLogin, setBoxLogin] = useState(false);
   const [checkbox, setCheckBox] = useState(false);
+  const [dataLocal, setDataLocal] = useState(null);
+  const [showSetting, setShowSetting] = useState(false);
+  const [dataUpdate, setDataUpdate] = useState({
+    name: "",
+    email: "",
+    avatar: "",
+    userID: "",
+  });
+
   useEffect(() => {
     const fetch = async () => {
       const res = await JSON.parse(localStorage.getItem("showLogin"));
@@ -16,11 +33,65 @@ export default function Header() {
         setCheckBox(true);
         setBoxLogin(false);
       } else {
+        setCheckBox(false);
         setBoxLogin(true);
       }
     };
     fetch();
   }, []);
+
+  useEffect(() => {
+    const fetch = async () => {
+      const data = await JSON.parse(localStorage.getItem("acc"));
+      if (data != null) {
+        const url =
+          "http://localhost/BaoCaoThucTap/Server/API/controllers/user/loginUser.php";
+        const response = await axios.post(url, data);
+        if (response.status === 200) {
+          const resData = response.data;
+          const temp = {
+            provider: resData.email != null ? "email" : "facebook",
+            name: resData.name,
+            email: resData.email ? resData.email : null,
+            picture: resData.picture ? resData.picture : null,
+            userID: resData.userID != null ? resData.userData : null,
+          };
+          setDataLocal(temp);
+          setUserData(temp);
+          setBoxLogin(false);
+          setCheckBox(true);
+          localStorage.setItem("showLogin", JSON.stringify(false));
+          localStorage.setItem("acc", JSON.stringify(temp));
+        }
+      }
+    };
+    fetch();
+  }, []);
+
+  const fetchDb = async (data) => {
+    if (data != null) {
+      const url =
+        "http://localhost/BaoCaoThucTap/Server/API/controllers/user/loginUser.php";
+      const response = await axios.post(url, data);
+      if (response.status === 200) {
+        const resData = response.data;
+        const temp = {
+          provider: resData.email != null ? "email" : "facebook",
+          name: resData.name,
+          email: resData.email ? resData.email : null,
+          picture: resData.picture ? resData.picture : null,
+          userID: resData.userID != null ? resData.userData : null,
+        };
+        setBoxLogin(false);
+        setCheckBox(true);
+        setDataLocal(temp);
+        setUserData(temp);
+        localStorage.setItem("showLogin", JSON.stringify(false));
+        localStorage.setItem("acc", JSON.stringify(temp));
+      }
+    }
+  };
+
   const handleCheckBox = () => {
     checkbox ? setCheckBox(false) : setCheckBox(true);
     handleDontShow(checkbox);
@@ -31,11 +102,92 @@ export default function Header() {
   const handleDontShow = (value) => {
     localStorage.setItem("showLogin", JSON.stringify(value));
   };
+  const handleLogout = () => {
+    localStorage.clear();
+    window.history.go();
+  };
+  const handleShowSetting = (value) => {
+    setShowSetting(value);
+  };
+  const handleChangeUpdate = (e) => {
+    setDataUpdate((prevState) => {
+      return {
+        ...prevState,
+        [e.target.name]: e.target.value,
+      };
+    });
+  };
+
+  const handleUpdateUser = () => {};
 
   const handle = () => {};
   return (
     <>
       <div className="header-content">
+        <div className={`${showSetting ? "screen-mask" : ""}`}></div>
+        {showSetting ? (
+          <div className="box-setting-user">
+            <div className="header-setting flex">
+              <div className="flex">
+                <FiSettings className="icon-setting" />
+                <h4>Quản lý tài khoản</h4>
+              </div>
+              <div>
+                <IoMdClose
+                  className="icon-close"
+                  onClick={() => handleShowSetting(false)}
+                />
+              </div>
+            </div>
+            <div className="content-setting flex">
+              <div className="info-user">
+                <img src={dataLocal.picture} alt="" />
+                <p>{dataLocal.name}</p>
+              </div>
+              <div className="change-info">
+                <h4>Cập nhật thông tin cá nhân</h4>
+                <div className="change-detail">
+                  <div className="change-name flex">
+                    <p>Họ và tên: </p>
+                    <input
+                      type="text"
+                      name="name"
+                      onChange={handleChangeUpdate}
+                      placeholder={dataLocal.name}
+                    />
+                  </div>
+                  <div className="change-email flex">
+                    <p>Email: </p>
+                    <input
+                      type="text"
+                      name="email"
+                      onChange={handleChangeUpdate}
+                      placeholder={
+                        dataLocal.email ? dataLocal.email : "Nhập email"
+                      }
+                    />
+                  </div>
+                  <div className="change-avartar flex">
+                    <p>Avatar: </p>
+                    <input
+                      type="text"
+                      name="avatar"
+                      onChange={handleChangeUpdate}
+                      placeholder="Nhập url avatar"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="footer-setting">
+              <div className="btn-close">
+                <button onClick={handleUpdateUser}>Cập nhật</button>
+              </div>
+            </div>
+          </div>
+        ) : (
+          ""
+        )}
         <div className="header flex">
           <div className="left-header flex">
             <img src={logo} alt="logo" />
@@ -46,7 +198,24 @@ export default function Header() {
           </div>
           <div className="right-header flex">
             <button>Hạng GPLX: A1</button>
-            <button onClick={() => handleBoxLogin(true)}>Đăng nhập</button>
+            {dataLocal === null ? (
+              <button onClick={() => handleBoxLogin(true)}>Đăng nhập</button>
+            ) : (
+              <div className="user-info flex">
+                <img src={dataLocal.picture} alt="img-avatar" />
+                <p>{dataLocal.name}</p>
+                <div className="box-logout">
+                  <div className="flex" onClick={() => handleShowSetting(true)}>
+                    <FiSettings className="icon-setting" />
+                    <p>Quản lý tài khoản</p>
+                  </div>
+                  <div className="flex" onClick={handleLogout}>
+                    <FiLogOut className="icon-logout" />
+                    <p>Đăng xuất</p>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
         {boxLogin ? (
@@ -65,12 +234,61 @@ export default function Header() {
                   các thiết bị của bạn.
                 </p>
                 <div className="btn-gg flex">
-                  <FcGoogle className="icon-gg " />
-                  <span>Sign in with Google</span>
+                  <GoogleLogin
+                    onSuccess={(credentialResponse) => {
+                      if (credentialResponse.credential !== null) {
+                        const decode = jwtDecode(credentialResponse.credential);
+                        const resData = {
+                          provider: "email",
+                          name: decode.name,
+                          email: decode.email ? decode.email : null,
+                          picture: decode.picture ? decode.picture : null,
+                          userID: null,
+                        };
+                        fetchDb(resData);
+                      }
+                    }}
+                    onError={() => {
+                      setBoxLogin(true);
+                    }}
+                  />
                 </div>
                 <div className="btn-face flex">
-                  <RiFacebookBoxFill className="icon-face" />
-                  <span>Sign in with Facebook</span>
+                  <FacebookLogin
+                    appId="701802418590275"
+                    autoLoad={false}
+                    fields="name,email,picture"
+                    icon={
+                      <FaFacebook
+                        style={{
+                          background: "#3b5998",
+                          color: "white",
+                          margin: "0 5px",
+                          fontSize: "25px",
+                        }}
+                      />
+                    }
+                    callback={(response) => {
+                      if (
+                        response.status !== "unknown" &&
+                        response.data !== null
+                      ) {
+                        const resData = {
+                          provider: "facebook",
+                          name: response.name,
+                          email: null,
+                          picture: response.picture
+                            ? response.picture.data.url
+                            : null,
+                          userID: response.userID,
+                        };
+                        fetchDb(resData);
+                      } else {
+                        setCheckBox(true);
+                      }
+                    }}
+                    cssClass="my-facebook-button-class"
+                  />
                 </div>
                 <div className="dont-show flex" onClick={handleCheckBox}>
                   <input

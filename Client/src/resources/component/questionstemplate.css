@@ -21,7 +21,10 @@
 }
 .question-infor {
   border-bottom: 1px solid rgb(234, 232, 232);
-  padding: 10px 0 15px 0;
+  padding-top: 10px;
+}
+.question-infor > div {
+  padding-bottom: 10px;
 }
 .question-infor h5 {
   margin: 10px 0 0 0;
@@ -123,6 +126,7 @@
   opacity: 1;
   transition: opacity 0.3s;
 }
+.header-setting .icon-close,
 .box-score .icon-close,
 .bar-login .icon-close {
   position: absolute;
@@ -137,6 +141,7 @@
   transition: background-color 0.5s, color 0.5s;
   cursor: pointer;
 }
+.header-setting .icon-close:hover,
 .box-score .icon-close:hover,
 .bar-login .icon-close:hover {
   background-color: #299af6;
@@ -152,4 +157,17 @@
 .disable {
   cursor: default;
   pointer-events: none;
+}
+.green {
+  color: #52c41a !important;
+}
+.totaltimes {
+  color: #faad14;
+  line-height: 20px;
+  display: flex;
+  margin-right: 10px;
+}
+.totaltimes .dots {
+  height: 20px;
+  display: block;
 }

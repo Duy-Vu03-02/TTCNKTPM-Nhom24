@@ -186,3 +186,15 @@
   text-align: right !important;
   transition: left 0.5s, background-color 0.5s;
 }
+.hint-qs {
+  display: block;
+}
+.line-hint-qs {
+  margin-bottom: 5px;
+  padding-top: 5px;
+  border-top: 1px solid rgb(225, 225, 225);
+}
+.hint-qs p {
+  display: block;
+  font-size: 15px;
+}

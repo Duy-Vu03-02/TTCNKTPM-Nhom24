@@ -19,7 +19,7 @@ export default function QuestionsTemplate({ dataQuestion, result, handleReq }) {
     });
     setListData(data);
   }, [dataQuestion]);
-  console.log(listData);
+
   useEffect(() => {
     if (!checkEffec.current) {
       var count = 0;
