@@ -60,17 +60,17 @@ export default function QuesitonTemplate({ dataQuestion }) {
         const listErr = questionsErr.map((item) => item.id);
         const listCorrect = questionsCorrect.map((item) => item);
         const url =
-          "http://localhost/BaoCaoThucTap/server/API/controllers/questionsError/updateQuestions.php";
+          "http://localhost/BaoCaoThucTap/Server/API/controllers/questionError/updateQuestions.php";
         const res = await axios.get(
           url + "?listerr=" + listErr + "&listcorrect=" + listCorrect
         );
-        console.log(res);
+
         //  update ques err by user
         const dataLocal = await JSON.parse(localStorage.getItem("acc"));
         if (dataLocal !== null) {
           if (dataLocal.email !== null || dataLocal.userID !== null) {
             const url =
-              "http://localhost/BaoCaoThucTap/server/API/controllers/user/updateQsErrByUser.php";
+              "http://localhost/BaoCaoThucTap/Server/API/controllers/user/updateQsErrByUser.php";
             const data = {
               email: dataLocal.email,
               userID: dataLocal.userID,
