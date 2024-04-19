@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "../resources/component/questionstemplate.css";
 import { IoMdClose } from "react-icons/io";
+import { GoDotFill } from "react-icons/go";
 
 export default function QuestionsTemplate({ dataQuestion, result, handleReq }) {
   const [listData, setListData] = useState([]);
@@ -13,11 +14,13 @@ export default function QuestionsTemplate({ dataQuestion, result, handleReq }) {
   const checkEffec = useRef(false);
 
   useEffect(() => {
-    var data = dataQuestion;
-    data.forEach((element) => {
-      element.selected = false;
-    });
-    setListData(data);
+    if (dataQuestion !== null) {
+      var data = dataQuestion;
+      data.forEach((element) => {
+        element.selected = false;
+      });
+      setListData(data);
+    }
   }, [dataQuestion]);
 
   useEffect(() => {
@@ -77,9 +80,27 @@ export default function QuestionsTemplate({ dataQuestion, result, handleReq }) {
             {listData.map((data, index) => (
               <li key={index} className={`${showCorrect ? "disable" : ""}`}>
                 <div className="wrap-question">
-                  <div className="question-infor flex">
-                    <h5>Câu {index + 1}.&nbsp;</h5>
-                    <h5>{data.question}</h5>
+                  <div className="question-infor">
+                    <div className="flex">
+                      <h5>Câu {index + 1}.&nbsp;</h5>
+                      <h5>{data.question}</h5>
+                    </div>
+                    <div>
+                      <div className="flex">
+                        {data.totalqserr && (
+                          <div className="totaltimes">
+                            <GoDotFill className="dots" />
+                            <p>{data.totalqserr} lượt trả lời sai</p>
+                          </div>
+                        )}
+                        {data.totalqserr && (
+                          <div className="totaltimes green">
+                            <GoDotFill className="dots" />
+                            <p>{data.totalqscorrect} lượt trả lời đúng</p>
+                          </div>
+                        )}
+                      </div>
+                    </div>
                   </div>
                   {data.img ? (
                     <div className="img-illustration">
@@ -131,7 +152,11 @@ export default function QuestionsTemplate({ dataQuestion, result, handleReq }) {
               </li>
             ))}
           </ul>
-          <div className="btn-submit-complete">
+          <div
+            className={`btn-submit-complete ${
+              listData.length > 0 ? "" : "none"
+            }`}
+          >
             <button onClick={handleReq}>Nộp bài</button>
           </div>
         </div>
