@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import axios from "axios";
 import "../resources/component/questiontemplate.css";
 import { IoMdCheckmark } from "react-icons/io";
 import { LuClock } from "react-icons/lu";
 import { GoDash } from "react-icons/go";
 import { FaRegStar } from "react-icons/fa6";
+import { UserContext } from "../Context/UserContext";
 
 export default function QuesitonTemplate({ dataQuestion }) {
   const [listData, setListData] = useState([]);
@@ -15,6 +16,7 @@ export default function QuesitonTemplate({ dataQuestion }) {
   const [questionsCorrect, setQuestionsCorrect] = useState([]);
   const [autoNextQs, setAutoNextQs] = useState(true);
   const indexQuestion = useRef(1);
+  const { userData } = useContext(UserContext);
   const [score, setScore] = useState({
     state: false,
     show: false,
@@ -50,27 +52,49 @@ export default function QuesitonTemplate({ dataQuestion }) {
     }
   }, [quesitons]);
 
-  useEffect(() => {
-    if (questionsErr.length > 1) {
-      localStorage.setItem("question_err", JSON.stringify(questionsErr));
-    }
-  }, [questionsErr]);
-
+  // update to db
   useEffect(() => {
     const fetch = async () => {
-      if (score.show) {
-        const listId = quesitons.map((item) => item.id);
+      if (score.show && questionsErr.length !== 0) {
+        // update ques err and correct
+        const listErr = questionsErr.map((item) => item.id);
+        const listCorrect = questionsCorrect.map((item) => item);
         const url =
-          "http://localhost/BaoCaoThucTap/Server/API/controllers/questionError/createQuestionsError.php";
-        const reponse = await axios.get(url + "?action=" + listId);
-        if (reponse.status === 200) {
-          console.log(reponse.status);
+          "http://localhost/BaoCaoThucTap/server/controllers/questionsError/updateQuestions.php";
+        const res = await axios.get(
+          url + "?listerr=" + listErr + "&listcorrect=" + listCorrect
+        );
+        console.log(res);
+        //  update ques err by user
+        const dataLocal = await JSON.parse(localStorage.getItem("acc"));
+        if (dataLocal !== null) {
+          if (dataLocal.email !== null || dataLocal.userID !== null) {
+            const url =
+              "http://localhost/BaoCaoThucTap/server/controllers/user/updateQsErrByUser.php";
+            const data = {
+              email: dataLocal.email,
+              userID: dataLocal.userID,
+              listID: listErr,
+              provider: dataLocal.provider,
+            };
+            const response = await axios.get(
+              url +
+                "?provider=" +
+                data.provider +
+                "&email=" +
+                data.email +
+                "&userID=" +
+                data.userID +
+                "&listID=" +
+                data.listID
+            );
+          }
         }
       }
     };
     fetch();
   }, [score.show]);
-  console.log(dataQuestion);
+
   useEffect(() => {
     const fetch = async () => {
       if (score.show) {
@@ -80,6 +104,7 @@ export default function QuesitonTemplate({ dataQuestion }) {
         // set local khi rong
         if (dataLocal === null) {
           localStorage.setItem("question_err", JSON.stringify(questionsErr));
+          return;
         }
         // Set local khi da co data
         else {
@@ -125,7 +150,7 @@ export default function QuesitonTemplate({ dataQuestion }) {
 
     //handle change select listdata
     for (var item of listData) {
-      if (item.id === id) {
+      if (item.zindex === id) {
         item.selected = z;
       }
     }
@@ -140,8 +165,13 @@ export default function QuesitonTemplate({ dataQuestion }) {
     var countMustTrue = 0;
     var countTrueMustTrue = 0;
     listData.forEach((element) => {
-      if (element.selected === element.trueAnswer) countTrue++;
-      // Neu sai luu vao state qsErr -> save local
+      if (element.selected === element.trueAnswer) {
+        countTrue++;
+        setQuestionsCorrect((prevState) => {
+          return [...prevState, element.id];
+        });
+      }
+      // Neu sai luu vao state qsErr
       else {
         if (questionsErr.length === 0 && questionsErr === null) {
           questionsErr([{ id: element.id, count: 1 }]);
@@ -170,6 +200,7 @@ export default function QuesitonTemplate({ dataQuestion }) {
       }
     });
 
+    // Show ket qua
     setScore((prevState) => {
       return {
         ...prevState,
@@ -204,6 +235,7 @@ export default function QuesitonTemplate({ dataQuestion }) {
   const handleChangeAutoNext = () => {
     autoNextQs ? setAutoNextQs(false) : setAutoNextQs(true);
   };
+
   const handle = () => {};
   return (
     <>
@@ -215,7 +247,10 @@ export default function QuesitonTemplate({ dataQuestion }) {
                 <div className="wrap-list-question">
                   <li key={currentQuestion.zindex}>
                     <div className="wrap-question">
-                      <div className="question-infor flex">
+                      <div
+                        className="question-infor flex"
+                        style={{ paddingBottom: "15px" }}
+                      >
                         <h5>
                           Câu {currentQuestion.zindex + 1}
                           .&nbsp;
