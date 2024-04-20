@@ -16,6 +16,10 @@
                 $data[] = new TitleChapter($row);
             }
 
+            usort($data,function ($a, $b){
+                return strcmp($a->title, $b->title);
+            });
+
             echo json_encode($data);
         }
         else{

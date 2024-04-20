@@ -60,9 +60,7 @@ export default function AllKnowledge(props) {
                   <li key={index} onClick={() => handleShowLesson(data, index)}>
                     <div className="lesson">
                       <div>
-                        <h3>
-                          Chương {index + 1}. {data.title}
-                        </h3>
+                        <h3>{data.title}</h3>
                         <p>{data.description}</p>
                       </div>
                     </div>

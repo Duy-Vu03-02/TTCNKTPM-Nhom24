@@ -36,3 +36,40 @@
   border: none;
   outline: none;
 }
+.next-question {
+  display: flex;
+  color: #51acf6;
+  justify-content: center;
+  align-items: bottom;
+  align-content: center;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  right: 50%;
+}
+.next-question ul {
+  display: flex;
+  border: 1px solid #51acf6;
+}
+.next-question li {
+  width: 37px;
+  height: 37px;
+  cursor: pointer;
+  border-right: 1px solid #51acf6;
+}
+.next-question li:last-child {
+  border: none;
+}
+.next-question li:hover {
+  background-color: #69b6f5;
+  color: white;
+}
+.next-question li a {
+  text-align: center;
+  line-height: 35px;
+  display: block;
+}
+.next-question ul .selected {
+  background-color: #34a1fa;
+  color: white;
+}

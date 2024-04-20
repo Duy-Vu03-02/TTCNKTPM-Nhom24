@@ -6,9 +6,10 @@
 }
 .right-temp {
   background-color: white;
-  /* height: 480px; */
+  /* height: 465px; */
   width: 450px;
   margin: 20px;
+  position: relative;
 }
 .left-temp {
   width: calc(100vw - 450px - 200px);
