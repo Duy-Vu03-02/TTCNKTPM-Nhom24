@@ -8,11 +8,11 @@
 
         public function __construct($temp)
         {
-            $this->email = $temp["email"] ? $temp["email"] : null;
+            $this->email = isset($temp["email"]) ? $temp["email"] : null;
             $this->name = $temp["username"];
             $this->picture = $temp["picture"];
-            $this->userID = $temp["facebook"] ? $temp["facebook"] : null;
-            $this->questionerr = $temp["questionerr"] ? $temp["questionerr"] : null;
+            $this->userID = isset($temp["userID"]) ? $temp["userID"] : null;
+            $this->questionerr = isset($temp["questionerr"]) ? $temp["questionerr"] : null;
         }
     }
 ?>
