@@ -47,14 +47,19 @@ export default function Header() {
         const url =
           "http://localhost/BaoCaoThucTap/Server/API/controllers/user/loginUser.php";
         const response = await axios.post(url, data);
+        console.log(data);
         if (response.status === 200) {
           const resData = response.data;
           const temp = {
-            provider: resData.email != null ? "email" : "facebook",
+            provider:
+              resData.facebook == null || resData.facebook === ""
+                ? "email"
+                : "facebook",
             name: resData.name,
             email: resData.email ? resData.email : null,
             picture: resData.picture ? resData.picture : null,
-            userID: resData.userID != null ? resData.userData : null,
+            userID: resData.userID != null ? resData.userID : null,
+            facebook: resData.facebook != null ? resData.facebook : null,
           };
           setDataLocal(temp);
           setUserData(temp);
@@ -62,18 +67,21 @@ export default function Header() {
           setCheckBox(true);
           localStorage.setItem("showLogin", JSON.stringify(false));
           localStorage.setItem("acc", JSON.stringify(temp));
-          let listID = JSON.parse(resData.questionerr);
-          listID = listID.map((item) => ({ id: item, count: 1 }));
-          listID = listID.length > 25 ? listID.splice(0, 25) : listID;
-          localStorage.setItem("question_err", JSON.stringify(listID));
+          if (resData.questionerr !== null) {
+            let listID = JSON.parse(resData.questionerr);
+            listID = listID.map((item) => ({ id: item, count: 1 }));
+            listID = listID.length > 25 ? listID.splice(0, 25) : listID;
+            localStorage.setItem("question_err", JSON.stringify(listID));
+          }
         }
       }
     };
     fetch();
-  }, [userData]);
+  }, []);
 
   const storeLocal = (data) => {
     if (data != null) {
+      console.log(data);
       localStorage.setItem("acc", JSON.stringify(data));
     }
   };
@@ -86,23 +94,30 @@ export default function Header() {
       if (response.status === 200) {
         const resData = response.data;
         const temp = {
-          provider: resData.email != null ? "email" : "facebook",
+          provider:
+            resData.facebook == null || resData.facebook === ""
+              ? "email"
+              : "facebook",
           name: resData.name,
           email: resData.email ? resData.email : null,
           picture: resData.picture ? resData.picture : null,
-          userID: resData.userID != null ? resData.userData : null,
+          userID: resData.userID != null ? resData.userID : null,
+          facebook: resData.facebook != null ? resData.facebook : null,
         };
+        console.log(temp);
         setBoxLogin(false);
         setCheckBox(true);
         setDataLocal(temp);
         setUserData(temp);
         localStorage.setItem("showLogin", JSON.stringify(false));
         storeLocal(temp);
-        let listID = JSON.parse(resData.questionerr);
-        listID = listID.map((item) => ({ id: item, count: 1 }));
-        listID = listID.length > 25 ? listID.splice(0, 25) : listID;
-        localStorage.setItem("question_err", JSON.stringify(listID));
-        window.history.go();
+        if (resData.questionerr !== null) {
+          let listID = JSON.parse(resData.questionerr);
+          listID = listID.map((item) => ({ id: item, count: 1 }));
+          listID = listID.length > 25 ? listID.splice(0, 25) : listID;
+          localStorage.setItem("question_err", JSON.stringify(listID));
+          window.history.go();
+        }
       }
     }
   };
@@ -160,7 +175,7 @@ export default function Header() {
 
     setShowSetting(false);
   };
-  console.log(1);
+
   const handle = () => {};
   return (
     <>
