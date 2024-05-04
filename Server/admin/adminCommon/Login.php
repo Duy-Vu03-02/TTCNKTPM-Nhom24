@@ -39,7 +39,7 @@ if (isset($_POST['login']) && isset($_POST['username'])) {
 
 <body>
     <div class="top_link flex-center">
-        <a href="../../index.php" class="p-2 bg-white">
+        <a href="http://localhost:3000/" class="p-2 bg-white">
             <i class="fa-solid fa-circle-chevron-left"></i>
             Về trang chủ
         </a>

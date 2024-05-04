@@ -247,7 +247,9 @@ export default function Header() {
         <div className="header flex">
           <div className="left-header flex">
             <img src={logo} alt="logo" />
-            <Link to="/">Trang chủ</Link>
+            <Link to="http://localhost/BaoCaoThucTap/Server/admin/adminCommon/Login.php">
+              Admin
+            </Link>
             <Link to="/">Tin Tức</Link>
             <Link to="/">Xốp hơi</Link>
             <Link to="/">PE foam</Link>
