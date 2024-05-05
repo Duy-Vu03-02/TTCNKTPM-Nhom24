@@ -47,7 +47,6 @@ export default function Header() {
         const url =
           "http://localhost/BaoCaoThucTap/Server/API/controllers/user/loginUser.php";
         const response = await axios.post(url, data);
-        console.log(data);
         if (response.status === 200) {
           const resData = response.data;
           const temp = {
@@ -67,7 +66,7 @@ export default function Header() {
           setCheckBox(true);
           localStorage.setItem("showLogin", JSON.stringify(false));
           localStorage.setItem("acc", JSON.stringify(temp));
-          if (resData.questionerr !== null) {
+          if (resData.questionerr) {
             let listID = JSON.parse(resData.questionerr);
             listID = listID.map((item) => ({ id: item, count: 1 }));
             listID = listID.length > 25 ? listID.splice(0, 25) : listID;
@@ -81,7 +80,6 @@ export default function Header() {
 
   const storeLocal = (data) => {
     if (data != null) {
-      console.log(data);
       localStorage.setItem("acc", JSON.stringify(data));
     }
   };
@@ -104,14 +102,13 @@ export default function Header() {
           userID: resData.userID != null ? resData.userID : null,
           facebook: resData.facebook != null ? resData.facebook : null,
         };
-        console.log(temp);
         setBoxLogin(false);
         setCheckBox(true);
         setDataLocal(temp);
         setUserData(temp);
         localStorage.setItem("showLogin", JSON.stringify(false));
         storeLocal(temp);
-        if (resData.questionerr !== null) {
+        if (resData.questionerr) {
           let listID = JSON.parse(resData.questionerr);
           listID = listID.map((item) => ({ id: item, count: 1 }));
           listID = listID.length > 25 ? listID.splice(0, 25) : listID;
@@ -221,6 +218,7 @@ export default function Header() {
                       placeholder={
                         dataLocal.email ? dataLocal.email : "Nhập email"
                       }
+                      disabled={userData.email ? true : false}
                     />
                   </div>
                   <div className="change-avartar flex">
