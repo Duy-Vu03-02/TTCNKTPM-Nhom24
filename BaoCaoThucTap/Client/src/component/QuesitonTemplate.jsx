@@ -159,63 +159,66 @@ export default function QuesitonTemplate({ dataQuestion }) {
     handleAutoNextQuestion();
   };
   const handleCalculatorScore = () => {
-    handleTimeOut();
-    var countTrue = 0;
-    var countMustTrue = 0;
-    var countTrueMustTrue = 0;
-    listData.forEach((element) => {
-      if (element.selected === element.trueAnswer) {
-        countTrue++;
-        setQuestionsCorrect((prevState) => {
-          return [...prevState, element.id];
-        });
-      }
-      // Neu sai luu vao state qsErr
-      else {
-        if (questionsErr.length === 0 && questionsErr === null) {
-          questionsErr([{ id: element.id, count: 1 }]);
-        } else {
-          setQuestionsErr((prevState) => {
-            var check = prevState.find((item) => item.id === element.id);
-
-            if (check) {
-              const newQsErr = [{ id: check.id, count: check.count + 1 }];
-              const qsErrFilter = prevState.filter(
-                (item) => item.id !== element.id
-              );
-              return [...newQsErr, ...qsErrFilter];
-            } else {
-              const newQsErr = [{ id: element.id, count: 1 }];
-              return [...newQsErr, ...prevState];
-            }
+    // if(score.state){ nho su a lai
+    if (true) {
+      handleTimeOut();
+      var countTrue = 0;
+      var countMustTrue = 0;
+      var countTrueMustTrue = 0;
+      listData.forEach((element) => {
+        if (element.selected === element.trueAnswer) {
+          countTrue++;
+          setQuestionsCorrect((prevState) => {
+            return [...prevState, element.id];
           });
         }
-      }
-      if (element.mustCorrect === true) {
-        countMustTrue++;
-        if (element.selected === element.trueAnswer) {
-          countTrueMustTrue++;
-        }
-      }
-    });
+        // Neu sai luu vao state qsErr
+        else {
+          if (questionsErr.length === 0 && questionsErr === null) {
+            questionsErr([{ id: element.id, count: 1 }]);
+          } else {
+            setQuestionsErr((prevState) => {
+              var check = prevState.find((item) => item.id === element.id);
 
-    // Show ket qua
-    setScore((prevState) => {
-      return {
-        ...prevState,
-        state: true,
-        show: true,
-        countTrue: countTrue,
-        countMustTrue: countMustTrue,
-        countTrueMustTrue: countTrueMustTrue,
-        pass:
-          countMustTrue === countTrueMustTrue &&
-          countMustTrue > 0 &&
-          countTrue >= 21
-            ? true
-            : false,
-      };
-    });
+              if (check) {
+                const newQsErr = [{ id: check.id, count: check.count + 1 }];
+                const qsErrFilter = prevState.filter(
+                  (item) => item.id !== element.id
+                );
+                return [...newQsErr, ...qsErrFilter];
+              } else {
+                const newQsErr = [{ id: element.id, count: 1 }];
+                return [...newQsErr, ...prevState];
+              }
+            });
+          }
+        }
+        if (element.mustCorrect === true) {
+          countMustTrue++;
+          if (element.selected === element.trueAnswer) {
+            countTrueMustTrue++;
+          }
+        }
+      });
+
+      // Show ket qua
+      setScore((prevState) => {
+        return {
+          ...prevState,
+          state: true,
+          show: true,
+          countTrue: countTrue,
+          countMustTrue: countMustTrue,
+          countTrueMustTrue: countTrueMustTrue,
+          pass:
+            countMustTrue === countTrueMustTrue &&
+            countMustTrue > 0 &&
+            countTrue >= 21
+              ? true
+              : false,
+        };
+      });
+    }
   };
 
   const handleAutoNextQuestion = () => {

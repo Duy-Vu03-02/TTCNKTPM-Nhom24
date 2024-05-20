@@ -1,6 +1,7 @@
 .content-questionserror {
   overflow-y: auto;
-  height: calc(100vh - 65px - 50px);
+  /* height: calc(100vh - 65px - 50px) fix header fooet; */
+  height: 100vh;
 }
 .nav-list,
 .title-intro {

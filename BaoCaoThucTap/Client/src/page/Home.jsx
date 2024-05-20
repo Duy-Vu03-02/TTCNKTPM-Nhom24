@@ -14,14 +14,18 @@ import Exam from "../page/Exam";
 import ExamRandom from "../page/ExamRandom";
 import NoticeBoard from "../page/NoticeBoard";
 import QuestionsError from "../page/QuestionsError";
+import { FaS } from "react-icons/fa6";
 
 export default function Home() {
   const [currentComponent, setCurrentComponent] = useState(null);
+  const [showHeaderFooter, setShowHeaderFooter] = useState(true);
   const handleSetComponent = (index) => {
     setCurrentComponent(index + 1);
+    setShowHeaderFooter(false);
   };
   const handUnComponent = () => {
     setCurrentComponent(null);
+    setShowHeaderFooter(true);
   };
   const listComponent = [
     <ExamRandom unComponent={handUnComponent} />,
@@ -61,9 +65,11 @@ export default function Home() {
 
   return (
     <>
-      <header>
-        <Header />
-      </header>
+      {showHeaderFooter && (
+        <header>
+          <Header />
+        </header>
+      )}
       <main>
         {currentComponent ? (
           CurrentComponent
@@ -84,9 +90,11 @@ export default function Home() {
           </ul>
         )}
       </main>
-      <footer>
-        <Footer />
-      </footer>
+      {showHeaderFooter && (
+        <footer>
+          <Footer />
+        </footer>
+      )}
     </>
   );
 }

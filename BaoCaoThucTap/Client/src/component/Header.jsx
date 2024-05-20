@@ -278,11 +278,10 @@ export default function Header() {
           <div className="screen-mask">
             <div className="box-login">
               <div className="bar-login flex">
-                <p className="bold">Tài khoản</p>
-                <IoMdClose
-                  className="icon-close"
-                  onClick={() => handleBoxLogin(false)}
-                />
+                <div className="flex" onClick={() => handleBoxLogin(false)}>
+                  <p className="bold">Tài khoản</p>
+                  <IoMdClose className="icon-close" />
+                </div>
               </div>
               <div className="choie-login">
                 <p>

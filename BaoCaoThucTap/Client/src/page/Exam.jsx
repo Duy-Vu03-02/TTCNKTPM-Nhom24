@@ -54,6 +54,7 @@ export default function Exam(props) {
               </div>
               <div>
                 <ul className="wrap-list flex">
+                  {/* nho fix lai */}
                   {allExam.map((data, index) => (
                     <li key={index} onClick={() => handleShowExam(data, index)}>
                       <div className="exam-cart ">
