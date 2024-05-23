@@ -1,6 +1,7 @@
 .component-ledge {
   overflow-y: auto;
-  height: calc(100vh - 50px - 65px);
+  /* height: calc(100vh - 50px - 65px) fix eader va fotter; */
+  height: 100vh;
 }
 .lesson {
   background-color: white;
