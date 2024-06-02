@@ -16,20 +16,10 @@
                                     <label for="exampleFormControlInput1" class="form-label">
                                         Tên người dùng
                                     </label>
-                                    <input type="text" value="<?php echo $row['fullname'] ?>" name="tennguoidung" class="form-control" id="exampleFormControlInput1">
-
+                                    <input type="text" value="<?php echo $row['username'] ?>" name="tennguoidung" class="form-control" id="exampleFormControlInput1">
                                 </div>
                             </td>
-                            <tr>
-                            <td class="row">
-                                <div class="mb-2 col">
-                                    <label for="exampleFormControlInput1" class="form-label">
-                                        Code
-                                    </label>
-                                    <input type="text" value="<?php echo $row['code'] ?>" name="code" class="form-control" id="exampleFormControlInput1">
-
-                                </div>
-                            </td>
+                        <tr>
                             <td class="row">
                                 <div class="mb-2 col">
                                     <label for="exampleFormControlInput1" class="form-label">
@@ -38,23 +28,7 @@
                                     <input type="text" name="email" value="<?php echo $row['email'] ?>" class="form-control" id="exampleFormControlInput1">
                                 </div>
                             </td>
-                            <td class="row">
-                                <div class="mb-2 col">
-                                    <label for="exampleFormControlInput1" class="form-label">
-                                        Tài khoản
-                                    </label>
-                                    <input type="text" name="taikhoan" value="<?php echo $row['username'] ?>" class="form-control" id="exampleFormControlInput1">
-                                </div>
-                            </td>
-                            <td class="row">
-                                <div class="mb-2 col">
-                                    <label for="exampleFormControlInput1" class="form-label">
-                                        Số điện thoại
-                                    </label>
-                                    <input type="text" name="phonenumber" value="<?php echo $row['phonenumber'] ?>" class="form-control" id="exampleFormControlInput1">
-                                </div>
-                            </td>
-                           
+
                         </tr>
                         <tr>
                         <tr>
@@ -63,30 +37,35 @@
                                     <label for="exampleFormControlInput1" class="form-label">
                                         Hình ảnh
                                     </label>
-                                    <input type="file" name="hinhanh" class="form-control" id="exampleFormControlInput1">
+                                    
                                 </div>
                                 <div class="col-6">
-                                    <img class="imageInPopup" src="pages/User/UserImages/<?php echo $row['user_image'] ?>" alt="">
-                                </div>
-                            </td>
-                        </tr>
                             
-                            <td class="row">
-                                <div class="mb-2 col">
-                                    <label for="exampleFormControlInput1" class="form-label">
-                                        Địa chỉ
-                                    </label>
-                                    <input type="text" name="diachi" value="<?php echo $row['address'] ?>" class="form-control" id="exampleFormControlInput1">
-                                </div>
+                                <?php
+                                
+                                $imageLink = $row['picture'];
+                                if (trim($_SESSION['userImage']) == "") {
+                                    echo '<i class="fa-solid fa-circle-user"></i>';
+                                } else {
+                                    if ($_SESSION['userImage'] != 1) {
+                                        echo '<img class="hinhanh" src=' . $imageLink . ' alt="UserImg">';
+                                    }
+                                }
+                                ?>
                             </td>
-                        </tr>
-                    </table>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary pt-2 pb-2" data-bs-dismiss="modal">Đóng</button>
-                    <button type="submit" class="btn btn-primary" name="editUser">Sửa</button>
-                </div>
+                </td>
+                </tr>
+
+
+                </tr>
+                </table>
             </div>
-        </form>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary pt-2 pb-2" data-bs-dismiss="modal">Đóng</button>
+                <button type="submit" class="btn btn-primary" name="editUser">Sửa</button>
+            </div>
     </div>
+    </form>
+</div>
 </div>

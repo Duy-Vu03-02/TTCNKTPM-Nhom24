@@ -64,6 +64,13 @@
                         </a>
                     </li>
                     <li class="flex-center">
+                        <a href="AdminIndex.php?workingPage=notice"
+                            class="nav-link <?php getHeaderTextColor('user'); ?> flex-column flex-center">
+                            <i class="fa-solid fa-car text-white mb-2"></i>
+                            Biển báo
+                        </a>
+                    </li>
+                    <li class="flex-center">
                         <div class="text-end">
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
                                 <i class="fa-solid fa-right-from-bracket mr-1"></i>

@@ -12,6 +12,13 @@
             include("./pages/Exam/AddExamPopup.php");
         } else if ($workingPage == 'user') {
             include("./pages/User/UserIndex.php");
+        } else if ($workingPage == 'notice') {
+            include("./pages/Notice/NoticeIndex.php");
+            include("./pages/Notice/AddNoticePopup.php");
+        }
+            else if ($workingPage == 'detail') {
+            include("./pages/Detail/DetailIndex.php");
+            include("./pages/Detail/AddDetailPopup.php");
         }
         else {
             include("./pages/Dashboard/DashboardIndex.php");
