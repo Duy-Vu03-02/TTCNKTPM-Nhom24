@@ -25,6 +25,10 @@ export default function Header() {
     avatar: "",
     userID: "",
   });
+  const [resUpdate, setResUpdate] = useState({
+    avatar: null,
+    username: null,
+  });
 
   useEffect(() => {
     const fetch = async () => {
@@ -154,6 +158,7 @@ export default function Header() {
       picture: dataUpdate.avatar === "" ? dataLocal.picture : dataUpdate.avatar,
       userID: dataUpdate.userID === "" ? dataLocal.userID : dataUpdate.userID,
     };
+
     if (dataUpdate.email === null || dataUpdate.email === "") {
       if (dataLocal.provider === "facebook") {
         data.email = null;
@@ -168,6 +173,10 @@ export default function Header() {
     const response = await axios.post(url, data);
     if (response.status === 200) {
       setUserData(data);
+      setResUpdate({
+        username: data.username,
+        avatar: data.picture,
+      });
     }
 
     setShowSetting(false);
@@ -258,8 +267,13 @@ export default function Header() {
               <button onClick={() => handleBoxLogin(true)}>Đăng nhập</button>
             ) : (
               <div className="user-info flex">
-                <img src={dataLocal.picture} alt="img-avatar" />
-                <p>{dataLocal.name}</p>
+                <img
+                  src={resUpdate.avatar ? resUpdate.avatar : dataLocal.picture}
+                  alt="img-avatar"
+                />
+                <p>
+                  {resUpdate.username ? resUpdate.username : dataLocal.name}
+                </p>
                 <div className="box-logout">
                   <div className="flex" onClick={() => handleShowSetting(true)}>
                     <FiSettings className="icon-setting" />

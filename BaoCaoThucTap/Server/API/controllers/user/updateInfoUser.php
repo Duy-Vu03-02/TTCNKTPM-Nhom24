@@ -14,10 +14,11 @@
         $oldUserID = isset($data['oldUserID']) ? $data["oldUserID"] : null;
         $username = isset($data['username']) ? trim($data['username']) : null;
         $email = isset($data['email']) ? trim($data['email']) : null;
+        $userID = isset($data['userID']) ? trim($data["userID"]): null;
         $picture = isset($data['picture']) ? trim($data['picture']) : null;
         
         if($provider !== null && ($oldEmail !== null || $oldUserID !== null)){
-            if($username != null && $email != null && $picture != null){
+            if($username != null && ($email != null || $userID != null) && $picture != null){
                 $agile = '1=0';
                 if($provider === "facebook" && $userID !== null){
                     $agile = "userID = '$userID'";
@@ -28,8 +29,8 @@
                 
                 $select = "SELECT id FROM tbl_user WHERE ".$agile;
                 $result = $conn->query($select);
+
                 if($result->num_rows > 0){
-                    echo json_encode(array("mess" => $select));
                     $id = $result->fetch_assoc()["id"];
                     $update = "UPDATE tbl_user
                             SET username = '$username',
@@ -38,14 +39,19 @@
                             WHERE id = '$id'";
                     $resUpdate = $conn->query($update);
                     if($resUpdate){
-                        $response = new User($data);
-                        echo json_encode($response);
-                        http_response_code(200);
+                        $newSelect = "SELECT * FROM tbl_user where id = '$id'";
+                        $newResult = $conn->query($newSelect);
+                        if($newResult->num_rows > 0){
+                            $newData = $newResult->fetch_array();
+                            $newUser = new User($newData);
+                            echo json_encode($newUser);
+                            http_response_code(200);
+                        }
                     }                    
                 }
-                else{
-                    http_response_code(204);
-                }
+            }
+            else{
+                http_response_code(204);
             }
         }
         else{
