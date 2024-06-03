@@ -1,0 +1,31 @@
+.wrap-list {
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.exam-cart {
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+  height: 80px;
+  width: 280px;
+  cursor: pointer;
+  transition: box-shadow 0.3s;
+}
+.exam-cart:hover {
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.5s;
+}
+.exam-cart p {
+  line-height: 30px;
+  font-weight: 500;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.exam-cart .book-icon {
+  color: #299af6;
+  height: 35px;
+  display: flex;
+  margin: 0 5px;
+  align-items: center;
+}

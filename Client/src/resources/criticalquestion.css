@@ -1,0 +1,8 @@
+.content-critical {
+  overflow-y: auto;
+  /* height: calc(100vh - 65px - 50px); fix header footer */
+  height: 100vh;
+}
+.content-infor p {
+  margin: 0 0 0 40px;
+}

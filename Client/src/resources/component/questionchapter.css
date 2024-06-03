@@ -1,0 +1,75 @@
+/*Question-chaspter*/
+.wrap-ans li:last-child {
+  border-bottom: 1px solid rgb(234, 232, 232) !important;
+}
+.check-correct {
+  background-color: rgb(46 171 46 / 50%) !important;
+  transition: background-color 0.75s;
+}
+.check-wrong {
+  background-color: rgba(255, 0, 0, 0.51) !important;
+  transition: backgroung-color 0.5s;
+}
+.btn-handle .btn-show button {
+  margin-right: 30px;
+}
+.btn-handle .wrap-skip {
+  margin: 10px 10px 0 10px;
+  padding: 7px 10px;
+  width: 100px;
+  background-color: #3aa2f7;
+  border: none;
+  outline: none;
+  color: white;
+  border-radius: 2px;
+  justify-content: center;
+  cursor: pointer;
+}
+.btn-handle .wrap-skip:hover,
+.btn-handle .wrap-skip:hover button {
+  background-color: #188ff1 !important;
+  transition: background-color 0.3s;
+}
+.wrap-skip button {
+  background-color: #3aa2f7;
+  color: white;
+  border: none;
+  outline: none;
+}
+.next-question {
+  display: flex;
+  color: #51acf6;
+  justify-content: center;
+  align-items: bottom;
+  align-content: center;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  right: 50%;
+}
+.next-question ul {
+  display: flex;
+  border: 1px solid #51acf6;
+}
+.next-question li {
+  width: 37px;
+  height: 37px;
+  cursor: pointer;
+  border-right: 1px solid #51acf6;
+}
+.next-question li:last-child {
+  border: none;
+}
+.next-question li:hover {
+  background-color: #69b6f5;
+  color: white;
+}
+.next-question li a {
+  text-align: center;
+  line-height: 35px;
+  display: block;
+}
+.next-question ul .selected {
+  background-color: #34a1fa;
+  color: white;
+}

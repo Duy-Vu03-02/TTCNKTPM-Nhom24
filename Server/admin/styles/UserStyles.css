@@ -1,0 +1,221 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.hinhanh {
+  width: 150px;
+  height: 150px;
+}
+
+.clear {
+  clear: both;
+}
+table {
+  border-radius: 10px;
+}
+
+/* #loading {
+  border: 3px solid white;
+  border-top-color: #000;
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  animation: spin 1s linear infinite;
+  margin: 2rem auto 0 auto;
+} */
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.container {
+  width: 100%;
+}
+
+.table-head {
+  color: white;
+  background-color: #000;
+}
+
+.table-head .table-heading {
+  background-color: #000;
+  color: white;
+}
+
+.table-head .table-heading th:first-child {
+  border-top-left-radius: 10px;
+}
+
+.table-head .table-heading th:last-child {
+  border-top-right-radius: 10px;
+}
+
+.table-heading {
+  border-radius: 10px;
+}
+
+.table-head th {
+  padding: 10px;
+  text-align: center;
+}
+
+.table-head > th {
+  white-space: nowrap;
+  padding: 12px;
+  text-align: center;
+  word-break: break-all;
+  line-height: 1.4;
+}
+
+.table-head,
+.table-body {
+  border-collapse: collapse;
+}
+
+.table-body {
+  border: 1px solid #333;
+}
+
+table.table-body td:nth-child(2) {
+  padding: 18px;
+  word-break: break-all;
+  line-height: 1.4;
+}
+
+.table-body,
+.table-body tr {
+  background-color: #fff;
+}
+
+.table-body td {
+  text-align: center;
+  /* Căn giữa các ô trong tbody */
+}
+
+@media (hover: hover) {
+  .table-body tr {
+    transition: 0.1s ease-in;
+    cursor: pointer;
+  }
+
+  .table-body tr:hover {
+    transform: scale(1.02);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  }
+}
+
+.table-body tr:nth-child(2n + 2) {
+  background-color: #f6f6f6;
+}
+
+@media only screen and (max-width: 767px) {
+  :root {
+    --calc-spacing: 14px;
+  }
+
+  body {
+    padding: 0;
+  }
+
+  .table-head {
+    display: none;
+  }
+
+  .table-body,
+  .table-body tbody,
+  .table-body tr,
+  .table-body td {
+    width: 100% !important;
+    display: block;
+  }
+
+  .table-body tr td {
+    text-align: right;
+    padding-left: 50%;
+    padding-right: var(--calc-spacing);
+    position: relative;
+  }
+
+  .table-body tr td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: var(--calc-spacing);
+    width: calc(50% - var(--calc-spacing));
+    text-align: left;
+    font-weight: bold;
+  }
+}
+
+table {
+  border-collapse: collapse;
+  background-color: #f8f8f8;
+  width: 100%;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #333;
+  color: white;
+}
+
+/* input[type="text"],
+input[type="number"],
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+} */
+
+.form-check-label {
+  display: block;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.noWrap {
+  white-space: nowrap;
+}
+
+select,
+option {
+  width: 60px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.tensanpham {
+  width: 100px;
+  height: 150px;
+  text-align: center;
+}
+
+.hinhanh {
+  width: 150px;
+  height: 150px;
+}
+
+.giasanpham {
+  width: 150px;
+  text-align: center;
+}

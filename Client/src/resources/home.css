@@ -1,0 +1,36 @@
+.list-component {
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  height: 500px;
+}
+.component {
+  width: 400px;
+  height: 150px;
+  background-color: white;
+  cursor: pointer;
+  margin: 20px;
+  border-radius: 5px;
+  transition: box-shadow 0.5s;
+}
+.component:hover {
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.5s;
+}
+.img-component {
+  justify-content: center;
+  display: flex;
+}
+.img-component img {
+  width: 60px;
+  height: 60px;
+  padding: 20px 15px 10px 15px;
+}
+.content-component p {
+  font-size: 22px;
+  text-align: center;
+  font-weight: 500;
+  color: black;
+  cursor: pointer;
+}
