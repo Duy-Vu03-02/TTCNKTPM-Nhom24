@@ -35,8 +35,7 @@ if (isset($_POST['addQuestion'])) {
     $add = "INSERT INTO tbl_question(id,code,questionImage,title,chapterId,option_1,option_2,option_3,option_4,trueAnswer,isDanger) 
     VALUES ('$questionId','$questionCode','$image','$title','$chapterId','$option_1','$option_2','$option_3','$option_4',$trueAnswer,$isDanger)";
 
-    $ok = mysqli_query($connect, $add);
-    echo $ok;
+    mysqli_query($connect, $add);
 } else if (isset($_POST['editQuesiton'])) {
 
     $title = $_POST['title'];
@@ -47,15 +46,6 @@ if (isset($_POST['addQuestion'])) {
     $option_4 = $_POST['option_4'];
     $trueAnswer = intval($_POST['trueAnswer']);
     $isDanger = $_POST['isDanger'];
-
-    echo $title . "<br>";
-    echo $image . "<br>";
-    echo $option_1 . "<br>";
-    echo $option_2 . "<br>";
-    echo $option_3 . "<br>";
-    echo $option_4 . "<br>";
-   echo $trueAnswer . "<br>";
-   echo $isDanger . "<br>";
 
     $sql_editchapter = "UPDATE tbl_question
     SET
@@ -74,7 +64,6 @@ if (isset($_POST['addQuestion'])) {
     $query = mysqli_query($connect, $sql_editchapter);
 } else if (isset($_POST['deleteQuestion'])) {
     $questionId = $_GET['id'];
-    echo $questionId;
 
     $deletechapterSQL = "DELETE FROM tbl_question WHERE id ='" . $questionId . "';";
     mysqli_query($connect, $deletechapterSQL);

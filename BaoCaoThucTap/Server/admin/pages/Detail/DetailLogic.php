@@ -8,7 +8,6 @@ if (isset($_POST['addDetail'])) {
     $result = $connect->query($sql);
     $row = $result->fetch_assoc();
     $last_id = $row['last_id'];
-    echo "ID cuối cùng là: " . $last_id . "<br>";
     $last_id_int = intval($last_id);
     $last_id_int++;
     $title = $_POST['title'];
@@ -16,11 +15,6 @@ if (isset($_POST['addDetail'])) {
     
     $id = intval($noticeId);
     $content = $_POST['content'];
-    echo $last_id_int . "<br>" .
-    $img . "<br>" .
-    $title . "<br>" .
-    $content . "<br>" .
-    $id . "<br>";
     $add = "INSERT INTO tbl_detailnoticeboard VALUES ($last_id_int,'$img','$title','$content',$id)";
     mysqli_query($connect, $add);
 } else if (isset($_POST['editDetail'])) {
@@ -28,12 +22,6 @@ if (isset($_POST['addDetail'])) {
     $img = $_POST['img'];
     $id = intval($_GET['id']);
     $content = $_POST['content'];
-    echo $noticeId . "<br>";
-    echo $noticeId . "<br>".
-    $img . "<br>" .
-    $title . "<br>" .
-    $content . "<br>" .
-    $id . "<br>";
 
     $edit = "UPDATE tbl_detailnoticeboard SET img = '$img', title = '$title', content = '$content'
     WHERE id = $id";

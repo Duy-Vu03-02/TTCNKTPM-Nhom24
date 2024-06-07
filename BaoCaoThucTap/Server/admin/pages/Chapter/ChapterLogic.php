@@ -11,20 +11,6 @@ function generateUuid()
     return $uuid;
 }
 
-function handleDeleteChapterDetail($chapterId, $productId, $sizeId, $quantity)
-{
-    // var_dump($GLOBALS['connect']);
-
-    //delete from tbl_chapter_detail
-    $sqlStatement = "DELETE FROM tbl_chapter_detail WHERE chapter_id = '" . $chapterId . "' AND size_id = '" . $sizeId . "' AND product_id = '" . $productId . "' AND quantity = '" . $quantity . "'";
-    mysqli_query($GLOBALS['connect'], $sqlStatement);
-
-    //retake to tbl_product_size with specific quantity
-    $updateQuantity = "UPDATE tbl_product_size SET quantity = quantity + " . $quantity . " WHERE product_id = '$productId' AND size_id = '$sizeId' ";
-    echo "checking update sql: " . $updateQuantity;
-    mysqli_query($GLOBALS['connect'], $updateQuantity);
-}
-
 if (isset($_POST['addChapter'])) {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
@@ -58,17 +44,6 @@ if (isset($_POST['addChapter'])) {
     $query = mysqli_query($connect, $sql_editchapter);
 } else if (isset($_POST['deleteChapter'])) {
     $chapterId = $_GET['chapterId'];
-
-    // $getchapterDetailInchapterSQL = "SELECT * FROM tbl_chapter WHERE chapter_id = '" . $chapterId . "'";
-    // $chapterDetailData = mysqli_query($connect, $getchapterDetailInchapterSQL);
-
-    // while ($chapterDetail = mysqli_fetch_array($chapterDetailData)) {
-    //     $productId = $chapterDetail['product_id'];
-    //     $sizeId = $chapterDetail['size_id'];
-    //     $quantity = $chapterDetail['quantity'];
-    //     handleDeletechapterDetail($chapterId, $productId, $sizeId, $quantity);
-    // }
-
     $deletechapterSQL = "DELETE FROM tbl_chapter WHERE id ='" . $chapterId . "';";
     mysqli_query($connect, $deletechapterSQL);
 }

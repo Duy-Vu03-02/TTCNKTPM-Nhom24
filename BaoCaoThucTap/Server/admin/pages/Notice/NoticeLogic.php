@@ -16,12 +16,10 @@ if (isset($_POST['addNotice'])) {
     $result = $connect->query($sql);
     $row = $result->fetch_assoc();
     $last_id = $row['last_id'];
-    echo "ID cuối cùng là: " . $last_id . "<br>";
     $last_id_int = intval($last_id);
     $last_id_int++;
     $name = $_POST['name'];
     $quantity = $_POST['count'];
-    echo $last_id_int . "<br>" . $name . "<br>" . $quantity . "<br>";
     $add = "INSERT INTO tbl_titlenoticeboard VALUES ($last_id_int, $quantity , '$name' )";
 
     mysqli_query($connect, $add);
@@ -37,7 +35,6 @@ if (isset($_POST['addNotice'])) {
     $title = $_POST['name'];
     $count = $_POST['quantity'];
     $add = "UPDATE tbl_titlenoticeboard SET title = '$title', count = $count WHERE id = $id_int";
-    echo $title . "<br>" . $count . "<br>";
     mysqli_query($connect, $add);
 }
 
