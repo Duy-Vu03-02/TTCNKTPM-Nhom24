@@ -65,8 +65,16 @@ if (isset($_POST['addExam'])) {
     // Chọn ngẫu nhiên 2 câu hỏi điểm liệt
     $randomDangerQuestionIds = array_rand($dangerQuestionIds, 2);
 
+    $sql1 = "SELECT id FROM tbl_question WHERE isDanger = 0";
+    $result1 = mysqli_query($connect, $sql);
+
+    $questionIds1 = array();
+    while ($row1 = mysqli_fetch_assoc($result1)) {
+        $questionIds1[] = $row1['id'];
+    }
     // Lấy ngẫu nhiên các câu hỏi còn lại
-    $randomQuestionKeys = array_diff(array_rand($questionIds, $numQuestions - 2), $randomDangerQuestionIds);
+    $randomQuestionKeys = array_diff(array_rand($questionIds1, $numQuestions - 2), $randomDangerQuestionIds);
+
 
     // Kết hợp danh sách câu hỏi điểm liệt với danh sách câu hỏi ngẫu nhiên
     $selectedQuestionKeys = array_merge($randomDangerQuestionIds, $randomQuestionKeys);
