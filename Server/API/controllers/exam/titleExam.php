@@ -1,25 +1,19 @@
 <?php
     include "../../db/connect.php";
-    include "../../model/TitleChapter.php";
+    include "../../model/Question.php";
 
     header("Access-Control-Allow-Origin: http://localhost:3000");
     header("Access-Control-Allow-Methods: GET, POST");
     header("Content-Type: application/json");
 
-    if($_SERVER["REQUEST_METHOD"]  === "GET"){
-        $select = "SELECT * FROM tbl_chapter";
-        $result = $conn->query($select);
+    if($_SERVER["REQUEST_METHOD"] === "GET"){
+        $selectTotalExam = "SELECT id, tbl_exam.name  FROM tbl_exam";
+        $result = $conn->query($selectTotalExam);
         $data = array();
-
-        if($result->num_rows >0){
+        if($result->num_rows > 0){
             while($row = $result->fetch_assoc()){
-                $data[] = new TitleChapter($row);
+                $data[] = $row;
             }
-
-            usort($data,function ($a, $b){
-                return strcmp($a->title, $b->title);
-            });
-
             echo json_encode($data);
         }
         else{

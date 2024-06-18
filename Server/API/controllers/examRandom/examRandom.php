@@ -26,7 +26,7 @@
         global $conn;
         $arrayID = array();
         $question = array();
-        $questionCritical = random_int(1,2);
+        $questionCritical = 2;
         $questionNomal = 25 - $questionCritical;
 
         while(count($arrayID) < $questionNomal){

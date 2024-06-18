@@ -27,7 +27,6 @@
             }
             $this->question_chapter = $temp["chapterId"];
             $this->trueAnswer = (int)$temp["trueAnswer"] -1;
-            // $this->hint = $temp["hint"];
             $this->mustCorrect = (boolval($temp["isDanger"]));
         }
 }

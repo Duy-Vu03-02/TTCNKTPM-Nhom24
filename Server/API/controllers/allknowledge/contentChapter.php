@@ -18,7 +18,6 @@
                     $data[] = new Question($row);
                 }
                 
-                // echo json_encode(array("count" => $result->num_rows));
                 echo json_encode($data);
             }
             else{

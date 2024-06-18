@@ -14,11 +14,6 @@ function generateUuid()
 
 if (isset($_POST['addExam'])) {
     date_default_timezone_set('Asia/Ho_Chi_Minh');
-
-    // Kết nối đến cơ sở dữ liệu trước khi thực hiện các truy vấn SQL
-    // Đảm bảo rằng biến $connect đã được khởi tạo ở đâu đó trong mã của bạn
-
-    // Hàm escape chuỗi SQL để tránh SQL injection
     function escapeString($connect, $string) {
         return mysqli_real_escape_string($connect, $string);
     }
@@ -39,7 +34,7 @@ if (isset($_POST['addExam'])) {
     $add = "INSERT INTO tbl_exam(id, code, name, description, createDate) 
         VALUES ('$examId', '$examCode', '$name', '$description', '$createDate')";
 
-    $ok = mysqli_query($connect, $add);
+    mysqli_query($connect, $add);
 
     // Số lượng câu hỏi muốn thêm vào đề thi
     $numQuestions = 25;
@@ -70,8 +65,16 @@ if (isset($_POST['addExam'])) {
     // Chọn ngẫu nhiên 2 câu hỏi điểm liệt
     $randomDangerQuestionIds = array_rand($dangerQuestionIds, 2);
 
+    $sql1 = "SELECT id FROM tbl_question WHERE isDanger = 0";
+    $result1 = mysqli_query($connect, $sql);
+
+    $questionIds1 = array();
+    while ($row1 = mysqli_fetch_assoc($result1)) {
+        $questionIds1[] = $row1['id'];
+    }
     // Lấy ngẫu nhiên các câu hỏi còn lại
-    $randomQuestionKeys = array_diff(array_rand($questionIds, $numQuestions - 2), $randomDangerQuestionIds);
+    $randomQuestionKeys = array_diff(array_rand($questionIds1, $numQuestions - 2), $randomDangerQuestionIds);
+
 
     // Kết hợp danh sách câu hỏi điểm liệt với danh sách câu hỏi ngẫu nhiên
     $selectedQuestionKeys = array_merge($randomDangerQuestionIds, $randomQuestionKeys);
@@ -81,28 +84,19 @@ if (isset($_POST['addExam'])) {
         $questionId = $questionIds[$key];
         $uniqueId = generateUuid();
         $sql = "INSERT INTO tbl_exam_question (id, examId, questionId) VALUES ('$uniqueId', '$examId', '$questionId')";
-        if (mysqli_query($connect, $sql)) {
-            echo "Câu hỏi đã được thêm vào đề thi thành công.";
-        } else {
-            echo "Error: " . $sql . "<br>" . mysqli_error($connect);
-        }
+        mysqli_query($connect, $sql);
     }
 } else if (isset($_POST['editExam'])) {
     $name = $_POST['name'];
     $description = $_POST['description'];
     $examId = $_GET['id'];
-
-    echo $name . "<br>";
-echo $description . "<br>";
-echo $examId . "<br>";
     $sql_editExam = "UPDATE tbl_exam 
     SET 
     name='$name',
     description = '$description'
     WHERE id ='$examId' ";
 
-    $query = mysqli_query($connect, $sql_editExam);
-    echo $query;
+    $mysqli_query($connect, $sql_editExam);
 } else if (isset($_POST['deleteExam'])) {
     $examId = $_GET['id'];
     $deleteExamSQL = "DELETE FROM tbl_exam WHERE id ='$examId';";

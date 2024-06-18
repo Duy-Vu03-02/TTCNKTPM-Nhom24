@@ -6,9 +6,9 @@
     header("Access-Control-Allow-Methods: GET, POST");
     header("Content-Type: application/json");
 
-    if($_SERVER["REQUEST_METHOD"] === "POST"){
+    if($_SERVER["REQUEST_METHOD"] === "GET"){
         $data = array() ;
-        $select = "SELECT * FROM titlenoticeboard";
+        $select = "SELECT * FROM tbl_titlenoticeboard";
         $result = $conn->query($select);
 
         if($result->num_rows > 0){

@@ -13,7 +13,7 @@
             $data = array();
 
             for($i = 0; $i < count($listID); $i++){
-                $select = "SELECT * FROM question where id = '$listID[$i]'";
+                $select = "SELECT * FROM tbl_question where id = '$listID[$i]'";
                 $result = $conn->query($select);
                 if($result->num_rows > 0){
                     while($row = $result->fetch_assoc()){
