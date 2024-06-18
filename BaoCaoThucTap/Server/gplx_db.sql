@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 23, 2024 lúc 04:52 PM
--- Phiên bản máy phục vụ: 10.4.32-MariaDB
--- Phiên bản PHP: 8.2.12
+-- Host: 127.0.0.1
+-- Generation Time: Jun 18, 2024 at 10:36 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `gplx_db`
+-- Database: `gplx_db`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `tbl_chapter`
+-- Table structure for table `tbl_chapter`
 --
 
 CREATE TABLE `tbl_chapter` (
@@ -36,7 +36,7 @@ CREATE TABLE `tbl_chapter` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
--- Đang đổ dữ liệu cho bảng `tbl_chapter`
+-- Dumping data for table `tbl_chapter`
 --
 
 INSERT INTO `tbl_chapter` (`id`, `code`, `name`, `description`, `quantity`) VALUES
@@ -51,7 +51,7 @@ INSERT INTO `tbl_chapter` (`id`, `code`, `name`, `description`, `quantity`) VALU
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `tbl_detailnoticeboard`
+-- Table structure for table `tbl_detailnoticeboard`
 --
 
 CREATE TABLE `tbl_detailnoticeboard` (
@@ -63,7 +63,7 @@ CREATE TABLE `tbl_detailnoticeboard` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `tbl_detailnoticeboard`
+-- Dumping data for table `tbl_detailnoticeboard`
 --
 
 INSERT INTO `tbl_detailnoticeboard` (`id`, `img`, `title`, `content`, `detail_titlenoticeboard`) VALUES
@@ -303,7 +303,7 @@ INSERT INTO `tbl_detailnoticeboard` (`id`, `img`, `title`, `content`, `detail_ti
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `tbl_exam`
+-- Table structure for table `tbl_exam`
 --
 
 CREATE TABLE `tbl_exam` (
@@ -314,18 +314,10 @@ CREATE TABLE `tbl_exam` (
   `createDate` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
---
--- Đang đổ dữ liệu cho bảng `tbl_exam`
---
-
-INSERT INTO `tbl_exam` (`id`, `code`, `name`, `description`, `createDate`) VALUES
-('dc8379ca-705a-4e5b-aae5-bc0e6747561a', 'De671', 'de 3 dap an', '', '2024-05-15 13:34:45'),
-('f345e22e-3505-43de-874c-150ec9885b6e', 'De654', 'de3dapan', '', '2024-05-15 13:52:24');
-
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `tbl_exam_question`
+-- Table structure for table `tbl_exam_question`
 --
 
 CREATE TABLE `tbl_exam_question` (
@@ -334,66 +326,10 @@ CREATE TABLE `tbl_exam_question` (
   `questionId` varchar(36) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
---
--- Đang đổ dữ liệu cho bảng `tbl_exam_question`
---
-
-INSERT INTO `tbl_exam_question` (`id`, `examId`, `questionId`) VALUES
-('0a16da92-0326-47f0-95a4-cc280ffba118', 'dc8379ca-705a-4e5b-aae5-bc0e6747561a', 'fb8d860f-02dc-46fb-b541-77a1db1c990f'),
-('1c3ca1b1-6123-41fb-8358-6d2b3f65b093', 'f345e22e-3505-43de-874c-150ec9885b6e', '29c7bad3-23dc-43c7-bbc9-c3d3f6667aab'),
-('1febe54c-0be1-4d1c-929d-750ddb7be15f', 'f345e22e-3505-43de-874c-150ec9885b6e', 'bddc9e19-3f18-4370-9cc5-12c67ffdb984'),
-('21fc855d-a1d5-49e3-a3b4-f4763ee8dd5e', 'f345e22e-3505-43de-874c-150ec9885b6e', '7d9cb4d7-1fd5-40ac-bd7b-5b100264e44a'),
-('245419d3-0a9b-4694-88fd-0a5bdbaefffc', 'dc8379ca-705a-4e5b-aae5-bc0e6747561a', '1b5c9caa-202c-4e63-a1d7-d057d6d75629'),
-('32042d1f-e061-4b5a-87fc-9c1e513d1832', 'dc8379ca-705a-4e5b-aae5-bc0e6747561a', 'f8107952-6350-4ac5-8c4b-938f32f38d6f'),
-('32ff89cf-1d15-43f4-a92b-4d63c543673d', 'dc8379ca-705a-4e5b-aae5-bc0e6747561a', '026c776b-5598-410e-857b-cb5402f4e836'),
-('395593f0-3b92-4f49-9f10-e4722d4e4107', 'f345e22e-3505-43de-874c-150ec9885b6e', '5bef9b15-2a0a-4357-a6ab-52790698913f'),
-('3a35356c-d44b-47eb-a863-8ca7c4c60474', 'f345e22e-3505-43de-874c-150ec9885b6e', '0fea7b09-1dba-4064-8805-884e2a25f590'),
-('3fa9396a-9f5c-4aca-adc5-257072255477', 'f345e22e-3505-43de-874c-150ec9885b6e', '39b14785-f839-4ea3-a06f-27cade3ffd12'),
-('4170881a-2ff3-4154-849d-c3220e73b85b', 'dc8379ca-705a-4e5b-aae5-bc0e6747561a', 'e8dc2e66-9708-412e-a69d-d77cf14d55b5'),
-('4400a081-4d14-4e73-a9aa-4eb3073e0dd7', 'f345e22e-3505-43de-874c-150ec9885b6e', 'e80caed1-c5bf-4c5c-a50b-260e0c600013'),
-('45e17d67-d046-44d1-9047-37cb62cbc763', 'f345e22e-3505-43de-874c-150ec9885b6e', '521af762-b304-45d7-858e-79db981a6b73'),
-('46149444-b466-42bd-95fd-81d134c680e3', 'f345e22e-3505-43de-874c-150ec9885b6e', '2e70f064-980b-4dae-9841-07019bf0f6c5'),
-('4b6fc11c-8894-4bb0-8988-f19a25df0575', 'dc8379ca-705a-4e5b-aae5-bc0e6747561a', 'f5f27ed5-d638-4f3b-99b7-34984e4c8d47'),
-('4c46e0b9-e1a5-4a57-8c9a-05963c067540', 'dc8379ca-705a-4e5b-aae5-bc0e6747561a', '2d5ee043-6c6a-4349-8fc7-8253290c074f'),
-('4d56b838-e85d-4e6f-8a6b-dad5785617e7', 'dc8379ca-705a-4e5b-aae5-bc0e6747561a', '9aa3ecce-5c91-4328-b308-9cc8a4e8173c'),
-('539e708d-6868-42ce-a96d-8a35fe283d51', 'f345e22e-3505-43de-874c-150ec9885b6e', 'f9a1391d-f4c8-49d6-a76d-2be81e4e9a33'),
-('564aaf90-c5f2-49c8-b4e4-108968c52711', 'dc8379ca-705a-4e5b-aae5-bc0e6747561a', '521af762-b304-45d7-858e-79db981a6b73'),
-('5a8083f2-5694-4ba0-97b6-75544b319034', 'f345e22e-3505-43de-874c-150ec9885b6e', '4b7d8a59-bac0-42fb-92c3-3bd972f9c7f1'),
-('5ca70367-0779-42be-8fad-2745912f6932', 'dc8379ca-705a-4e5b-aae5-bc0e6747561a', '7a4125e2-d977-4fa5-b3d3-70e134069ded'),
-('5e49a1c3-7ab9-4b8b-ab0d-6a6aefc9b9d6', 'dc8379ca-705a-4e5b-aae5-bc0e6747561a', '98b3c467-fb80-4e0f-815f-99a4ce474d92'),
-('62fa5eab-76c9-4db4-85b7-b4caf091ff31', 'dc8379ca-705a-4e5b-aae5-bc0e6747561a', '7a2ddd96-add0-4588-85be-96d19ead7064'),
-('6a00f7d3-3a48-4aee-9cb4-2478446434eb', 'f345e22e-3505-43de-874c-150ec9885b6e', 'f509c4db-965d-4343-a6a9-ed4d7b1618f9'),
-('71fe5ec7-3920-4d64-9587-ff4fb0645f95', 'dc8379ca-705a-4e5b-aae5-bc0e6747561a', 'b12de62b-77aa-49a3-bdf2-c586f0b01543'),
-('733f54f8-ef80-4820-8cff-0ab03e1435c8', 'dc8379ca-705a-4e5b-aae5-bc0e6747561a', '350f9384-c71c-472e-b65f-8740eee72f45'),
-('816b6bdf-f5ff-43e6-a488-376b6d7cf8d9', 'dc8379ca-705a-4e5b-aae5-bc0e6747561a', '57f074d0-bdaf-420d-b7ca-113331b392b4'),
-('9371c4d7-7b6a-499f-a142-7f7afab3e3f3', 'f345e22e-3505-43de-874c-150ec9885b6e', 'dcc44555-39cf-4915-984e-ec42aacd11bd'),
-('99015694-c85e-446f-b181-587af47d2c27', 'dc8379ca-705a-4e5b-aae5-bc0e6747561a', 'd5bb14a2-f3a7-4a02-b1ed-0492d1104afe'),
-('9d667925-1eac-4e27-b08c-54952a6db44f', 'dc8379ca-705a-4e5b-aae5-bc0e6747561a', '29c7bad3-23dc-43c7-bbc9-c3d3f6667aab'),
-('a6af144c-2039-400e-b7ed-481fba1d8937', 'f345e22e-3505-43de-874c-150ec9885b6e', '6c58b769-b627-479e-afdf-1734e3b1a260'),
-('aba689a4-be94-4c3a-a9cb-38e662ea3c38', 'f345e22e-3505-43de-874c-150ec9885b6e', '423b28d3-aca8-4951-9e83-61298c713e26'),
-('af8fa2a7-6452-4aa7-99a9-d0b2f29624d8', 'dc8379ca-705a-4e5b-aae5-bc0e6747561a', 'bd79b4b8-2def-4b4e-86c6-70d64f066486'),
-('b662dd95-1c45-4aa8-9185-dc0aade0b038', 'f345e22e-3505-43de-874c-150ec9885b6e', '8ea03272-4027-4753-803b-9f9fd42c3ffb'),
-('b774f055-e2b7-43bd-9159-b872c8923676', 'f345e22e-3505-43de-874c-150ec9885b6e', '6dde4d50-6a8f-401c-85fb-5a622e2098f7'),
-('bc7f4c33-b33f-4165-bf99-090836c576fc', 'dc8379ca-705a-4e5b-aae5-bc0e6747561a', '054b6cde-57d9-4c04-a389-d7eb2127ac9a'),
-('c004636e-892c-475a-99aa-aa3e98ab06b0', 'dc8379ca-705a-4e5b-aae5-bc0e6747561a', '37226c45-c5dc-407b-bf27-32057313329c'),
-('c28b3592-c25f-4e98-89e4-fc29df55dc9f', 'dc8379ca-705a-4e5b-aae5-bc0e6747561a', 'c7c5ae9d-1745-4691-99e2-a7232eee6177'),
-('c825eb29-0e88-46d1-91b8-664be14b521e', 'f345e22e-3505-43de-874c-150ec9885b6e', '90f1c284-ccae-4653-b0fb-acfa561a28fb'),
-('c918adad-ebac-4833-9dae-3ea15023bb30', 'f345e22e-3505-43de-874c-150ec9885b6e', 'f3f95824-932a-4973-abd1-20b7408556e3'),
-('ce12da35-c2d9-42ed-aa44-3bcd072c2439', 'f345e22e-3505-43de-874c-150ec9885b6e', '7ceec395-d869-4296-8291-7fea3d87bdfd'),
-('d06d5a69-777b-4dbc-a12a-918f26e17e91', 'f345e22e-3505-43de-874c-150ec9885b6e', '0526b1a6-fbc0-4368-96e3-e321c8223d47'),
-('d19c2d9a-b72d-4074-89b0-72d82af0685c', 'dc8379ca-705a-4e5b-aae5-bc0e6747561a', 'c119356b-e7cb-44f5-b11c-10871f81f45e'),
-('d25bf1b6-5c53-48e7-8e2f-5fe9b20c02e1', 'f345e22e-3505-43de-874c-150ec9885b6e', '332bef05-2a16-4721-b51a-f8e10cfe27c7'),
-('d7a416c7-a38b-43cf-bd66-5840e6c6721c', 'f345e22e-3505-43de-874c-150ec9885b6e', '003e8387-fa00-4466-b066-31fa9d4adf06'),
-('e75f11c0-2135-4150-8871-972b25d423de', 'dc8379ca-705a-4e5b-aae5-bc0e6747561a', 'aee4220c-8590-47db-bf3f-f6808dd30ed5'),
-('f5229ebd-ca11-459e-a2ac-8295b09f7582', 'f345e22e-3505-43de-874c-150ec9885b6e', '1c0db361-bc1a-4b22-b837-eab451516ac6'),
-('fd042139-573f-4bd8-ab86-ce8f86a58b48', 'f345e22e-3505-43de-874c-150ec9885b6e', '459b48c5-de67-40f4-a034-3eca33548212'),
-('fecb4430-3233-4b97-afa8-d92668267c39', 'dc8379ca-705a-4e5b-aae5-bc0e6747561a', '5b5bf303-a2ea-4ff7-b741-e1bd3b5d89f6'),
-('ffc1faaf-e3f5-4b98-aaaf-8ee1b390cdb4', 'dc8379ca-705a-4e5b-aae5-bc0e6747561a', '10c0c8b7-9c5a-4633-abd9-e4904cd641f0');
-
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `tbl_question`
+-- Table structure for table `tbl_question`
 --
 
 CREATE TABLE `tbl_question` (
@@ -413,11 +349,11 @@ CREATE TABLE `tbl_question` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
--- Đang đổ dữ liệu cho bảng `tbl_question`
+-- Dumping data for table `tbl_question`
 --
 
 INSERT INTO `tbl_question` (`id`, `code`, `questionImage`, `title`, `chapterId`, `option_1`, `option_2`, `option_3`, `option_4`, `trueAnswer`, `isDanger`, `totalcorrect`, `totalerr`) VALUES
-('003e8387-fa00-4466-b066-31fa9d4adf06', 'Fiy7xqGT', NULL, '                                                                                                   Người ngồi trên xe mô tô hai bánh, xe mô tô ba bánh, xe gắn máy khi tham gia giao thông có được sử dụng ô khi trời mưa hay không?                                                                                                            ', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '   1. Được sử dụng.', '   2. Chỉ người ngồi sau được sử dụng.', '   3. Không được sử dụng.', '   4. Được sử dụng nếu không có áo mưa.', 3, 1, 63, 204),
+('003e8387-fa00-4466-b066-31fa9d4adf06', 'Fiy7xqGT', NULL, '                                                                                                   Người ngồi trên xe mô tô hai bánh, xe mô tô ba bánh, xe gắn máy khi tham gia giao thông có được sử dụng ô khi trời mưa hay không?                                                                                                            ', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '   1. Được sử dụng.', '   2. Chỉ người ngồi sau được sử dụng.', '   3. Không được sử dụng.', '   4. Được sử dụng nếu không có áo mưa.', 3, 1, 64, 205),
 ('009896f9-9110-4014-a562-479bdc7d4c4f', 'LzanJ0sO', NULL, 'Bạn đang lái xe trong khu vực đô thị từ 22 giờ đến 5 giờ sáng hôm sau và cần vượt một xe khác, bạn cần báo hiệu như thế nào để đảm bảo an toàn giao thông?', '48bc05e7-5143-4fb3-8ecb-a53ad21c18cd', '1. Phải báo hiệu bằng đèn hoặc còi', '2. Chỉ được báo hiệu bằng còi.', '3. Phải báo hiệu bằng cả còi và đèn.', '4. Chỉ được báo hiệu bằng đèn.', 4, 0, 0, 27),
 ('00fe0ac0-af0b-499e-a91e-caf3d1aefc9c', 'mUqWFLJC', 'https://onthibanglaixe.net/img/q508.png', 'Xe nào đỗ vi phạm quy tắc giao thông?', 'c178f5c3-6950-4d1a-859b-7b366e8bfa49', '1. Cả hai xe.', '2. Không xe nào vi phạm.', '3. Chỉ xe mô tô vi phạm.', '4. Chỉ xe tải vi phạm.', 1, 0, 6, 6),
 ('026c776b-5598-410e-857b-cb5402f4e836', 'OBBKdfjN', NULL, 'Tốc độ tối đa cho phép đối với xe máy chuyên dùng, xe gắn máy (kể cả xe máy điện) và các loại xe tương tự trên đường bộ (trừ đường cao tốc) không được vượt quá bao nhiêu km/h?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. 50 km/h.', '2. 40 km/h.', '3. 60 km/h.', NULL, 2, 0, 107, 231),
@@ -426,7 +362,7 @@ INSERT INTO `tbl_question` (`id`, `code`, `questionImage`, `title`, `chapterId`,
 ('046bdbcd-6d27-45d2-bcfb-87082b40122c', '0lORMluB', 'https://onthibanglaixe.net/img/q319.png', 'Khi gặp biển nào xe được rẽ trái?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Biển 1.', '2. Biển 2.', '3. Không biển nào.', NULL, 2, 0, 0, 1),
 ('048506b6-3e22-4827-8505-ec5c650da2c4', 'eOKkr394', NULL, '                                        Hành vi sử dụng xe mô tô để kéo, đẩy xe mô tô khác bị hết xăng đến trạm mua xăng có được phép hay không?                                    ', '50ccd9c5-ce5e-4921-9e23-de46a9558c38', ' 1. Chỉ được kéo nếu đã nhìn thấy trạm xăng.', ' 2. Chỉ được thực hiện trên đường vắng phương tiện cùng tham gia giao thông.', ' 3. Không được phép.', NULL, 3, 1, 0, 85),
 ('04fce361-67f9-4414-a7bd-05601da91038', 'P9vdOS1x', 'https://onthibanglaixe.net/img/q374.png', 'Biển nào báo hiệu sắp đến chỗ giao nhau nguy hiểm?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Biển 1.', '2. Biển 1 và 2.', '3. Biển 2 và 3.', '4. Cả ba biển.', 4, 0, 0, 0),
-('0526b1a6-fbc0-4368-96e3-e321c8223d47', 'VfuUnJWa', 'https://onthibanglaixe.net/img/q321.png', 'Biển nào cấm các phương tiện giao thông đường bộ rẽ phải?', '4bc15ce0-308e-4bb7-8e5e-5a98d8ae59ae', '1. Biển 1 và 2.', '2. Biển 1 và 3.', '3. Biển 2 và 3.', '4. Cả ba biển.', 1, 0, 92, 141),
+('0526b1a6-fbc0-4368-96e3-e321c8223d47', 'VfuUnJWa', ' https://onthibanglaixe.net/img/q321.png', '                                        Biển nào cấm các phương tiện giao thông đường bộ rẽ phải?                                    ', '4bc15ce0-308e-4bb7-8e5e-5a98d8ae59ae', ' 1. Biển 1 và 2.', ' 2. Biển 1 và 3.', ' 3. Biển 2 và 3.', ' 4. Cả ba biển.', 1, 1, 92, 143),
 ('053d1957-ce6a-4b83-808d-f75bf47d567b', 'ipNqs0cy', NULL, 'Khi sử dụng giấy phép lái xe đã khai báo mất để điều khiển phương tiện cơ giới đường bộ, ngoài việc bị thu hồi giấy phép lái xe, chịu trách nhiệm trước pháp luật, người lái xe không được cấp giấy phép lái xe trong thời gian bao nhiêu năm?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. 02 năm.', '2. 03 năm.', '3. 05 năm.', '4. 04 năm.', 3, 0, 0, 7),
 ('054b6cde-57d9-4c04-a389-d7eb2127ac9a', 'a0n5zU37', 'https://onthibanglaixe.net/img/q402.png', 'Biển nào báo hiệu “Chú ý chướng ngại vật”?', '4bc15ce0-308e-4bb7-8e5e-5a98d8ae59ae', '1. Biển 1.', '2. Biển 2 và 3.', '3. Cả ba biển', NULL, 2, 0, 109, 213),
 ('060b7b99-3278-482c-b467-e0541a608658', 'Adl6Bbs8', 'https://onthibanglaixe.net/img/q480.png', 'Vạch kẻ đường nào dưới đây là vạch phân chia hai chiều xe chạy (vạch tim đường)?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Vạch 1.', '2. Vạch 2.', '3. Vạch 3.', '4. Vạch 1 và 3.', 4, 0, 0, 13),
@@ -443,7 +379,7 @@ INSERT INTO `tbl_question` (`id`, `code`, `questionImage`, `title`, `chapterId`,
 ('0e36485a-5237-418c-a8ca-bf62d04fa6ad', '0HQb4ZwA', 'https://onthibanglaixe.net/img/q73.png', 'Biển báo hiệu có dạng tam giác đều, viền đỏ, nền màu vàng, trên có hình vẽ màu đen là loại biển gì dưới đây?', '48bc05e7-5143-4fb3-8ecb-a53ad21c18cd', '1. Biển báo nguy hiểm.', '2. Biển báo cấm.', '3. Biển báo hiệu lệnh.', '4. Biển báo chỉ dẫn.', 1, 0, 16, 22),
 ('0ebc4837-81c6-4d5d-80bd-c56bff690767', 'SjO802Q3', 'https://onthibanglaixe.net/img/q333.png', 'Khi gặp biển nào xe ưu tiên theo luật định vẫn phải dừng lại?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Biển 1.', '2. Biển 2.', '3. Cả ba biển.', NULL, 2, 0, 0, 0),
 ('0f8627c9-8e4c-4a57-8e79-94646ef15a68', 'oSedbYWT', NULL, 'Người ngồi trên xe mô tô hai bánh, xe mô tô ba bánh, xe gắn máy khi tham gia giao thông có được bám, kéo hoặc đẩy các phương tiện khác không?', '48bc05e7-5143-4fb3-8ecb-a53ad21c18cd', '1. Được phép.', '2. Được bám trong trường hợp phương tiện của mình bị hỏng.', '3. Được kéo, đẩy trong trường hợp phương tiện khác bị hỏng.', '4. Không được phép.', 4, 0, 0, 218),
-('0fea7b09-1dba-4064-8805-884e2a25f590', 'h1BjFSeF', NULL, 'Để đảm bảo an toàn khi tham gia giao thông, người lái xe lái xe mô tô hai bánh cần điều khiển tay ga như thế nào trong các trường hợp dưới đây?', '4548014d-cf9c-4ab6-9b7c-7e7821b78562', '1. Tăng ga thật nhanh, giảm ga từ từ.', '2. Tăng ga thật nhanh, giảm ga thật nhanh.', '3. Tăng ga từ từ, giảm ga thật nhanh.', '4. Tăng ga từ từ, giảm ga từ từ.', 3, 0, 63, 246),
+('0fea7b09-1dba-4064-8805-884e2a25f590', 'h1BjFSeF', NULL, 'Để đảm bảo an toàn khi tham gia giao thông, người lái xe lái xe mô tô hai bánh cần điều khiển tay ga như thế nào trong các trường hợp dưới đây?', '4548014d-cf9c-4ab6-9b7c-7e7821b78562', '1. Tăng ga thật nhanh, giảm ga từ từ.', '2. Tăng ga thật nhanh, giảm ga thật nhanh.', '3. Tăng ga từ từ, giảm ga thật nhanh.', '4. Tăng ga từ từ, giảm ga từ từ.', 3, 0, 64, 247),
 ('10944c7f-ad06-473f-930a-6be9e02b9e78', 'wpzpNZRC', 'https://onthibanglaixe.net/img/q504.png', 'Thứ tự các xe đi như thế nào là đúng quy tắc giao thông?', 'c178f5c3-6950-4d1a-859b-7b366e8bfa49', '1. Xe khách, xe tải, mô tô, xe con.', '2. Xe con, xe khách, xe tải, mô tô.', '3. Mô tô, xe tải, xe khách, xe con.', '4. Mô tô, xe tải, xe con, xe khách.', 3, 0, 0, 0),
 ('10c0c8b7-9c5a-4633-abd9-e4904cd641f0', 'IQlC2vw1', 'https://onthibanglaixe.net/img/q83.png', 'Khi gặp hiệu lệnh như dưới đây của cảnh sát giao thông thì người tham gia giao thông phải đi như thế nào là đúng quy tắc giao thông?', '48bc05e7-5143-4fb3-8ecb-a53ad21c18cd', '1. Người tham gia giao thông ở hướng đối diện cảnh sát giao thông được đi, các hướng khác cần phải dừng lại.', '2. Người tham gia giao thông được rẽ phải theo chiều mũi tên màu xanh ở bục cảnh sát giao thông.', '3. Người tham gia giao thông ở các hướng đều phải dừng lại trừ các xe đã ở trong khu vực giao nhau.', '4. Người ở hướng đối diện cảnh sát giao thông phải dừng lại, các hướng khác được đi trong đó có bạn.', 3, 0, 0, 2891),
 ('11111f42-24f2-4428-97f7-7b5a9981d496', 'SJNISLUd', NULL, '                                                                                 Người ngồi trên xe mô tô hai bánh, ba bánh, xe gắn máy khi tham gia giao thông có được mang, vác vật cồng kềnh hay không?                                                                        ', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '  1. Được mang, vác tùy trường hợp cụ thể.', '  2. Không được mang, vác.', '  3. Được mang, vác nhưng phải đảm bảo an toàn.', '  4. Được mang vác tùy theo sức khỏe của bản thân.', 2, 1, 4, 2),
@@ -460,7 +396,7 @@ INSERT INTO `tbl_question` (`id`, `code`, `questionImage`, `title`, `chapterId`,
 ('1b51c0a0-7067-4f66-994b-dc1ba352659b', 'Mz8pEqhu', 'https://onthibanglaixe.net/img/q311.png', 'Khi gặp biển nào thì xe mô tô hai bánh được đi vào?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Không biển nào.', '2. Biển 1 và 2.', '3. Biển 2 và 3.', '4. Cả ba biển.', 3, 0, 0, 13),
 ('1b5c9caa-202c-4e63-a1d7-d057d6d75629', 'm28cLekW', 'https://onthibanglaixe.net/img/q528.png', 'Các xe đi như thế nào là đúng quy tắc giao thông?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Các xe ở phía tay phải và tay trái của người điều khiển được phép đi thẳng.', '2. Cho phép các xe ở mọi hướng được rẽ phải.', '3. Tất cả các xe phải dừng lại trước ngã tư, trừ những xe đã ở trong ngã tư được phép tiếp tục đi.', NULL, 3, 0, 43, 404),
 ('1badd97a-161c-48f6-a418-15d039b786dc', 'okVJxJST', 'https://onthibanglaixe.net/img/q562.png', 'Các xe đi theo hướng mũi tên, xe nào vi phạm quy tắc giao thông?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Xe con, xe tải, xe khách.', '2. Xe tải, xe khách, xe mô tô.', '3. Xe khách, xe mô tô, xe con.', '4. Cả bốn xe.', 2, 0, 2, 3),
-('1c0db361-bc1a-4b22-b837-eab451516ac6', '00d4fBd9', NULL, 'Tại nơi đường bộ giao nhau cùng mức với đường sắt chỉ có đèn tín hiệu hoặc chuông báo hiệu, khi đèn tín hiệu màu đỏ đã bật sáng hoặc có tiếng chuông báo hiệu, người tham gia giao thông phải dừng lại ngay và giữ khoảng cách tối thiểu bao nhiêu mét tính từ ray gần nhất?', '48bc05e7-5143-4fb3-8ecb-a53ad21c18cd', '1. 5 mét.', '2. 3 mét.', '3. 4 mét.', NULL, 1, 0, 229, 0),
+('1c0db361-bc1a-4b22-b837-eab451516ac6', '00d4fBd9', NULL, 'Tại nơi đường bộ giao nhau cùng mức với đường sắt chỉ có đèn tín hiệu hoặc chuông báo hiệu, khi đèn tín hiệu màu đỏ đã bật sáng hoặc có tiếng chuông báo hiệu, người tham gia giao thông phải dừng lại ngay và giữ khoảng cách tối thiểu bao nhiêu mét tính từ ray gần nhất?', '48bc05e7-5143-4fb3-8ecb-a53ad21c18cd', '1. 5 mét.', '2. 3 mét.', '3. 4 mét.', NULL, 1, 0, 229, 2),
 ('20a38c74-7d58-4b63-9280-1f9a36750c51', 'oryENDSp', 'https://onthibanglaixe.net/img/q442.png', 'Biển nào dưới đây báo hiệu hết cấm vượt?', '4bc15ce0-308e-4bb7-8e5e-5a98d8ae59ae', '1. Biển 1.', '2. Biển 2.', '3. Biển 3', '4. Biển 2 và 3.', 4, 0, 0, 21),
 ('211b469b-fdd4-452b-9466-ba4ec873a620', 'syBAO5dk', 'https://onthibanglaixe.net/img/q310.png', 'Biển nào báo hiệu cấm xe mô tô hai bánh đi vào?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Biển 1.', '2. Biển 2.', '3. Biển 3.', NULL, 1, 0, 1, 0),
 ('21324e95-cacb-4740-9720-2ca30a9cb85a', '5giRtsVc', 'https://onthibanglaixe.net/img/q486.png', 'Vạch dưới đây có ý nghĩa gì?', '4bc15ce0-308e-4bb7-8e5e-5a98d8ae59ae', '1. Vị trí dừng xe của các phương tiện vận tải hành khách công cộng.', '2. Báo cho người điều khiển được dừng phương tiện trong phạm vi phần mặt đường có bố trí vạch để tránh ùn tắc giao thông.', '3. Dùng để xác định vị trí giữa các phương tiện trên đường.', NULL, 1, 0, 25, 70),
@@ -471,18 +407,18 @@ INSERT INTO `tbl_question` (`id`, `code`, `questionImage`, `title`, `chapterId`,
 ('2565b08b-0ec3-4cd7-b8b5-5d93c1cb1e64', 'pPyShZ1x', NULL, 'Trong các khái niệm dưới đây khái niệm “dừng xe” được hiểu như thế nào là đúng?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', 'Là trạng thái đứng yên của phương tiện giao thông không giới hạn thời gian để cho người lên, xuống phương tiện, xếp dỡ hàng hóa hoặc thực hiện công việc khác.', 'Là trạng thái đứng yên tạm thời của phương tiện giao thông trong một khoảng thời gian cần thiết đủ để cho người lên, xuống phương tiện, xếp dỡ hàng hóa hoặc thực hiện công việc khác.', '3. Là trạng thái đứng yên của phương tiện giao thông không giới hạn thời gian giữa 02 lần vận chuyển hàng hóa hoặc hành khách.', NULL, 2, 0, 0, 4),
 ('27df2eac-d663-4f0c-892a-3c24b69d4f6a', 'ihaQYIgg', NULL, 'Khái niệm “phương tiện giao thông cơ giới đường bộ” được hiểu thế nào là đúng?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', 'Gồm xe ô tô; máy kéo; xe mô tô hai bánh; xe mô tô ba bánh; xe gắn máy; xe cơ giới dùng cho người khuyết tật và xe máy chuyên dùng.', 'Gồm xe ô tô; máy kéo; rơ moóc hoặc sơ mi rơ moóc được kéo bởi xe ô tô, máy kéo; xe mô tô hai bánh; xe mô tô ba bánh, xe gắn máy (kể cả xe máy điện) và các loại xe tương tự.', NULL, NULL, 2, 0, 3, 8),
 ('2964f670-c370-4e33-857d-ef6b48079119', 'xV0TwTRd', NULL, 'Hành vi sử dụng xe mô tô để kéo, đẩy xe mô tô khác bị hết xăng đến trạm mua xăng có được phép hay không?', '48bc05e7-5143-4fb3-8ecb-a53ad21c18cd', '1. Chỉ được kéo nếu đã nhìn thấy trạm xăng.', '2. Chỉ được thực hiện trên đường vắng phương tiện cùng tham gia giao thông.', '3. Không được phép.', NULL, 3, 0, 0, 20),
-('29c7bad3-23dc-43c7-bbc9-c3d3f6667aab', 'd6cMVyyF', 'https://onthibanglaixe.net/img/q572.png', 'Bạn xử lý như thế nào trong trường hợp này?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Tăng tốc độ, rẽ phải trước xe tải và xe đạp.', '2. Giảm tốc độ, rẽ phải sau xe tải và xe đạp.', '3. Tăng tốc độ, rẽ phải trước xe đạp.', NULL, 2, 0, 183, 360),
+('29c7bad3-23dc-43c7-bbc9-c3d3f6667aab', 'd6cMVyyF', 'https://onthibanglaixe.net/img/q572.png', 'Bạn xử lý như thế nào trong trường hợp này?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Tăng tốc độ, rẽ phải trước xe tải và xe đạp.', '2. Giảm tốc độ, rẽ phải sau xe tải và xe đạp.', '3. Tăng tốc độ, rẽ phải trước xe đạp.', NULL, 2, 0, 183, 362),
 ('2d2f7a4d-ab2d-42da-a640-7e12519585c6', 'QMpNX8MW', 'https://onthibanglaixe.net/img/q481.png', ' Các vạch dưới đây có tác dụng gì?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Phân chia hai chiều xe chạy ngược chiều nhau.', '2. Phân chia các làn xe chạy cùng chiều nhau.', NULL, NULL, 1, 0, 0, 0),
 ('2d5ee043-6c6a-4349-8fc7-8253290c074f', 'SYhdacFO', NULL, 'Người điều khiển phương tiện tham gia giao thông trong hầm đường bộ ngoài việc phải tuân thủ các quy tắc giao thông còn phải thực hiện những quy định nào dưới đây?', '48bc05e7-5143-4fb3-8ecb-a53ad21c18cd', '1. Xe cơ giới, xe máy chuyên dùng phải bật đèn; xe thô sơ phải bật đèn hoặc có vật phát sáng báo hiệu; chỉ được dừng xe, đỗ xe ở nơi quy định.', '2. Xe cơ giới phải bật đèn ngay cả khi đường hầm sáng; phải cho xe chạy trên một làn đường và chỉ chuyển làn ở nơi được phép; được quay đầu xe, lùi xe khi cần thiết.', '3. Xe máy chuyên dùng phải bật đèn ngay cả khi đường hầm sáng; phải cho xe chạy trên một làn đường và chỉ chuyển làn ở nơi được phép; được quay đầu xe, lùi xe khi cần thiết.', NULL, 1, 0, 111, 195),
 ('2dde6f79-1a58-465a-95f4-f6bb746fd136', 'mYWzPuVy', 'https://onthibanglaixe.net/img/q376.png', ' Biển nào báo hiệu “Giao nhau có tín hiệu đèn”?', '4bc15ce0-308e-4bb7-8e5e-5a98d8ae59ae', '1. Biển 1.', '2. Biển 2.', '3. Biển 3.', '4. Cả ba biển.', 3, 0, 0, 156),
-('2e70f064-980b-4dae-9841-07019bf0f6c5', 'MHqwLT2E', NULL, ' Trong các hành vi dưới đây, người lái xe mô tô có văn hóa giao thông phải ứng xử như thế nào?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Điều khiển xe đi bên phải theo chiều đi của mình; đi đúng phần đường, làn đường quy định; đội mũ bảo hiểm đạt chuẩn, cài quai đúng quy cách.', '2. Điều khiển xe đi trên phần đường, làn đường có ít phương tiện tham gia giao thông', '3. Đội mũ bảo hiểm ở nơi có biển báo bắt buộc đội mũ bảo hiểm', NULL, 1, 0, 98, 146),
+('2e70f064-980b-4dae-9841-07019bf0f6c5', 'MHqwLT2E', NULL, ' Trong các hành vi dưới đây, người lái xe mô tô có văn hóa giao thông phải ứng xử như thế nào?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Điều khiển xe đi bên phải theo chiều đi của mình; đi đúng phần đường, làn đường quy định; đội mũ bảo hiểm đạt chuẩn, cài quai đúng quy cách.', '2. Điều khiển xe đi trên phần đường, làn đường có ít phương tiện tham gia giao thông', '3. Đội mũ bảo hiểm ở nơi có biển báo bắt buộc đội mũ bảo hiểm', NULL, 1, 0, 98, 148),
 ('30393d16-0039-4f33-8b19-28a5158b578a', 'L6kXxa3W', 'https://onthibanglaixe.net/img/q322.png', 'Biển nào cấm các phương tiện giao thông đường bộ rẽ trái?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Biển 1 và 2.', '2. Biển 1 và 3', '3. Biển 2 và 3', '4. Cả ba biển.', 1, 0, 0, 0),
 ('307f7ee2-0242-4f39-998a-d4aacb5df6fd', 'SKq8srkl', 'https://onthibanglaixe.net/img/q378.png', 'Biển nào báo hiệu Đường sắt giao nhau với đường bộ không có rào chắn?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Biển 1 và 2.', '2. Biển 1 và 3.', '3. Biển 2 và 3.', '4. Cả ba biển.', 3, 0, 0, 91),
 ('3179a6b3-db6d-4ff9-a944-ff65f45677f9', '9Xtsv852', NULL, '                                        Cuộc đua xe chỉ được thực hiện khi nào?                                    ', '50ccd9c5-ce5e-4921-9e23-de46a9558c38', ' 1. Diễn ra trên đường phố không có người qua lại.', ' 2. Được người dân ủng hộ.', ' 3. Được cơ quan có thẩm quyền cấp phép.', NULL, 3, 1, 0, 0),
 ('32346a87-d173-461a-91d7-3720c9909fb6', '8NzQVt29', NULL, 'Trên đường bộ (trừ đường cao tốc) trong khu vực đông dân cư, đường hai chiều không có dải phân cách giữa, xe mô tô hai bánh, ô tô chở người đến 30 chỗ tham gia giao thông với tốc độ tối đa cho phép là bao nhiêu?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. 60 km/h.', '2. 50 km/h.', '3. 40 km/h.', NULL, 2, 0, 4, 58),
 ('323b6048-20f0-4b39-a5b4-c9d4cf5cb615', 'pC2CSegS', NULL, 'Khi điều khiển xe cơ giới người lái xe phải bật đèn tín hiệu rẽ nào trong các trường hợp nào sau đây?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Khi cho xe chạy thẳng.', '2. Trước khi thay đổi làn đường.', '3. Sau khi thay đổi làn đường.', NULL, 2, 0, 4, 10),
 ('324f5e3c-a98f-4876-925a-e8a703007e60', 'hwAGZfQI', 'https://onthibanglaixe.net/img/q373.png', 'Biển nào báo hiệu “Đường dành cho xe thô sơ”?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Biển 1.', '2. Biển 2.', '3. Biển 3.', NULL, 1, 0, 1, 6),
-('332bef05-2a16-4721-b51a-f8e10cfe27c7', '7NUtRgDC', NULL, 'Tốc độ tối đa cho phép đối với xe máy chuyên dùng, xe gắn máy (kể cả xe máy điện) và các loại xe tương tự trên đường bộ (trừ đường cao tốc) không được vượt quá bao nhiêu km/h?', '48bc05e7-5143-4fb3-8ecb-a53ad21c18cd', '1. 50 km/h.', '2. 40 km/h.', '3. 60 km/h.', NULL, 2, 0, 0, 230),
+('332bef05-2a16-4721-b51a-f8e10cfe27c7', '7NUtRgDC', NULL, 'Tốc độ tối đa cho phép đối với xe máy chuyên dùng, xe gắn máy (kể cả xe máy điện) và các loại xe tương tự trên đường bộ (trừ đường cao tốc) không được vượt quá bao nhiêu km/h?', '48bc05e7-5143-4fb3-8ecb-a53ad21c18cd', '1. 50 km/h.', '2. 40 km/h.', '3. 60 km/h.', NULL, 2, 0, 2, 230),
 ('334ec679-3c06-473f-b3fc-625c6b53c1d8', 'zeVAtNxB', 'https://onthibanglaixe.net/img/q492.png', 'Trường hợp này xe nào được quyền đi trước?', 'c178f5c3-6950-4d1a-859b-7b366e8bfa49', '1. Mô tô.', '2. Xe con.', NULL, NULL, 2, 0, 42, 82),
 ('33d10ea5-87dc-4d62-a892-55cb49af68fe', 'jYOJEh2A', 'https://onthibanglaixe.net/img/q437.png', 'Biển nào báo hiệu “Hướng đi thẳng phải theo”?', '4bc15ce0-308e-4bb7-8e5e-5a98d8ae59ae', '1. Biển 1.', '2. Biển 2.', NULL, NULL, 1, 0, 13, 26),
 ('33e00d26-ab3d-4ea1-93a9-5fe271a21b96', 'pXSrODz1', NULL, ' Bạn đang lái xe trên đường hẹp, xuống dốc và gặp một xe đang đi lên dốc, bạn cần làm gì?', '48bc05e7-5143-4fb3-8ecb-a53ad21c18cd', '1. Tiếp tục đi vì xe lên dốc phải nhường đường cho mình.', '2. Nhường đường cho xe lên dốc.', '3. Chỉ nhường đường khi xe lên dốc nháy đèn.', NULL, 2, 0, 3, 17),
@@ -497,7 +433,7 @@ INSERT INTO `tbl_question` (`id`, `code`, `questionImage`, `title`, `chapterId`,
 ('37226c45-c5dc-407b-bf27-32057313329c', 'Xdk9sx7s', NULL, 'Kỹ thuật cơ bản để giữ thăng bằng khi điều khiển xe mô tô đi trên đường gồ ghề như thế nào trong các trường hợp dưới đây?', '4548014d-cf9c-4ab6-9b7c-7e7821b78562', '1. Đứng thẳng trên giá gác chân lái sau đó hơi gập đầu gối và khuỷu tay, đi chậm để không nẩy quá mạnh.', '2. Ngồi lùi lại phía sau, tăng ga vượt nhanh qua đoạn đường xóc.', '3. Ngồi lệch sang bên trái hoặc bên phải để lấy thăng bằng qua đoạn đường gồ ghề.', NULL, 1, 0, 129, 229),
 ('3861b426-b8a5-48ca-bab2-d26f731299fb', 'OSTGFzX8', NULL, 'Gương chiếu hậu của xe mô tô hai bánh, có tác dụng gì trong các trường hợp dưới đây?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Để quan sát an toàn phía bên trái khi chuẩn bị rẽ trái.', '2. Để quan sát an toàn phía bên phải khi chuẩn bị rẽ phải.', '3. Để quan sát an toàn phía sau cả bên trái và bên phải trước khi chuyển hướng.', '4. Để quan sát an toàn phía trước cả bên trái và bên phải trước khi chuyển hướng.', 3, 0, 0, 11),
 ('388247a1-1a9f-4a14-b2a4-591605df722a', 'rw600LIB', 'https://onthibanglaixe.net/img/q479.png', 'Vạch kẻ đường nào dưới đây là vạch phân chia hai chiều xe chạy (vạch tim đường), xe không được lấn làn, không được đè lên vạch?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Vạch 1.', '2. Vạch 2.', '3. Vạch 3.', '4. Cả 3 vạch.', 2, 0, 25, 30),
-('39b14785-f839-4ea3-a06f-27cade3ffd12', 'XflsKaL8', NULL, 'Người lái xe mô tô xử lý như thế nào khi cho xe mô tô phía sau vượt?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Nếu đủ điều kiện an toàn, người lái xe phải giảm tốc độ, đi sát về bên phải của phần đường xe chạy cho đến khi xe sau đã vượt qua, không được gây trở ngại đối với xe xin vượt.', '2. Lái xe vào lề đường bên trái và giảm tốc độ để xe phía sau vượt qua, không được gây trở ngại đối với xe xin vượt.', '3. Nếu đủ điều kiện an toàn, người lái xe phải tăng tốc độ, đi sát về bên phải của phần đường xe chạy cho đến khi xe sau đã vượt qua.', NULL, 1, 0, 92, 147),
+('39b14785-f839-4ea3-a06f-27cade3ffd12', 'XflsKaL8', NULL, 'Người lái xe mô tô xử lý như thế nào khi cho xe mô tô phía sau vượt?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Nếu đủ điều kiện an toàn, người lái xe phải giảm tốc độ, đi sát về bên phải của phần đường xe chạy cho đến khi xe sau đã vượt qua, không được gây trở ngại đối với xe xin vượt.', '2. Lái xe vào lề đường bên trái và giảm tốc độ để xe phía sau vượt qua, không được gây trở ngại đối với xe xin vượt.', '3. Nếu đủ điều kiện an toàn, người lái xe phải tăng tốc độ, đi sát về bên phải của phần đường xe chạy cho đến khi xe sau đã vượt qua.', NULL, 1, 0, 92, 149),
 ('39dc1be7-a8c4-4449-a794-60cddf4cac94', 'NsAFNz74', 'https://onthibanglaixe.net/img/q520.png', 'Thứ tự các xe đi như thế nào là đúng quy tắc giao thông?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Xe con (A), mô tô, xe con (B), xe đạp.', '2. Xe con (B), xe đạp, mô tô, xe con (A).', '3. Xe con (A), xe con (B), mô tô + xe đạp.', '4. Mô tô + xe đạp, xe con (A), xe con (B).', 4, 0, 0, 0),
 ('3a8783bd-7a62-49ee-a463-a7cc5a02491d', 'baga9ReO', NULL, 'Những thói quen nào dưới đây khi điều khiển xe mô tô tay ga tham gia giao thông dễ gây tai nạn nguy hiểm?', '4548014d-cf9c-4ab6-9b7c-7e7821b78562', '1. Sử dụng còi.', '2. Phanh đồng thời cả phanh trước và phanh sau.', '3. Chỉ sử dụng phanh trước.', NULL, 3, 0, 0, 125),
 ('3a970378-a178-48a7-bcb9-024b7ce0a7cb', 'KUcdNn8b', 'https://onthibanglaixe.net/img/q478.png', 'Vạch kẻ đường nào dưới đây là vạch phân chia các làn xe cùng chiều?', '4bc15ce0-308e-4bb7-8e5e-5a98d8ae59ae', '1. Vạch 1.', '2. Vạch 2.', '3. Vạch 3.', '4. Vạch 1 và 2.', 3, 0, 0, 0),
@@ -512,13 +448,13 @@ INSERT INTO `tbl_question` (`id`, `code`, `questionImage`, `title`, `chapterId`,
 ('3f325670-744e-4f2f-be1a-4b58cd91fdd1', 'jLaJbMgx', 'https://onthibanglaixe.net/img/q440.png', 'Hiệu lực của biển “Tốc độ tối đa cho phép” hết tác dụng khi gặp biển nào dưới đây?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Biển 1.', '2. Biển 2.', '3. Biển 3.', '4. Biển 1 và 2.', 4, 0, 0, 0),
 ('3fc0a482-6073-4e39-a634-3fcad1c0f9fd', 'luhE4egE', NULL, '                                                                                 Cuộc đua xe chỉ được thực hiện khi nào?                                                                        ', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '  1. Diễn ra trên đường phố không có người qua lại.', '  2. Được người dân ủng hộ.', '  3. Được cơ quan có thẩm quyền cấp phép', NULL, 1, 1, 2, 3),
 ('415ab344-04db-4d66-bb95-1dd8b5433b0a', 'Tcd0Z23n', NULL, '                                                                                Người ngồi trên xe mô tô hai bánh, xe mô tô ba bánh, xe gắn máy khi tham gia giao thông có được bám, kéo hoặc đẩy các phương tiện khác không?                                                                        ', '50ccd9c5-ce5e-4921-9e23-de46a9558c38', '  1. Được phép.', '  2. Được bám trong trường hợp phương tiện của mình bị hỏng.', '  2. Được bám trong trường hợp phương tiện của mình bị hỏng.', '  4. Không được phép.', 4, 1, 0, 18),
-('423b28d3-aca8-4951-9e83-61298c713e26', 'zksCbfmv', NULL, 'Tác dụng của mũ bảo hiểm đối với người ngồi trên xe mô tô hai bánh trong trường hợp xảy ra tai nạn giao thông là gì?', '48bc05e7-5143-4fb3-8ecb-a53ad21c18cd', '1. Để làm đẹp', '2. Để tránh mưa nắng', '3. Để giảm thiểu chấn thương vùng đầu.', '4. Để các loại phương tiện khác dễ quan sát.', 3, 0, 63, 244),
+('423b28d3-aca8-4951-9e83-61298c713e26', 'zksCbfmv', NULL, 'Tác dụng của mũ bảo hiểm đối với người ngồi trên xe mô tô hai bánh trong trường hợp xảy ra tai nạn giao thông là gì?', '48bc05e7-5143-4fb3-8ecb-a53ad21c18cd', '1. Để làm đẹp', '2. Để tránh mưa nắng', '3. Để giảm thiểu chấn thương vùng đầu.', '4. Để các loại phương tiện khác dễ quan sát.', 3, 0, 64, 245),
 ('4304d25b-f0e1-4711-b725-c999fd261e74', 'InyhKJKG', 'https://onthibanglaixe.net/img/q561.png', 'Các xe đi theo hướng mũi tên, xe nào vi phạm quy tắc giao thông?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Xe tải, xe con.', '2. Xe khách, xe con.', '3. Xe khách, xe tải.', NULL, 3, 0, 0, 7),
 ('430e692c-b058-4c81-86ee-66c1e548532f', 'JGM05T5O', NULL, 'Khái niệm “đỗ xe” được hiểu như thế nào là đúng quy tắc giao thông?', '48bc05e7-5143-4fb3-8ecb-a53ad21c18cd', '1. Là trạng thái đứng yên của phương tiện giao thông có giới hạn trong một khoảng thời gian cần thiết đủ để cho người lên, xuống phương tiện đó, xếp dỡ hàng hóa hoặc thực hiện công việc khác.', '2. Là trạng thái đứng yên của phương tiện giao thông không giới hạn thời gian.', NULL, NULL, 2, 0, 8, 4),
 ('43c39c44-2a4f-42f8-b6f5-f77dcd7a672b', 'FgO88rke', NULL, 'Bạn đang lái xe phía trước có một xe cứu thương đang phát tín hiệu ưu tiên bạn có được phép vượt hay không?', '48bc05e7-5143-4fb3-8ecb-a53ad21c18cd', '1. Không được vượt.', '2. Được vượt khi đang đi trên cầu.', '3. Được phép vượt khi đi qua nơi giao nhau có ít phương tiện cùng tham gia giao thông.', '4. Được vượt khi đảm bảo an toàn.', 1, 0, 74, 67),
 ('44848a18-f5b6-45b6-a31f-655b1b6e4856', 'FOHjfsij', NULL, 'Người điều khiển xe mô tô phải giảm tốc độ và hết sức thận trọng khi qua những đoạn đường nào dưới đây?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Đường ướt, đường có sỏi cát trên nền đường.', '2. Đường hẹp có nhiều điểm giao cắt từ hai phía.', '3. Đường đèo dốc, vòng liên tục', '4. Tất cả các ý nêu trên.', 4, 0, 0, 158),
 ('4542c33b-df44-4006-a118-d7715f2c52b1', '2vlKlRrZ', 'https://onthibanglaixe.net/img/q376.png', 'Biển nào báo hiệu “Giao nhau có tín hiệu đèn”?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Biển 1.', '2. Biển 2.', '3. Biển 3.', '4. Cả ba biển.', 3, 0, 0, 0),
-('459b48c5-de67-40f4-a034-3eca33548212', '5a7JzeYN', 'https://onthibanglaixe.net/img/q483.png', ' Khi gặp vạch kẻ đường nào các xe được phép đè vạch?', '4bc15ce0-308e-4bb7-8e5e-5a98d8ae59ae', '1. Vạch 1.', '2. Vạch 2.', '3. Vạch 3.', '4. Vạch 1 và vạch 3.', 4, 0, 0, 230),
+('459b48c5-de67-40f4-a034-3eca33548212', '5a7JzeYN', 'https://onthibanglaixe.net/img/q483.png', ' Khi gặp vạch kẻ đường nào các xe được phép đè vạch?', '4bc15ce0-308e-4bb7-8e5e-5a98d8ae59ae', '1. Vạch 1.', '2. Vạch 2.', '3. Vạch 3.', '4. Vạch 1 và vạch 3.', 4, 0, 0, 232),
 ('45e4828c-163d-439b-ac1b-5bf1e2725346', 'YOlyaM2a', NULL, 'Bạn đang lái xe phía trước có một xe cảnh sát giao thông không phát tín hiệu ưu tiên bạn có được phép vượt hay không?', '48bc05e7-5143-4fb3-8ecb-a53ad21c18cd', '1. Không được vượt.', '2. Được vượt khi đang đi trên cầu.', '3. Được phép vượt khi đi qua nơi giao nhau có ít phương tiện cùng tham gia giao thông.', '4. Được vượt khi đảm bảo an toàn.', 4, 0, 0, 166),
 ('463ca31e-be63-4e3a-b973-a520def7c450', '7VxUgegc', NULL, ' Khi tránh nhau trên đường hẹp, người lái xe cần phải chú ý những điểm nào để đảm bảo an toàn giao thông?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Không nên đi cố vào đường hẹp; xe đi ở phía sườn núi nên dừng lại trước để nhường đường; khi dừng xe nhường đường phải đỗ ngay ngắn.', '2. Trong khi tránh nhau không nên đổi số; khi tránh nhau ban đêm, phải tắt đèn pha bật đèn cốt.', '3. Khi tránh nhau ban đêm, phải thường xuyên bật đèn pha tắt đèn cốt.', '4. Cả ý 1 và ý 2.', 4, 0, 0, 64),
 ('467388e7-e16a-4053-b7cd-9156894b4a04', 'Tns7TQZK', 'https://onthibanglaixe.net/img/q337.png', 'Gặp biển nào xe lam, xe xích lô máy được phép đi vào?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Biển 1.', '2. Biển 2.', '3. Biển 3.', NULL, 3, 0, 0, 22),
@@ -529,7 +465,7 @@ INSERT INTO `tbl_question` (`id`, `code`, `questionImage`, `title`, `chapterId`,
 ('484b25d4-35f2-4605-8e75-55f14c7b636c', 'HWovIXEH', 'https://onthibanglaixe.net/img/q309.png', 'Biển nào dưới đây xe gắn máy được phép đi vào?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Biển 1.', '2. Biển 2', '3. Cả hai biển.', NULL, 3, 0, 0, 4),
 ('48fe6c39-a063-46ff-9c63-40930d00ede3', '6YP7j5P9', 'https://onthibanglaixe.net/img/q567.png', 'Các xe đi theo thứ tự nào là đúng quy tắc giao thông đường bộ?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Xe của bạn, mô tô, xe con.', '2. Xe con, xe của bạn, mô tô.', '3. Mô tô, xe con, xe của bạn.', NULL, 3, 0, 0, 79),
 ('4a0cf8fe-c8fd-4c42-94c9-2f77e7382361', 'ISs3QS69', 'https://onthibanglaixe.net/img/q505.png', 'Trong trường hợp này xe nào đỗ vi phạm quy tắc giao thông?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Xe tải.', '2. Xe con và mô tô.', '3. Cả ba xe.', '4. Xe con và xe tải.', 1, 0, 30, 25),
-('4b7d8a59-bac0-42fb-92c3-3bd972f9c7f1', '3rlAzhks', 'https://onthibanglaixe.net/img/q401.png', ' Biển nào báo hiệu “Giao nhau với đường hai chiều”?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Biển 1.', '2. Biển 2.', '3. Biển 3.', NULL, 2, 0, 79, 157),
+('4b7d8a59-bac0-42fb-92c3-3bd972f9c7f1', '3rlAzhks', 'https://onthibanglaixe.net/img/q401.png', ' Biển nào báo hiệu “Giao nhau với đường hai chiều”?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Biển 1.', '2. Biển 2.', '3. Biển 3.', NULL, 2, 0, 80, 158),
 ('4cdb68c9-a739-4f2b-8ba2-13321b485843', 'JWkXcAlq', NULL, '                                        Người ngồi trên xe mô tô hai bánh, xe mô tô ba bánh, xe gắn máy khi tham gia giao thông có được sử dụng ô khi trời mưa hay không?                                    ', '50ccd9c5-ce5e-4921-9e23-de46a9558c38', ' 1. Được sử dụng', ' 2. Chỉ người ngồi sau được sử dụng.', ' 3. Không được sử dụng.', ' 4. Được sử dụng nếu không có áo mưa.', 3, 1, 0, 91),
 ('4d467d36-13eb-4c66-ac6c-ed25abc5fa35', 'HxL24qIQ', NULL, 'Khi tránh xe đi ngược chiều, các xe phải nhường đường như thế nào là đúng quy tắc giao thông?', '48bc05e7-5143-4fb3-8ecb-a53ad21c18cd', '1. Nơi đường hẹp chỉ đủ cho một xe chạy và có chỗ tránh xe thì xe nào ở gần chỗ tránh hơn phải vào vị trí tránh, nhường đường cho xe kia đi.', '2. Xe xuống dốc phải nhường đường cho xe đang lên dốc; xe nào có chướng ngại vật phía trước phải nhường đường cho xe không có chướng ngại vật đi trước.', '3. Xe lên dốc phải nhường đường cho xe xuống dốc; xe nào không có chướng ngại vật phía trước phải nhường đường cho xe có chướng ngại vật đi trước', '4. Cả ý 1 và ý 2.', 4, 0, 0, 24),
 ('4d7e52da-3268-4928-b059-a69142d144a6', 'gOismKbF', NULL, 'Người lái xe được hiểu như thế nào trong các khái niệm dưới đây?', '48bc05e7-5143-4fb3-8ecb-a53ad21c18cd', '1. Là người điều khiển xe cơ giới', '2. Là người điều khiển xe thô sơ.', '3. Là người điều khiển xe có súc vật kéo.', NULL, 1, 0, 3, 18),
@@ -538,7 +474,7 @@ INSERT INTO `tbl_question` (`id`, `code`, `questionImage`, `title`, `chapterId`,
 ('4ed6d47b-6199-4101-af37-ec52328a5032', 'KMTqMZXJ', NULL, '                                                                                Khi điều khiển xe mô tô hai bánh, xe mô tô ba bánh, xe gắn máy, những hành vi nào không được phép?                                                                        ', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '  1. Buông cả hai tay; sử dụng xe để kéo, đẩy xe khác, vật khác; sử dụng chân chống của xe quệt xuống đường khi xe đang chạy.', '  2. Buông một tay; sử dụng xe để chở người hoặc hàng hoá; để chân chạm xuống đất khi khởi hành.', '  3. Đội mũ bảo hiểm; chạy xe đúng tốc độ quy định và chấp hành đúng quy tắc giao thông đường bộ.', '  4. Chở người ngồi sau dưới 16 tuổi.', 1, 1, 2, 5),
 ('50145c60-8605-4ae9-97a6-7f09b5a55cdc', '1n1YWwNf', NULL, '                                                                                Người điều khiển phương tiện giao thông đường bộ mà trong cơ thể có chất ma túy có bị nghiêm cấm hay không?                                                                        ', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '  1.Bị nghiêm cấm.', '  2.Không bị nghiêm cấm', '  3. Không bị nghiêm cấm, nếu có chất ma túy ở mức nhẹ, có thể điều khiển phương tiện tham gia giao thông.', NULL, 1, 1, 11, 21),
 ('5213bc71-c7d3-4c41-8047-c9bd7d87c410', 'Feldsod3', 'https://onthibanglaixe.net/img/q479.png', ' Vạch kẻ đường nào dưới đây là vạch phân chia hai chiều xe chạy (vạch tim đường), xe không được lấn làn, không được đè lên vạch?', '4bc15ce0-308e-4bb7-8e5e-5a98d8ae59ae', '1. Vạch 1.', '2. Vạch 2.', '3. Vạch 3.', '4. Cả 3 vạch.', 2, 0, 13, 66),
-('521af762-b304-45d7-858e-79db981a6b73', 'XGp6tQG4', 'https://onthibanglaixe.net/img/q507.png', 'Theo hướng mũi tên, những hướng nào xe gắn máy đi được?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Cả ba hướng.', '2. Chỉ hướng 1 và 3.', '3. Chỉ hướng 1.', NULL, 1, 0, 203, 333),
+('521af762-b304-45d7-858e-79db981a6b73', 'XGp6tQG4', 'https://onthibanglaixe.net/img/q507.png', 'Theo hướng mũi tên, những hướng nào xe gắn máy đi được?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Cả ba hướng.', '2. Chỉ hướng 1 và 3.', '3. Chỉ hướng 1.', NULL, 1, 0, 203, 335),
 ('524d603e-deeb-4883-8423-1753dde86794', 'yPdQ7BZS', NULL, 'Khi muốn chuyển hướng, người lái xe phải thực hiện như thế nào để đảm bảo an toàn giao thông?', '48bc05e7-5143-4fb3-8ecb-a53ad21c18cd', '1. Quan sát gương, ra tín hiệu chuyển hướng, quan sát an toàn và chuyển hướng.', '2. Quan sát gương, giảm tốc độ, ra tín hiệu chuyển hướng, quan sát an toàn và chuyển hướng.', '3. Quan sát gương, tăng tốc độ, ra tín hiệu và chuyển hướng.', NULL, 2, 0, 3, 2),
 ('525af56c-6f80-499a-8da5-74385485228d', 'O4uyascQ', 'https://onthibanglaixe.net/img/q397.png', 'Biển nào báo hiệu “Đường đôi”?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Biển 1.', '2. Biển 2.', '3. Biển 3.', NULL, 3, 0, 0, 27),
 ('53e4fe11-6ac2-425e-99ce-566e122b1cd4', 'k1bfrBzW', NULL, 'Người đủ 16 tuổi được điều khiển các loại xe nào dưới đây?', '48bc05e7-5143-4fb3-8ecb-a53ad21c18cd', '1. Xe mô tô 2 bánh có dung tích xi-lanh từ 50 cm3 trở lên.', '2. Xe gắn máy có dung tích xi-lanh dưới 50 cm3.', '3. Xe ô tô tải dưới 3.500 kg; xe chở người đến 9 chỗ ngồi.', '4. Tất cả các ý nêu trên.', 2, 0, 0, 2519),
@@ -556,7 +492,7 @@ INSERT INTO `tbl_question` (`id`, `code`, `questionImage`, `title`, `chapterId`,
 ('58b96996-6689-490a-9878-ffeab8dc8df6', 'xvmj0nvK', NULL, 'Cuộc đua xe chỉ được thực hiện khi nào?', '48bc05e7-5143-4fb3-8ecb-a53ad21c18cd', '1. Diễn ra trên đường phố không có người qua lại.', '2. Được người dân ủng hộ.', '3. Được cơ quan có thẩm quyền cấp phép.', NULL, 3, 0, 0, 1),
 ('58de18db-dcda-4411-b25a-5a6f5fe25f2a', 'IiZtiZAz', 'https://onthibanglaixe.net/img/q507.png', 'Theo hướng mũi tên, những hướng nào xe gắn máy đi được?', 'c178f5c3-6950-4d1a-859b-7b366e8bfa49', '1. Cả ba hướng.', '2. Chỉ hướng 1 và 3.', '3. Chỉ hướng 1.', NULL, 1, 0, 31, 31),
 ('5b5bf303-a2ea-4ff7-b741-e1bd3b5d89f6', 'Ntc7UnIx', NULL, 'Trên đường bộ (trừ đường cao tốc) trong khu vực đông dân cư, đường đôi có dải phân cách giữa, xe mô tô hai bánh, ô tô chở người đến 30 chỗ tham gia giao thông với tốc độ tối đa cho phép là bao nhiêu?', '48bc05e7-5143-4fb3-8ecb-a53ad21c18cd', '1. 60 km/h.', '2. 50 km/h.', '3. 40 km/h.', NULL, 1, 0, 2770, 42),
-('5bef9b15-2a0a-4357-a6ab-52790698913f', 'ogvCgaX2', NULL, 'Người đủ bao nhiêu tuổi trở lên thì được điều khiển xe mô tô hai bánh, xe mô tô ba bánh có dung tích xi lanh từ 50 cm3 trở lên và các loại xe có kết cấu tương tự; xe ô tô tải, máy kéo có trọng tải dưới 3.500 kg; xe ô tô chở người đến 9 chỗ ngồi?', '48bc05e7-5143-4fb3-8ecb-a53ad21c18cd', '1. 16 tuổi.', '2. 18 tuổi.', '3. 17 tuổi.', NULL, 2, 0, 82, 159),
+('5bef9b15-2a0a-4357-a6ab-52790698913f', 'ogvCgaX2', NULL, 'Người đủ bao nhiêu tuổi trở lên thì được điều khiển xe mô tô hai bánh, xe mô tô ba bánh có dung tích xi lanh từ 50 cm3 trở lên và các loại xe có kết cấu tương tự; xe ô tô tải, máy kéo có trọng tải dưới 3.500 kg; xe ô tô chở người đến 9 chỗ ngồi?', '48bc05e7-5143-4fb3-8ecb-a53ad21c18cd', '1. 16 tuổi.', '2. 18 tuổi.', '3. 17 tuổi.', NULL, 2, 0, 84, 159),
 ('5d8f125c-52d4-488e-b2f8-7f82bdb0e37a', 'EJtOukfy', 'https://onthibanglaixe.net/img/q375.png', 'Biển nào báo hiệu “Giao nhau với đường sắt có rào chắn”?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Biển 1.', '2. Biển 2 và 3.', '3. Biển 3.', NULL, 1, 0, 5, 1),
 ('5d926553-4366-4dc7-ab00-30db7d8c2ef2', 'ICzhDwI3', NULL, ' “Làn đường” là gì?', '48bc05e7-5143-4fb3-8ecb-a53ad21c18cd', '1. Là một phần của phần đường xe chạy được chia theo chiều dọc của đường, sử dụng cho xe chạy.', '2. Là một phần của phần đường xe chạy được chia theo chiều dọc của đường, có bề rộng đủ cho xe chạy an toàn.', '3. Là đường cho xe ô tô chạy, dừng, đỗ an toàn.', NULL, 2, 0, 19, 31),
 ('5dd5597a-ea70-487b-8055-e86e78fd43c5', 'QRGtHlFO', 'https://onthibanglaixe.net/img/q499.png', 'Theo tín hiệu đèn, xe nào được phép đi?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Xe con và xe khách.', '2. Mô tô.', NULL, NULL, 1, 0, 4, 5),
@@ -590,10 +526,10 @@ INSERT INTO `tbl_question` (`id`, `code`, `questionImage`, `title`, `chapterId`,
 ('6ab6345f-022d-4e92-bd84-07176f2a2028', 'mzs6qDch', 'https://onthibanglaixe.net/img/q328.png', 'Biển nào xe được phép quay đầu nhưng không được rẽ trái?', '4bc15ce0-308e-4bb7-8e5e-5a98d8ae59ae', '1. Biển 1', '2. Biển 2.', '3. Cả 2 biển.', NULL, 1, 0, 6, 13),
 ('6b48e8cd-2fa0-4f75-8ae8-8467831bc3eb', 'qVWnlWfV', 'https://onthibanglaixe.net/img/q416.png', 'Biển nào chỉ dẫn nơi bắt đầu đoạn đường dành cho người đi bộ?', '4bc15ce0-308e-4bb7-8e5e-5a98d8ae59ae', '1. Biển 1.', '2. Biển 2.', '3. Biển 3.', NULL, 2, 0, 41, 2471),
 ('6b9defc4-aa2c-4021-a620-54dec5fed3e6', '7Bz4FTGS', NULL, '“Dải phân cách” trên đường bộ gồm những loại nào?', '48bc05e7-5143-4fb3-8ecb-a53ad21c18cd', '1. Dải phân cách gồm loại cố định và loại di động.', '2. Dải phân cách gồm tường chống ồn, hộ lan cứng và hộ lan mềm.', '3. Dải phân cách gồm giá long môn và biển báo hiệu đường bộ.', NULL, 1, 0, 0, 0),
-('6c58b769-b627-479e-afdf-1734e3b1a260', 'HpH8MzMa', NULL, 'Tại nơi đường giao nhau không có báo hiệu đi theo vòng xuyến, người điều khiển phương tiện phải nhường đường như thế nào là đúng quy tắc giao thông?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Phải nhường đường cho xe đi đến từ bên phải.', '2. Xe báo hiệu xin đường trước xe đó được đi trước.', '3. Phải nhường đường cho xe đi đến từ bên trái.', NULL, 1, 0, 90, 139),
+('6c58b769-b627-479e-afdf-1734e3b1a260', 'HpH8MzMa', NULL, 'Tại nơi đường giao nhau không có báo hiệu đi theo vòng xuyến, người điều khiển phương tiện phải nhường đường như thế nào là đúng quy tắc giao thông?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Phải nhường đường cho xe đi đến từ bên phải.', '2. Xe báo hiệu xin đường trước xe đó được đi trước.', '3. Phải nhường đường cho xe đi đến từ bên trái.', NULL, 1, 0, 90, 141),
 ('6d66551b-87c0-4a18-9ffd-eb33ced94727', 'bIPtRNtq', NULL, 'Khi điều khiển xe mô tô hai bánh, xe mô tô ba bánh, xe gắn máy, những hành vi buông cả hai tay; sử dụng xe để kéo, đẩy xe khác, vật khác; sử dụng chân chống của xe quệt xuống đường khi xe đang chạy có được phép hay không?', '48bc05e7-5143-4fb3-8ecb-a53ad21c18cd', '1. Được phép.', '2. Tùy trường hợp.', '3. Không được phép.', NULL, 3, 0, 0, 42),
 ('6dc8ef7c-aca7-4abb-bee6-ef6aa5bed1a1', 'HNkDiie8', 'https://onthibanglaixe.net/img/q75.png', 'Biển báo hiệu hình chữ nhật hoặc hình vuông hoặc hình mũi tên nền xanh lam là loại biển gì dưới đây?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Biển báo nguy hiểm.', '2. Biển báo cấm.', '3. Biển báo hiệu lệnh phải thi hành.', '4. Biển báo chỉ dẫn.', 4, 0, 0, 32),
-('6dde4d50-6a8f-401c-85fb-5a622e2098f7', 'vIZUAFWK', 'https://onthibanglaixe.net/img/q455.png', 'Biển nào chỉ dẫn cho người đi bộ sử dụng hầm chui qua đường?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Biển 1.', '2. Biển 2.', '3. Cả hai biển.', '4. Không biển nào.', 2, 0, 77, 215),
+('6dde4d50-6a8f-401c-85fb-5a622e2098f7', 'vIZUAFWK', 'https://onthibanglaixe.net/img/q455.png', 'Biển nào chỉ dẫn cho người đi bộ sử dụng hầm chui qua đường?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Biển 1.', '2. Biển 2.', '3. Cả hai biển.', '4. Không biển nào.', 2, 0, 78, 216),
 ('6e2404eb-2959-4f0e-8072-3b13c3c1be66', 'iSehxkh2', NULL, 'Người lái xe phải giảm tốc độ thấp hơn tốc độ tối đa cho phép (có thể dừng lại một cách an toàn) trong trường hợp nào dưới đây?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Khi có báo hiệu cảnh báo nguy hiểm hoặc có chướng ngại vật trên đường; khi chuyển hướng xe chạy hoặc tầm nhìn bị hạn chế; khi qua nơi đường giao nhau, nơi đường bộ giao nhau với đường sắt; đường vòng; đường có địa hình quanh co, đèo dốc.', '2. Khi qua cầu, cống hẹp; khi lên gần đỉnh dốc, khi xuống dốc, khi qua trường học, khu đông dân cư, khu vực đang thi công trên đường bộ; hiện trường xảy ra tai nạn giao thông.', '3. Khi điều khiển xe vượt xe khác trên đường quốc lộ, đường cao tốc.', '4. Cả ý 1 và ý 2.', 4, 0, 0, 38),
 ('6e35379e-02cf-44ba-895b-cbc21ad5cccb', '3O8w4FfL', 'https://onthibanglaixe.net/img/q505.png', 'Trong trường hợp này xe nào đỗ vi phạm quy tắc giao thông?', 'c178f5c3-6950-4d1a-859b-7b366e8bfa49', '1. Xe tải.', '2. Xe con và mô tô.', '3. Cả ba xe.', '4. Xe con và xe tải.', 1, 0, 19, 19),
 ('710ce8f2-3de8-45ea-a1db-6543256f64e7', 'u4tugYsi', NULL, 'Người đủ 16 tuổi được điều khiển các loại xe nào dưới đây?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Xe mô tô 2 bánh có dung tích xi-lanh từ 50 cm3 trở lên.', '2. Xe gắn máy có dung tích xi-lanh dưới 50 cm3.', '3. Xe ô tô tải dưới 3.500 kg; xe chở người đến 9 chỗ ngồi.', '4. Tất cả các ý nêu trên.', 2, 0, 26, 49),
@@ -617,8 +553,8 @@ INSERT INTO `tbl_question` (`id`, `code`, `questionImage`, `title`, `chapterId`,
 ('7a4125e2-d977-4fa5-b3d3-70e134069ded', 'wiftFLIY', NULL, 'Người lái xe phải xử lý như thế nào khi quan sát phía trước thấy người đi bộ đang sang đường tại nơi có vạch đường dành cho người đi bộ để đảm bảo an toàn?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Giảm tốc độ, đi từ từ để vượt qua trước người đi bộ.', '2. Giảm tốc độ, có thể dừng lại nếu cần thiết trước vạch dừng xe để nhường đường cho người đi bộ qua đường.', '3. Tăng tốc độ để vượt qua trước người đi bộ.', NULL, 2, 0, 110, 269),
 ('7c5a0750-8835-436e-91c3-61a0139cc329', 'J7PheNPc', NULL, '                                                                                Hành vi điều khiển xe cơ giới chạy quá tốc độ quy định, giành đường, vượt ẩu có bị nghiêm cấm hay không?                                                                        ', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '  1. Bị nghiêm cấm tùy từng trường hợp.', '  2. Không bị nghiêm cấm.', '  3. Bị nghiêm cấm.', NULL, 3, 1, 0, 42),
 ('7c916203-a5f3-416b-b2fe-4f9319ac1bc8', 'ph3ls71X', 'https://onthibanglaixe.net/img/q478.png', 'Vạch kẻ đường nào dưới đây là vạch phân chia các làn xe cùng chiều?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Vạch 1.', '2. Vạch 2.', '3. Vạch 3.', '4. Vạch 1 và 2.', 4, 0, 0, 12),
-('7ceec395-d869-4296-8291-7fea3d87bdfd', 'p837Oqza', NULL, 'Trong các hành vi dưới đây, người lái xe mô tô có văn hóa giao thông phải ứng xử như thế nào?', '09e4fcd0-5dbc-467d-bc2e-f3bbdb151ef4', '1. Điều khiển xe đi bên phải theo chiều đi của mình; đi đúng phần đường, làn đường quy định; đội mũ bảo hiểm đạt chuẩn, cài quai đúng quy cách.', '2. Điều khiển xe đi trên phần đường, làn đường có ít phương tiện tham gia giao thông', '3. Đội mũ bảo hiểm ở nơi có biển báo bắt buộc đội mũ bảo hiểm', NULL, 1, 0, 90, 2653),
-('7d9cb4d7-1fd5-40ac-bd7b-5b100264e44a', 'YvOBgAEd', NULL, 'Khi đang lái xe mô tô và ô tô, nếu có nhu cầu sử dụng điện thoại để nhắn tin hoặc gọi điện, người lái xe phải thực hiện như thế nào trong các tình huống nêu dưới đây?', '4548014d-cf9c-4ab6-9b7c-7e7821b78562', '1. Giảm tốc độ để đảm bảo an toàn với xe phía trước và sử dụng điện thoại để liên lạc.', '2. Giảm tốc độ để dừng xe ở nơi cho phép dừng xe sau đó sử dụng điện thoại để liên lạc.', '3. Tăng tốc độ để cách xa xe phía sau và sử dụng điện thoại để liên lạc.', NULL, 2, 0, 25, 222),
+('7ceec395-d869-4296-8291-7fea3d87bdfd', 'p837Oqza', NULL, 'Trong các hành vi dưới đây, người lái xe mô tô có văn hóa giao thông phải ứng xử như thế nào?', '09e4fcd0-5dbc-467d-bc2e-f3bbdb151ef4', '1. Điều khiển xe đi bên phải theo chiều đi của mình; đi đúng phần đường, làn đường quy định; đội mũ bảo hiểm đạt chuẩn, cài quai đúng quy cách.', '2. Điều khiển xe đi trên phần đường, làn đường có ít phương tiện tham gia giao thông', '3. Đội mũ bảo hiểm ở nơi có biển báo bắt buộc đội mũ bảo hiểm', NULL, 1, 0, 90, 2655),
+('7d9cb4d7-1fd5-40ac-bd7b-5b100264e44a', 'YvOBgAEd', NULL, 'Khi đang lái xe mô tô và ô tô, nếu có nhu cầu sử dụng điện thoại để nhắn tin hoặc gọi điện, người lái xe phải thực hiện như thế nào trong các tình huống nêu dưới đây?', '4548014d-cf9c-4ab6-9b7c-7e7821b78562', '1. Giảm tốc độ để đảm bảo an toàn với xe phía trước và sử dụng điện thoại để liên lạc.', '2. Giảm tốc độ để dừng xe ở nơi cho phép dừng xe sau đó sử dụng điện thoại để liên lạc.', '3. Tăng tốc độ để cách xa xe phía sau và sử dụng điện thoại để liên lạc.', NULL, 2, 0, 27, 222),
 ('7e4e7373-081e-48c1-a2df-74d85a5c3d3e', '3lmgvRz2', 'https://onthibanglaixe.net/img/q503.png', 'Các xe đi theo hướng mũi tên, xe nào vi phạm quy tắc giao thông?', 'c178f5c3-6950-4d1a-859b-7b366e8bfa49', '1. Xe khách, xe tải, mô tô.', '2. Xe tải, xe con, mô tô.', '3. Xe khách, xe con, mô tô.', NULL, 1, 0, 16, 18),
 ('7e825e07-1c4a-497d-a1a3-f717c5fe42a4', 'zItLbXlU', 'https://onthibanglaixe.net/img/q322.png', 'Biển nào cấm các phương tiện giao thông đường bộ rẽ trái?', '4bc15ce0-308e-4bb7-8e5e-5a98d8ae59ae', '1. Biển 1 và 2.', '2. Biển 1 và 3', '3. Biển 2 và 3', '4. Cả ba biển.', 1, 0, 20, 22),
 ('7ec451b7-45ea-4630-a238-52fcf20de8aa', 'Rt9UFoE0', 'https://onthibanglaixe.net/img/q441.png', 'Trong các biển dưới đây biển nào là biển “Hết tốc độ tối thiểu”?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Biển 1.', '2. Biển 2.', '3. Biển 3.', '4. Cả ba biển', 3, 0, 0, 19),
@@ -640,12 +576,12 @@ INSERT INTO `tbl_question` (`id`, `code`, `questionImage`, `title`, `chapterId`,
 ('8e56f382-013d-44d0-9de9-89245a68e062', 'pubXFkBN', 'https://onthibanglaixe.net/img/q374.png', 'Biển nào báo hiệu sắp đến chỗ giao nhau nguy hiểm?', '4bc15ce0-308e-4bb7-8e5e-5a98d8ae59ae', '1. Biển 1.', '2. Biển 1 và 2.', '3. Biển 2 và 3.', '4. Cả ba biển.', 4, 0, 0, 99),
 ('8e614de1-5a6e-4bfe-9c9c-5c7e828f1a15', 'd9zcLKi8', NULL, '“Phương tiện tham gia giao thông đường bộ” gồm những loại nào?', '48bc05e7-5143-4fb3-8ecb-a53ad21c18cd', '1. Phương tiện giao thông cơ giới đường bộ.', '2. Phương tiện giao thông thô sơ đường bộ và xe máy chuyên dùng.', '3. Cả ý 1 và ý 2.', NULL, 3, 0, 0, 26),
 ('8e859607-4356-4568-b538-3cd8f488a9ec', 'qtp17CSj', 'https://onthibanglaixe.net/img/q379.png', 'Biển nào báo hiệu sắp đến chỗ giao nhau giữa đường bộ và đường sắt?', '4bc15ce0-308e-4bb7-8e5e-5a98d8ae59ae', '1. Biển 1.', '2. Biển 2.', '3. Biển 3.', '4. Biển 1 và 3.', 1, 0, 2, 4),
-('8ea03272-4027-4753-803b-9f9fd42c3ffb', 'OXXuyo1Y', 'https://onthibanglaixe.net/img/q372.png', 'Biển nào chỉ đường dành cho người đi bộ, các loại xe không được đi vào khi gặp biển này?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Biển 1.', '2. Biển 1 và 3', '3. Biển 3.', '4. Cả ba biển.', 3, 0, 63, 166),
+('8ea03272-4027-4753-803b-9f9fd42c3ffb', 'OXXuyo1Y', 'https://onthibanglaixe.net/img/q372.png', 'Biển nào chỉ đường dành cho người đi bộ, các loại xe không được đi vào khi gặp biển này?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Biển 1.', '2. Biển 1 và 3', '3. Biển 3.', '4. Cả ba biển.', 3, 0, 64, 167),
 ('8f11c829-cc25-4ab1-8666-bbdfd200d531', 'wUWvujZu', NULL, 'Bạn đang lái xe trên đường hẹp, xuống dốc và gặp một xe đang đi lên dốc, bạn cần làm gì?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Tiếp tục đi vì xe lên dốc phải nhường đường cho mình.', '2. Nhường đường cho xe lên dốc.', '3. Chỉ nhường đường khi xe lên dốc nháy đèn.', NULL, 2, 0, 0, 0),
 ('8fad5885-62e8-4169-be5b-764e2602df68', 'hbs3eyhw', 'https://onthibanglaixe.net/img/q487.png', 'Thứ tự các xe đi như thế nào là đúng quy tắc giao thông?', 'c178f5c3-6950-4d1a-859b-7b366e8bfa49', '1. Xe tải, xe khách, xe con, mô tô.', '2. Xe tải, mô tô, xe khách, xe con.', '3. Xe khách, xe tải, xe con, mô tô.', '4. Mô tô, xe khách, xe tải, xe con.', 2, 0, 15, 19),
 ('8fc39451-9124-4639-9940-1a084f6263a6', 'osLybJEW', 'https://onthibanglaixe.net/img/q82.png', ' Khi gặp hiệu lệnh như dưới đây của cảnh sát giao thông thì người tham gia giao thông phải đi như thế nào là đúng quy tắc giao thông?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Người tham gia giao thông ở các hướng phải dừng lại.', '2. Người tham gia giao thông ở các hướng được đi theo chiều gậy chỉ của cảnh sát giao thông.', '3. Người tham gia giao thông ở phía trước và phía sau người điều khiển được đi tất cả các hướng; giao thông ở phía bên phải và phía bên trái người điều khiển phải dừng lại.', '4. Người tham gia giao thông ở phía trước và phía sau người điều khiển phải dừng lại; giao thông ở phía bên phải và bên trái người điều khiển được đi tất cả các hướng.', 4, 0, 0, 0),
 ('8fdd0e41-56ff-4e57-8c3b-f71dfbf68885', 'a4ApGdVd', 'https://onthibanglaixe.net/img/q458.png', 'Gặp biển báo này, người tham gia giao thông phải xử lý như thế nào?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Dừng xe tại khu vực có trạm Cảnh sát giao thông.', '2. Tiếp tục lưu thông với tốc độ bình thường.', '3. Phải giảm tốc độ đến mức an toàn và không được vượt khi đi qua khu vực này.', NULL, 3, 0, 0, 7),
-('90f1c284-ccae-4653-b0fb-acfa561a28fb', 'HG2rRGfT', NULL, 'Trên đoạn đường hai chiều không có giải phân cách giữa, người lái xe không được vượt xe khác trong các trường hợp nào dưới đây?', '48bc05e7-5143-4fb3-8ecb-a53ad21c18cd', '1. Xe bị vượt bất ngờ tăng tốc độ và cố tình không nhường đường.', '2. Xe bị vượt giảm tốc độ và nhường đường.', '3. Phát hiện có xe đi ngược chiều.', '4. Cả ý 1 và ý 3.', 4, 0, 0, 234),
+('90f1c284-ccae-4653-b0fb-acfa561a28fb', 'HG2rRGfT', NULL, 'Trên đoạn đường hai chiều không có giải phân cách giữa, người lái xe không được vượt xe khác trong các trường hợp nào dưới đây?', '48bc05e7-5143-4fb3-8ecb-a53ad21c18cd', '1. Xe bị vượt bất ngờ tăng tốc độ và cố tình không nhường đường.', '2. Xe bị vượt giảm tốc độ và nhường đường.', '3. Phát hiện có xe đi ngược chiều.', '4. Cả ý 1 và ý 3.', 4, 0, 1, 235),
 ('9151553d-2697-4b7d-9146-93849f35c032', 'ufU7GKFW', NULL, 'Khi xảy ra tai nạn giao thông, có người bị thương nghiêm trọng, người lái xe và người có mặt tại hiện trường vụ tai nạn phải thực hiện các công việc gì?', '09e4fcd0-5dbc-467d-bc2e-f3bbdb151ef4', '1. Thực hiện sơ cứu ban đầu trong trường hợp khẩn cấp; thông báo vụ tai nạn đến cơ quan thi hành pháp luật.', '2. Nhanh chóng lái xe gây tai nạn hoặc đi nhờ xe khác ra khỏi hiện trường vụ tai nạn.', '3. Cả ý 1 và ý 2.', NULL, 1, 0, 0, 0),
 ('917ae3af-9183-4f7b-8c49-34fb1a43f9c6', '3ZDuir19', NULL, 'Tại nơi đường giao nhau, người lái xe đang đi trên đường không ưu tiên phải nhường đường như thế nào là đúng quy tắc giao thông?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Nhường đường cho xe đi ở bên phải mình tới.', '2. Nhường đường cho xe đi ở bên trái mình tới.', '3. Nhường đường cho xe đi trên đường ưu tiên hoặc đường chính từ bất kỳ hướng nào tới.', NULL, 3, 0, 0, 76),
 ('9192b621-4b14-46b1-ad8f-68479af6c95b', 'hF99o3VW', NULL, 'Tại nơi có biển báo hiệu cố định lại có báo hiệu tạm thời thì người tham gia giao thông phải chấp hành hiệu lệnh của báo hiệu nào?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Biển báo hiệu cố định.', '2. Báo hiệu tạm thời.', NULL, NULL, 2, 0, 0, 0),
@@ -711,7 +647,7 @@ INSERT INTO `tbl_question` (`id`, `code`, `questionImage`, `title`, `chapterId`,
 ('bb94de6b-ac1b-41d8-b515-731c2d009f78', '4Obl74EW', NULL, 'Người điều khiển xe mô tô hai bánh, xe gắn máy có được đi xe dàn hàng ngang; đi xe vào phần đường dành cho người đi bộ và phương tiện khác; sử dụng ô, điện thoại di động, thiết bị âm thanh (trừ thiết bị trợ thính) hay không?', '48bc05e7-5143-4fb3-8ecb-a53ad21c18cd', '1. Được phép nhưng phải đảm bảo an toàn.', '2. Không được phép.', '3. Được phép tùy từng hoàn cảnh, điều kiện cụ thể.', NULL, 2, 0, 5, 5),
 ('bbb27d71-00c4-4b0e-99e7-05c2bbcf6cad', 'VNCv7I91', 'https://onthibanglaixe.net/img/q375.png', 'Biển nào báo hiệu “Giao nhau với đường sắt có rào chắn”?', '4bc15ce0-308e-4bb7-8e5e-5a98d8ae59ae', '1. Biển 1.', '2. Biển 2 và 3.', '3. Biển 3.', NULL, 1, 0, 0, 55),
 ('bd79b4b8-2def-4b4e-86c6-70d64f066486', 'QezSTMcg', 'https://onthibanglaixe.net/img/q82.png', 'Khi gặp hiệu lệnh như dưới đây của cảnh sát giao thông thì người tham gia giao thông phải đi như thế nào là đúng quy tắc giao thông?', '48bc05e7-5143-4fb3-8ecb-a53ad21c18cd', '1. Người tham gia giao thông ở các hướng phải dừng lạ', '2. Người tham gia giao thông ở các hướng được đi theo chiều gậy chỉ của cảnh sát giao thông.', '3. Người tham gia giao thông ở phía trước và phía sau người điều khiển được đi tất cả các hướng; giao thông ở phía bên phải và phía bên trái người điều khiển phải dừng lại.', '4. Người tham gia giao thông ở phía trước và phía sau người điều khiển phải dừng lại; giao thông ở phía bên phải và bên trái người điều khiển được đi tất cả các hướng.', 4, 0, 0, 372),
-('bddc9e19-3f18-4370-9cc5-12c67ffdb984', 'lo3KnSaz', NULL, '                                                                                 Người ngồi trên xe mô tô hai bánh, xe mô tô ba bánh, xe gắn máy khi tham gia giao thông có được bám, kéo hoặc đẩy các phương tiện khác không?                                                                        ', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '  1. Được phép.', '  2. Được bám trong trường hợp phương tiện của mình bị hỏng.', '  3. Được kéo, đẩy trong trường hợp phương tiện khác bị hỏng.', '  4. Không được phép.', 4, 1, 0, 252),
+('bddc9e19-3f18-4370-9cc5-12c67ffdb984', 'lo3KnSaz', NULL, '                                                                                 Người ngồi trên xe mô tô hai bánh, xe mô tô ba bánh, xe gắn máy khi tham gia giao thông có được bám, kéo hoặc đẩy các phương tiện khác không?                                                                        ', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '  1. Được phép.', '  2. Được bám trong trường hợp phương tiện của mình bị hỏng.', '  3. Được kéo, đẩy trong trường hợp phương tiện khác bị hỏng.', '  4. Không được phép.', 4, 1, 1, 253),
 ('bdddb376-af63-4133-9932-7b12c7092537', '3nh3C0Qy', NULL, '                                        Theo Luật phòng chống tác hại của rượu, bia, đối tượng nào dưới đây bị cấm sử dụng rượu, bia khi tham gia giao thông?                                    ', '50ccd9c5-ce5e-4921-9e23-de46a9558c38', ' 1. Người điều khiển: Xe ô tô, xe mô tô, xe đạp, xe gắn máy.', ' 2. Người ngồi phía sau người điều khiển xe cơ giới.', ' 3. Người đi bộ.', ' 4. Cả ý 1 và ý 2.', 1, 1, 14, 31),
 ('bf8efe7f-a4cd-4265-9b25-e6e770d51e94', 'NuJCUlkK', 'https://onthibanglaixe.net/img/q508.png', 'Xe nào đỗ vi phạm quy tắc giao thông?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Cả hai xe.', '2. Không xe nào vi phạm.', '3. Chỉ xe mô tô vi phạm.', '4. Chỉ xe tải vi phạm.', 1, 0, 2, 4),
 ('c119356b-e7cb-44f5-b11c-10871f81f45e', 'xueRWrSy', NULL, 'Tại ngã ba hoặc ngã tư không có đảo an toàn, người lái xe phải nhường đường như thế nào là đúng trong các trường hợp dưới đây?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Nhường đường cho người đi bộ đang đi trên phần đường dành cho người đi bộ sang đường; nhường đường cho xe đi trên đường ưu tiên, đường chính từ bất kỳ hướng nào tới; nhường đường cho xe ưu tiên, xe đi từ bên phải đến.', '2. Nhường đường cho người đi bộ đang đứng chờ đi qua phần đường dành cho người đi bộ sang đường; nhường đường cho xe đi trên đường ngược chiều, đường nhánh từ bất kỳ hướng nào tới; nhường đường cho xe đi từ bên trái đến.', '3. Không phải nhường đường.', NULL, 1, 0, 0, 309),
@@ -760,7 +696,7 @@ INSERT INTO `tbl_question` (`id`, `code`, `questionImage`, `title`, `chapterId`,
 ('dba67958-6ffe-4222-bdb7-8865fe51630d', 'BZhNFRa6', 'https://onthibanglaixe.net/img/q455.png', 'Biển nào chỉ dẫn cho người đi bộ sử dụng hầm chui qua đường?', '4bc15ce0-308e-4bb7-8e5e-5a98d8ae59ae', '1. Biển 1.', '2. Biển 2.', '3. Cả hai biển.', '4. Không biển nào.', 2, 0, 94, 106),
 ('dc5cdbaf-ede3-4489-9361-77df7b6734ef', 'EKkGt4FC', NULL, 'Trên đường đang xảy ra ùn tắc những hành vi nào sau đây là thiếu văn hóa khi tham gia giao thông?', '09e4fcd0-5dbc-467d-bc2e-f3bbdb151ef4', '1. Bấm còi liên tục thúc giục các phương tiện phía trước nhường đường.', '2. Đi lên vỉa hè, tận dụng mọi khoảng trống để nhanh chóng thoát khỏi nơi ùn tắc.', '3. Lấn sang làn đường bên trái cố gắng vượt lên xe khác', '4. Tất cả các ý nêu trên.', 4, 0, 0, 5),
 ('dc81065d-8b80-4db9-9506-2ee6406199ba', 'vCiahCMg', NULL, 'Người điều khiển phương tiện giao thông đường bộ mà trong cơ thể có chất ma túy có bị nghiêm cấm hay không?', '48bc05e7-5143-4fb3-8ecb-a53ad21c18cd', '1. Bị nghiêm cấm.', '2. Không bị nghiêm cấm.', '3. Không bị nghiêm cấm, nếu có chất ma túy ở mức nhẹ, có thể điều khiển phương tiện tham gia giao thông.', NULL, 1, 0, 9, 12),
-('dcc44555-39cf-4915-984e-ec42aacd11bd', 'q0FUvLer', NULL, '“Người điều khiển phương tiện tham gia giao thông đường bộ” gồm những đối tượng nào dưới đây?', '48bc05e7-5143-4fb3-8ecb-a53ad21c18cd', '1. Người điều khiển xe cơ giới, người điều khiển xe thô sơ.', '2. Người điều khiển xe máy chuyên dùng tham gia giao thông đường bộ.', '3. Cả ý 1 và ý 2', NULL, 3, 0, 63, 245),
+('dcc44555-39cf-4915-984e-ec42aacd11bd', 'q0FUvLer', NULL, '“Người điều khiển phương tiện tham gia giao thông đường bộ” gồm những đối tượng nào dưới đây?', '48bc05e7-5143-4fb3-8ecb-a53ad21c18cd', '1. Người điều khiển xe cơ giới, người điều khiển xe thô sơ.', '2. Người điều khiển xe máy chuyên dùng tham gia giao thông đường bộ.', '3. Cả ý 1 và ý 2', NULL, 3, 0, 64, 246),
 ('dd24af73-dcad-44ba-87c3-6513feb2013e', '0ccPhxsH', NULL, ' Khi quay đầu xe, người lái xe cần phải quan sát và thực hiện các thao tác nào để đảm bảo an toàn giao thông?', '4548014d-cf9c-4ab6-9b7c-7e7821b78562', '1. Quan sát biển báo hiệu để biết nơi được phép quay đầu; quan sát kỹ địa hình nơi chọn để quay đầu; lựa chọn quỹ đạo quay đầu xe cho thích hợp; quay đầu xe với tốc độ thấp; thường xuyên báo tín hiệu để người, các phương tiện xung quanh được biết; nếu quay đầu xe ở nơi nguy hiểm thì đưa đầu xe về phía nguy hiểm đưa đuôi xe về phía an toàn.', '2. Quan sát biển báo hiệu để biết nơi được phép quay đầu; quan sát kỹ địa hình nơi chọn để quay đầu; lựa chọn quỹ đạo quay đầu xe; quay đầu xe với tốc độ tối đa; thường xuyên báo tín hiệu để người, các phương tiện xung quanh được biết; nếu quay đầu xe ở nơi nguy hiểm thì đưa đuôi xe về phía nguy hiểm và đầu xe về phía an toàn.', NULL, NULL, 1, 0, 0, 0),
 ('deae2ef4-b126-4fea-a809-17e7bcf854e9', 'VaCIei0H', 'https://onthibanglaixe.net/img/q319.png', 'Khi gặp biển nào xe được rẽ trái?', '4bc15ce0-308e-4bb7-8e5e-5a98d8ae59ae', '1. Biển 1.', '2. Biển 2.', '3. Không biển nào.', NULL, 2, 0, 4, 4),
 ('df8bb82f-f446-4709-8e5c-22c7f67d6435', 'J2bItTGj', 'https://onthibanglaixe.net/img/q441.png', 'Trong các biển dưới đây biển nào là biển “Hết tốc độ tối thiểu”?', '4bc15ce0-308e-4bb7-8e5e-5a98d8ae59ae', '1. Biển 1.', '2. Biển 2.', '3. Biển 3.', '4. Cả ba biển', 3, 0, 0, 122),
@@ -778,7 +714,7 @@ INSERT INTO `tbl_question` (`id`, `code`, `questionImage`, `title`, `chapterId`,
 ('e7338c29-8a06-43f4-8829-49aa1cae8948', 'ixGnUdfJ', 'https://onthibanglaixe.net/img/q525.png', 'Xe nào được quyền đi trước trong trường hợp này?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Mô tô.', '2. Xe con', NULL, NULL, 1, 0, 4, 4),
 ('e734bfb7-8769-445e-ad77-6d29bc320ee0', 'UoagGBo2', NULL, '                                                                                 Người ngồi trên xe mô tô 2 bánh, xe gắn máy phải đội mũ bảo hiểm có cài quai đúng quy cách khi nào?\r\n\r\n                                                                        ', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '  1. Khi tham gia giao thông đường bộ.', '  2. Chỉ khi đi trên đường chuyên dùng; đường cao tốc.', '  3. Khi tham gia giao thông trên đường tỉnh lộ hoặc quốc lộ.', NULL, 1, 1, 0, 0),
 ('e803ee52-9394-4d97-afb5-90b9920184fa', 'WBx8YLYw', NULL, 'Trên đường có nhiều làn đường cho xe đi cùng chiều được phân biệt bằng vạch kẻ phân làn đường, người điều khiển phương tiện phải cho xe đi như thế nào?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Cho xe đi trên bất kỳ làn đường nào hoặc giữa 02 làn đường nếu không có xe phía trước; khi cần thiết phải chuyển làn đường, người lái xe phải quan sát xe phía trước để bảo đảm an toàn.', '2. Phải cho xe đi trong một làn đường và chỉ được chuyển làn đường ở những nơi cho phép; khi chuyển làn phải có tín hiệu báo trước và phải bảo đảm an toàn.', '3. Phải cho xe đi trong một làn đường, khi cần thiết phải chuyển làn đường, người lái xe phải quan sát xe phía trước để bảo đảm an toàn.', NULL, 2, 0, 38, 28),
-('e80caed1-c5bf-4c5c-a50b-260e0c600013', 'TKGXRat7', NULL, 'Để đạt được hiệu quả phanh cao nhất, người lái xe mô tô phải sử dụng các kỹ năng như thế nào dưới đây?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Sử dụng phanh trước.', '2. Sử dụng phanh sau.', '3. Giảm hết ga; sử dụng đồng thời cả phanh sau và phanh trước.', NULL, 3, 0, 63, 166),
+('e80caed1-c5bf-4c5c-a50b-260e0c600013', 'TKGXRat7', NULL, 'Để đạt được hiệu quả phanh cao nhất, người lái xe mô tô phải sử dụng các kỹ năng như thế nào dưới đây?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Sử dụng phanh trước.', '2. Sử dụng phanh sau.', '3. Giảm hết ga; sử dụng đồng thời cả phanh sau và phanh trước.', NULL, 3, 0, 63, 168),
 ('e8779e17-5837-4949-813b-c51f1bfe5bd3', 'dTRDn3Ug', NULL, '                                        Người điều khiển phương tiện giao thông đường bộ mà trong cơ thể có chất ma túy có bị nghiêm cấm hay không?                                    ', '50ccd9c5-ce5e-4921-9e23-de46a9558c38', ' 1. Bị nghiêm cấm.', ' 2. Không bị nghiêm cấm.', ' 3. Không bị nghiêm cấm, nếu có chất ma túy ở mức nhẹ, có thể điều khiển phương tiện tham gia giao thông.', NULL, 1, 1, 3, 7),
 ('e8dc2e66-9708-412e-a69d-d77cf14d55b5', 'OSF6GRnt', NULL, 'Người lái xe sử dụng đèn như thế nào khi lái xe trong khu đô thị và đông dân cư vào ban đêm?', '48bc05e7-5143-4fb3-8ecb-a53ad21c18cd', '1. Bất cứ đèn nào miễn là mắt nhìn rõ phía trước.', '2. Chỉ bật đèn chiếu xa (đèn pha) khi không nhìn rõ đường.', '3. Đèn chiếu xa (đèn pha) khi đường vắng, đèn pha chiếu gần (đèn cốt) khi có xe đi ngược chiều.', '4. Đèn chiếu gần (đèn cốt).', 4, 0, 0, 314),
 ('e9a48820-5c2b-46a5-bb35-f04391ebb4fa', 'fSU0jVdP', 'https://onthibanglaixe.net/img/q416.png', 'Biển nào chỉ dẫn nơi bắt đầu đoạn đường dành cho người đi bộ?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Biển 1.', '2. Biển 2.', '3. Biển 3.', NULL, 2, 0, 4, 11),
@@ -801,19 +737,19 @@ INSERT INTO `tbl_question` (`id`, `code`, `questionImage`, `title`, `chapterId`,
 ('f1062570-1638-473b-977e-cfc6ee2ff8d8', 'TPrG1U0y', NULL, 'Khái niệm “người điều khiển giao thông” được hiểu như thế nào là đúng?', '48bc05e7-5143-4fb3-8ecb-a53ad21c18cd', '1. Là người điều khiển phương tiện tham gia giao thông tại nơi thi công, nơi ùn tắc giao thông, ở bến phà, tại cầu đường bộ đi chung với đường sắt.', '2. Là cảnh sát giao thông, người được giao nhiệm vụ hướng dẫn giao thông tại nơi thi công, nơi ùn tắc giao thông, ở bến phà, tại cầu đường bộ đi chung với đường sắt.', '3. Là người tham gia giao thông tại nơi thi công, nơi ùn tắc giao thông, ở bến phà, tại cầu đường bộ đi chung với đường sắt.', NULL, 2, 0, 0, 2510),
 ('f2391733-c5b6-4708-aecf-a06ffa4daa1c', 'PX0a1Rok', 'https://onthibanglaixe.net/img/q391.png', 'Biển nào báo hiệu “Đường giao nhau” của các tuyến đường cùng cấp?', '4bc15ce0-308e-4bb7-8e5e-5a98d8ae59ae', '1. Biển 1.', '2. Biển 2.', '3. Biển 3.', NULL, 1, 0, 19, 19),
 ('f3a248eb-115d-4bd2-a412-9b22efe14cfd', 'a2yF2B5a', NULL, 'Hành vi điều khiển xe cơ giới chạy quá tốc độ quy định, giành đường, vượt ẩu có bị nghiêm cấm hay không?', '48bc05e7-5143-4fb3-8ecb-a53ad21c18cd', '1. Bị nghiêm cấm tùy từng trường hợp.', '2. Không bị nghiêm cấm.', '3. Bị nghiêm cấm.', NULL, 3, 0, 0, 13),
-('f3f95824-932a-4973-abd1-20b7408556e3', 'aOwygdx9', NULL, 'Các phương tiện tham gia giao thông đường bộ (kể cả những xe có quyền ưu tiên) đều phải dừng lại bên phải đường của mình và trước vạch “dừng xe” tại các điểm giao cắt giữa đường bộ và đường sắt khi có báo hiệu dừng nào dưới đây?', '48bc05e7-5143-4fb3-8ecb-a53ad21c18cd', '1. Hiệu lệnh của nhân viên gác chắn.', '2. Đèn đỏ sáng nháy, cờ đỏ, biển đỏ.', '3. Còi, chuông kêu, chắn đã đóng.', '4. Tất cả các ý trên.', 4, 0, 0, 241),
+('f3f95824-932a-4973-abd1-20b7408556e3', 'aOwygdx9', NULL, 'Các phương tiện tham gia giao thông đường bộ (kể cả những xe có quyền ưu tiên) đều phải dừng lại bên phải đường của mình và trước vạch “dừng xe” tại các điểm giao cắt giữa đường bộ và đường sắt khi có báo hiệu dừng nào dưới đây?', '48bc05e7-5143-4fb3-8ecb-a53ad21c18cd', '1. Hiệu lệnh của nhân viên gác chắn.', '2. Đèn đỏ sáng nháy, cờ đỏ, biển đỏ.', '3. Còi, chuông kêu, chắn đã đóng.', '4. Tất cả các ý trên.', 4, 0, 0, 243),
 ('f46ae015-6bb2-4cb2-afdd-95504c31bfd1', 'BfIXZAAQ', NULL, 'Đường bộ trong khu vực đông dân cư gồm những đoạn đường nào dưới đây?', '48bc05e7-5143-4fb3-8ecb-a53ad21c18cd', '1. Là đoạn đường nằm trong khu công nghiệp có đông người và phương tiện tham gia giao thông và được xác định cụ thể bằng biển chỉ dẫn địa giới.', '2. Là đoạn đường bộ nằm trong khu vực nội thành phố, nội thị xã, nội thị trấn và những đoạn đường có dân cư sinh sống sát dọc theo đường, có các hoạt động có thể ảnh hưởng đến giao thông đường bộ và được xác định bằng biển báo là đường qua khu đông dân cư.', '3. Là đoạn đường nằm ngoài khu vực nội thành phố, nội thị xã có đông người và phương tiện tham gia giao thông và được xác định cụ thể bằng biển chỉ dẫn địa giới.', NULL, 2, 0, 24, 29),
 ('f4aa1bad-fcd3-43a2-96a8-7e45b2d8b4fe', 'kvkpoYYO', NULL, 'Sử dụng rượu, bia khi lái xe, nếu bị phát hiện thì bị xử lý như thế nào?', '48bc05e7-5143-4fb3-8ecb-a53ad21c18cd', '1. Chỉ bị nhắc nhở.', '2. Bị xử phạt hành chính hoặc có thể bị xử lý hình sự tùy theo mức độ vi phạm.', '3. Không bị xử lý hình sự.', NULL, 2, 0, 49, 54),
-('f509c4db-965d-4343-a6a9-ed4d7b1618f9', 'MOuM6aUF', NULL, 'Người điều khiển phương tiện tham gia giao thông trong hầm đường bộ ngoài việc phải tuân thủ các quy tắc giao thông còn phải thực hiện những quy định nào dưới đây?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Xe cơ giới, xe máy chuyên dùng phải bật đèn; xe thô sơ phải bật đèn hoặc có vật phát sáng báo hiệu; chỉ được dừng xe, đỗ xe ở nơi quy định.', '2. Xe cơ giới phải bật đèn ngay cả khi đường hầm sáng; phải cho xe chạy trên một làn đường và chỉ chuyển làn ở nơi được phép; được quay đầu xe, lùi xe khi cần thiết.', '3. Xe máy chuyên dùng phải bật đèn ngay cả khi đường hầm sáng; phải cho xe chạy trên một làn đường và chỉ chuyển làn ở nơi được phép; được quay đầu xe, lùi xe khi cần thiết.', NULL, 1, 0, 90, 139),
+('f509c4db-965d-4343-a6a9-ed4d7b1618f9', 'MOuM6aUF', NULL, 'Người điều khiển phương tiện tham gia giao thông trong hầm đường bộ ngoài việc phải tuân thủ các quy tắc giao thông còn phải thực hiện những quy định nào dưới đây?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Xe cơ giới, xe máy chuyên dùng phải bật đèn; xe thô sơ phải bật đèn hoặc có vật phát sáng báo hiệu; chỉ được dừng xe, đỗ xe ở nơi quy định.', '2. Xe cơ giới phải bật đèn ngay cả khi đường hầm sáng; phải cho xe chạy trên một làn đường và chỉ chuyển làn ở nơi được phép; được quay đầu xe, lùi xe khi cần thiết.', '3. Xe máy chuyên dùng phải bật đèn ngay cả khi đường hầm sáng; phải cho xe chạy trên một làn đường và chỉ chuyển làn ở nơi được phép; được quay đầu xe, lùi xe khi cần thiết.', NULL, 1, 0, 90, 141),
 ('f5da472e-df51-49ad-b1d4-32f530aedb88', 'Kg596C7T', NULL, 'Khi điều khiển xe mô tô hai bánh, xe mô tô ba bánh, xe gắn máy, những hành vi nào không được phép?', '48bc05e7-5143-4fb3-8ecb-a53ad21c18cd', '1. Buông cả hai tay; sử dụng xe để kéo, đẩy xe khác, vật khác; sử dụng chân chống của xe quệt xuống đường khi xe đang chạy.', '2. Buông một tay; sử dụng xe để chở người hoặc hàng hoá; để chân chạm xuống đất khi khởi hành.', '3. Đội mũ bảo hiểm; chạy xe đúng tốc độ quy định và chấp hành đúng quy tắc giao thông đường bộ.', '4. Chở người ngồi sau dưới 16 tuổi.', 1, 0, 2468, 42),
 ('f5f27ed5-d638-4f3b-99b7-34984e4c8d47', 'IOR6ZiKW', NULL, 'Để đạt được hiệu quả phanh cao nhất, người lái xe mô tô phải sử dụng các kỹ năng như thế nào dưới đây?', '4548014d-cf9c-4ab6-9b7c-7e7821b78562', '1. Sử dụng phanh trước.', '2. Sử dụng phanh sau.', '3. Giảm hết ga; sử dụng đồng thời cả phanh sau và phanh trước.', NULL, 3, 0, 92, 270),
 ('f61cc9ac-d131-4a6d-a317-1a295dea797b', 't2C1InzI', NULL, 'Người lái xe mô tô xử lý như thế nào khi cho xe mô tô phía sau vượt?', '48bc05e7-5143-4fb3-8ecb-a53ad21c18cd', '1. Nếu đủ điều kiện an toàn, người lái xe phải giảm tốc độ, đi sát về bên phải của phần đường xe chạy cho đến khi xe sau đã vượt qua, không được gây trở ngại đối với xe xin vượt.', '2. Lái xe vào lề đường bên trái và giảm tốc độ để xe phía sau vượt qua, không được gây trở ngại đối với xe xin vượt.', '3. Nếu đủ điều kiện an toàn, người lái xe phải tăng tốc độ, đi sát về bên phải của phần đường xe chạy cho đến khi xe sau đã vượt qua.', NULL, 1, 0, 4, 3),
 ('f680a358-55ef-4716-a0b5-b256b66f9721', 'XjMFa8ct', 'https://onthibanglaixe.net/img/q353.png', 'Biển nào xe mô tô hai bánh được đi vào?', '4bc15ce0-308e-4bb7-8e5e-5a98d8ae59ae', '1. Biển 1 và 2.', '2. Biển 1 và 3.', '3. Biển 2 và 3.', NULL, 2, 0, 24, 29),
 ('f7b48501-248e-49b2-a898-d3fee39e8f45', '9yUAI8SA', 'https://onthibanglaixe.net/img/q458.png', 'Gặp biển báo này, người tham gia giao thông phải xử lý như thế nào?', '4bc15ce0-308e-4bb7-8e5e-5a98d8ae59ae', '1. Dừng xe tại khu vực có trạm Cảnh sát giao thông.', '2. Tiếp tục lưu thông với tốc độ bình thường.', '3. Phải giảm tốc độ đến mức an toàn và không được vượt khi đi qua khu vực này.', NULL, 3, 0, 0, 40),
 ('f8107952-6350-4ac5-8c4b-938f32f38d6f', 'xtMYULCR', 'https://onthibanglaixe.net/img/q543.png', 'Trong hình dưới, những xe nào vi phạm quy tắc giao thông?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Xe con (E), mô tô (C).', '2. Xe tải (A), mô tô (D).', '3. Xe khách (B), mô tô (C).', '4. Xe khách (B), mô tô (D).', 1, 0, 32, 269),
-('f8736d2f-2b7e-40f1-b0d4-7e61f2080ef6', 'FUgVMMtP', 'https://onthibanglaixe.net/img/q438.png', 'Biển nào báo hiệu “Đường một chiều”?', '4bc15ce0-308e-4bb7-8e5e-5a98d8ae59ae', '1. Biển 1.', '2. Biển 2.', '3. Cả hai biển.', NULL, 2, 0, 20, 20),
+('f8736d2f-2b7e-40f1-b0d4-7e61f2080ef6', 'FUgVMMtP', '  https://onthibanglaixe.net/img/q438.png', '                                                                                Biển nào báo hiệu “Đường một chiều”?                                                                        ', '4bc15ce0-308e-4bb7-8e5e-5a98d8ae59ae', '  1. Biển 1.', '  2. Biển 2.', '  3. Cả hai biển.', '  ', 2, 0, 20, 20),
 ('f9702f16-4f11-442f-bddd-5d2c336a8e96', 'WvBFjbxm', 'https://onthibanglaixe.net/img/q600.png', 'Trong tình huống dưới đây, xe đầu kéo kéo rơ moóc (xe container) đang rẽ phải, xe con màu xanh đi như thế nào để đảm bảo an toàn?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Vượt về phía bên phải để đi tiếp.', '2. Giảm tốc độ chờ xe đầu kéo rẽ phải, rồi tiếp tục đi.', '3. Vượt về phía bên trái để đi tiếp.', NULL, 2, 0, 19, 19),
-('f9a1391d-f4c8-49d6-a76d-2be81e4e9a33', 'eu7lPPCW', 'https://onthibanglaixe.net/img/q72.png', 'Biển báo hiệu có dạng hình tròn, viền đỏ, nền trắng, trên nền có hình vẽ hoặc chữ số, chữ viết màu đen là loại biển gì dưới đây?', '48bc05e7-5143-4fb3-8ecb-a53ad21c18cd', '1. Biển báo nguy hiểm.', '2. Biển báo cấm.', '3. Biển báo hiệu lệnh.', '4. Biển báo chỉ dẫn.', 2, 0, 84, 224),
+('f9a1391d-f4c8-49d6-a76d-2be81e4e9a33', 'eu7lPPCW', 'https://onthibanglaixe.net/img/q72.png', 'Biển báo hiệu có dạng hình tròn, viền đỏ, nền trắng, trên nền có hình vẽ hoặc chữ số, chữ viết màu đen là loại biển gì dưới đây?', '48bc05e7-5143-4fb3-8ecb-a53ad21c18cd', '1. Biển báo nguy hiểm.', '2. Biển báo cấm.', '3. Biển báo hiệu lệnh.', '4. Biển báo chỉ dẫn.', 2, 0, 85, 225),
 ('f9c4932a-6506-451b-8539-332a46d60bc7', 'ViIXEsvm', 'https://onthibanglaixe.net/img/q442.png', 'Biển nào dưới đây báo hiệu hết cấm vượt?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Biển 1.', '2. Biển 2.', '3. Biển 3.', '4. Biển 2 và 3.', 4, 0, 0, 0),
 ('fa07c6c5-8560-48ae-95c4-22cb7c7f350d', '6JcCwyTK', 'https://onthibanglaixe.net/img/q387.png', 'Biển nào báo hiệu “Giao nhau với đường ưu tiên”?', '4bc15ce0-308e-4bb7-8e5e-5a98d8ae59ae', '1. Biển 1 và 3', '2. Biển 2.', '3. Biển 3.', NULL, 2, 0, 7, 8),
 ('fae1d46d-fc71-4095-a235-d73d56ec0263', 'iYKNsaIB', NULL, 'Khái niệm về văn hóa giao thông được hiểu như thế nào là đúng?', 'abaa731e-c0cf-4bbc-99ca-ef2cd7b76ac1', '1. Là sự hiểu biết và chấp hành nghiêm chỉnh pháp luật về giao thông; là ý thức trách nhiệm với cộng đồng khi tham gia giao thông.', '2. Là ứng xử có văn hóa, có tình yêu thương con người trong các tình huống không may xảy ra khi tham gia giao thông.', '3. Cả ý 1 và ý 2.', NULL, 3, 0, 0, 21),
@@ -824,7 +760,7 @@ INSERT INTO `tbl_question` (`id`, `code`, `questionImage`, `title`, `chapterId`,
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `tbl_titlenoticeboard`
+-- Table structure for table `tbl_titlenoticeboard`
 --
 
 CREATE TABLE `tbl_titlenoticeboard` (
@@ -834,7 +770,7 @@ CREATE TABLE `tbl_titlenoticeboard` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `tbl_titlenoticeboard`
+-- Dumping data for table `tbl_titlenoticeboard`
 --
 
 INSERT INTO `tbl_titlenoticeboard` (`id`, `count`, `title`) VALUES
@@ -847,7 +783,7 @@ INSERT INTO `tbl_titlenoticeboard` (`id`, `count`, `title`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `tbl_user`
+-- Table structure for table `tbl_user`
 --
 
 CREATE TABLE `tbl_user` (
@@ -861,39 +797,37 @@ CREATE TABLE `tbl_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
--- Đang đổ dữ liệu cho bảng `tbl_user`
+-- Dumping data for table `tbl_user`
 --
 
 INSERT INTO `tbl_user` (`id`, `picture`, `username`, `email`, `facebook`, `questionerr`, `userID`) VALUES
-(15, 'https://scontent.fhan14-3.fna.fbcdn.net/v/t1.30497-1/84628273_176159830277856_972693363922829312_n.jpg?stp=c15.0.50.50a_cp0_dst-jpg_p50x50&_nc_cat=1&ccb=1-7&_nc_sid=5f2048&_nc_ohc=YMUBzHeY1uEQ7kNvgHFJezf&_nc_ht=scontent.fhan14-3.fna&edm=AP4hL3IEAAAA&oh=00_AfAnlnc8BkPNo7nntZHUfkyN5o6bqZXu6c9ctWTGlQvDcg&oe=665D1999', 'Tẩn Láo San', NULL, '392109856965222', NULL, '392109856965222'),
-(45, 'https://lh3.googleusercontent.com/a/ACg8ocIzX7bP_p_64W0VXu8zcIX0CMjIOrlcaUta6rBVEiKEUZNA6DY=s96-c', 'a ndv', 'vu11122003@gmail.com', '', NULL, ''),
-(46, 'https://lh3.googleusercontent.com/a/ACg8ocLH0KvqrKfmqoTbwISrvmSGnwbCmwf1xe4dBk0UPNgaXVYRHw=s96-c', 'json zeni', 'zenijson@gmail.com', '', NULL, '');
+(15, 'https://scontent.fhan14-3.fna.fbcdn.net/v/t1.30497-1/84628273_176159830277856_972693363922829312_n.jpg?stp=c15.0.50.50a_cp0_dst-jpg_p50x50&_nc_cat=1&ccb=1-7&_nc_sid=5f2048&_nc_ohc=YMUBzHeY1uEQ7kNvgHFJezf&_nc_ht=scontent.fhan14-3.fna&edm=AP4hL3IEAAAA&oh=00_AfAnlnc8BkPNo7nntZHUfkyN5o6bqZXu6c9ctWTGlQvDcg&oe=665D1999', 'Nguyễn Ngọc Tú Tài 2', 'tutaihocgioi@gmail.com', '392109856965222', '[\"459b48c5-de67-40f4-a034-3eca33548212\",\"1c0db361-bc1a-4b22-b837-eab451516ac6\",\"0526b1a6-fbc0-4368-96e3-e321c8223d47\",\"7ceec395-d869-4296-8291-7fea3d87bdfd\",\"f3f95824-932a-4973-abd1-20b7408556e3\",\"423b28d3-aca8-4951-9e83-61298c713e26\",\"6c58b769-b627-479e-afdf-1734e3b1a260\",\"dcc44555-39cf-4915-984e-ec42aacd11bd\",\"f509c4db-965d-4343-a6a9-ed4d7b1618f9\",\"2e70f064-980b-4dae-9841-07019bf0f6c5\",\"521af762-b304-45d7-858e-79db981a6b73\",\"e80caed1-c5bf-4c5c-a50b-260e0c600013\",\"39b14785-f839-4ea3-a06f-27cade3ffd12\",\"bddc9e19-3f18-4370-9cc5-12c67ffdb984\",\"29c7bad3-23dc-43c7-bbc9-c3d3f6667aab\",\"e80caed1-c5bf-4c5c-a50b-260e0c600013\",\"39b14785-f839-4ea3-a06f-27cade3ffd12\",\"0fea7b09-1dba-4064-8805-884e2a25f590\",\"29c7bad3-23dc-43c7-bbc9-c3d3f6667aab\"]', '392109856965222');
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `tbl_chapter`
+-- Indexes for table `tbl_chapter`
 --
 ALTER TABLE `tbl_chapter`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `tbl_detailnoticeboard`
+-- Indexes for table `tbl_detailnoticeboard`
 --
 ALTER TABLE `tbl_detailnoticeboard`
   ADD PRIMARY KEY (`id`),
   ADD KEY `detail_titlenoticeboard` (`detail_titlenoticeboard`);
 
 --
--- Chỉ mục cho bảng `tbl_exam`
+-- Indexes for table `tbl_exam`
 --
 ALTER TABLE `tbl_exam`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `tbl_exam_question`
+-- Indexes for table `tbl_exam_question`
 --
 ALTER TABLE `tbl_exam_question`
   ADD PRIMARY KEY (`id`),
@@ -901,58 +835,58 @@ ALTER TABLE `tbl_exam_question`
   ADD KEY `fk_exam_question_exam` (`examId`);
 
 --
--- Chỉ mục cho bảng `tbl_question`
+-- Indexes for table `tbl_question`
 --
 ALTER TABLE `tbl_question`
   ADD PRIMARY KEY (`id`),
   ADD KEY `chapterId` (`chapterId`);
 
 --
--- Chỉ mục cho bảng `tbl_titlenoticeboard`
+-- Indexes for table `tbl_titlenoticeboard`
 --
 ALTER TABLE `tbl_titlenoticeboard`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `tbl_user`
+-- Indexes for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT cho bảng `tbl_detailnoticeboard`
+-- AUTO_INCREMENT for table `tbl_detailnoticeboard`
 --
 ALTER TABLE `tbl_detailnoticeboard`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=232;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=233;
 
 --
--- AUTO_INCREMENT cho bảng `tbl_titlenoticeboard`
+-- AUTO_INCREMENT for table `tbl_titlenoticeboard`
 --
 ALTER TABLE `tbl_titlenoticeboard`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT cho bảng `tbl_user`
+-- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
   MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
--- Các ràng buộc cho các bảng đã đổ
+-- Constraints for dumped tables
 --
 
 --
--- Các ràng buộc cho bảng `tbl_detailnoticeboard`
+-- Constraints for table `tbl_detailnoticeboard`
 --
 ALTER TABLE `tbl_detailnoticeboard`
   ADD CONSTRAINT `tbl_detailnoticeboard_ibfk_1` FOREIGN KEY (`detail_titlenoticeboard`) REFERENCES `tbl_titlenoticeboard` (`id`);
 
 --
--- Các ràng buộc cho bảng `tbl_exam_question`
+-- Constraints for table `tbl_exam_question`
 --
 ALTER TABLE `tbl_exam_question`
   ADD CONSTRAINT `fk_exam_question_exam` FOREIGN KEY (`examId`) REFERENCES `tbl_exam` (`id`) ON DELETE CASCADE,
@@ -960,10 +894,10 @@ ALTER TABLE `tbl_exam_question`
   ADD CONSTRAINT `tbl_exam_question_ibfk_2` FOREIGN KEY (`questionId`) REFERENCES `tbl_question` (`id`);
 
 --
--- Các ràng buộc cho bảng `tbl_question`
+-- Constraints for table `tbl_question`
 --
 ALTER TABLE `tbl_question`
-  ADD CONSTRAINT `tbl_question_ibfk_1` FOREIGN KEY (`chapterId`) REFERENCES `tbl_chapter` (`id`);
+  ADD CONSTRAINT `tbl_question_ibfk_1` FOREIGN KEY (`chapterId`) REFERENCES `tbl_chapter` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
